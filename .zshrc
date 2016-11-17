@@ -32,7 +32,7 @@ if ! zplug check --verbose; then
 fi
 
 # source each file and alias command
-zplug load
+zplug load --verbose
 
 ################################
 # zsh-256color
