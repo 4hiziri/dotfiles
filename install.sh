@@ -5,5 +5,5 @@ do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
 
-    echo "$f"
+    ln -sf ./"$f" $HOME/"$f" 
 done
