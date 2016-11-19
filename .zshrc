@@ -2,7 +2,43 @@
 # zplug
 ################################
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+case `uname -s` in
+    Linux)
+	export ZPLUG_HOME=~/.zplug
+	#=============================
+	# editor
+	#=============================
+	alias emacs='emacsclient -nw -a ""'
+	alias ekill='emacsclient -e (kill-emacs)'
+	export EDITOR='emacsclient -nw -a'
+	export VISUAL='emacsclient -nw -a'
+	;;
+    Darwin)
+	export ZPLUG_HOME=/usr/local/opt/zplug
+	# MacPorts Installer addition on 2014-07-15_at_12:00:34: adding an appropriate PATH vari\
+	#able for use with MacPorts.
+	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+	# Finished adapting your PATH environment variable for use with MacPorts.
+	export PATH="/usr/local/bin:$PATH"
+	#token
+	export HOMEBREW_GITHUB_API_TOKEN="832b654d3603021658907b6d10f176aa6f1b24d8"
+	# brew
+	for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions";do
+	    brew_completion=$(brew --prefix 2>/dev/null)$d
+	    if [ $? -eq 0 ] && [ -d "$brew_completion" ];then
+		fpath=($brew_completion $fpath)
+	    fi
+	done
+	#=============================
+	# editor
+	#=============================
+	alias emacs='/usr/local/bin/emacsclient -nw -a ""'
+	alias ekill='emacsclient -e "(kill-emacs)"'
+	export EDITOR='/usr/local/bin/emacsclient -nw'
+	export VISUAL='/usr/local/bin/emacsclient -nw'
+	;;
+esac
+
 source $ZPLUG_HOME/init.zsh
 
 # prompt
@@ -10,6 +46,8 @@ zplug "4hiziri/zsh-python-prompt"
 
 # complemetion
 zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
 
 # syntax and color
 zplug "chrissicool/zsh-256color"
@@ -21,13 +59,15 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "marzocchi/zsh-notify"
 zplug "oknowton/zsh-dwim"
 
-# Install packages that have not been installed yet
+zplug "peco/peco"
+
+zplug "~/.zsh", from:local
+
+# Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
-        echo; zplug install
-    else
-        echo
+	echo; zplug install
     fi
 fi
 
@@ -108,7 +148,6 @@ PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
 # other
 ################################
 
-
 #solve duplicates
 typeset -U path cdpath fpath nmanpath
 
@@ -116,21 +155,11 @@ typeset -U path cdpath fpath nmanpath
 CMD_EXPORT="$HOME/my-bin"
 export CMD_EXPORT
 
-# MacPorts Installer addition on 2014-07-15_at_12:00:34: adding an appropriate PATH vari\
-#able for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-
-# Finished adapting your PATH environment variable for use with MacPorts.
-export PATH="/usr/local/bin:$PATH"
-
 # current dir add to path
 export PATH=".:$PATH"
 
 # add my sh-scripts
 export PATH="$HOME/my-bin:$PATH"
-
-#token
-export HOMEBREW_GITHUB_API_TOKEN="832b654d3603021658907b6d10f176aa6f1b24d8"
 
 # path for cask
 PATH="$HOME/.cask/bin:$PATH"
@@ -148,9 +177,7 @@ if [ -d "${PYENV_ROOT}" ]; then
 fi
 
 # virtualenv setting
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=0
-pyenv virtualenvwrapper
 
 # pip zsh completion start
 function _pip_completion {
@@ -163,7 +190,6 @@ function _pip_completion {
 }
 compctl -K _pip_completion pip
 # pip zsh completion end
-
 
 #########################################
 # powerline
@@ -181,9 +207,15 @@ autoload -Uz colors
 colors
 
 # color setting
-export LSCOLORS=dxfxcxdxbxegedabagacad
-zstyle ':completion:*' list-colors 'di=33'
- 
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+
+if [ -n "$LS_COLORS" ]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
+
 # emacs 風キーバインドにする
 bindkey -e
  
@@ -192,6 +224,13 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
  
+# プロンプト
+# 1行表示
+# PROMPT="%~ %# "
+# 2行表示
+PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
+ %# "
+ 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
@@ -199,9 +238,10 @@ select-word-style default
 # / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
- 
+
 ########################################
 # 補完
+# 補完機能を有効にする
 #for zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
  
@@ -218,12 +258,6 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
  
-for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions";do
-    brew_completion=$(brew --prefix 2>/dev/null)$d
-    if [ $? -eq 0 ] && [ -d "$brew_completion" ];then
-	fpath=($brew_completion $fpath)
-    fi
-done
 ########################################
 # vcs_info
 autoload -Uz vcs_info
@@ -237,6 +271,26 @@ function _update_vcs_info_msg() {
     RPROMPT+="${vcs_info_msg_0_}"
 }
 add-zsh-hook precmd _update_vcs_info_msg
+
+########################################
+# peco
+########################################
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+	tac="tac"
+    else
+	tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+		    eval $tac | \
+		    peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+ 
 ########################################
 # オプション
 # 日本語ファイル名を表示可能にする
@@ -256,6 +310,7 @@ setopt auto_cd
  
 # cd したら自動的にpushdする
 setopt auto_pushd
+
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
  
@@ -288,8 +343,9 @@ alias ll='ls -l'
  
 alias rm='rm -i'
 alias cp='cp -i'
+alias cpf='cp -f'
 alias mv='mv -i'
- 
+
 alias mkdir='mkdir -p'
  
 # sudo の後のコマンドでエイリアスを有効にする
@@ -313,19 +369,6 @@ elif which putclip >/dev/null 2>&1 ; then
 fi
  
 ########################################
-alias emacs='/usr/local/bin/emacsclient -nw -a ""'
-
-alias ekill='emacsclient -e "(kill-emacs)"'
-
-export EDITOR='/usr/local/bin/emacsclient -nw'
-export VISUAL='/usr/local/bin/emacsclient -nw'
-
-########################################
-# 補完
-# 補完機能を有効にする
-#for zsh-completions
-autoload -Uz compinit
-compinit
 
 ########################################
 # OS 別の設定
@@ -341,6 +384,4 @@ case ${OSTYPE} in
 	alias ls='ls -F --color=auto'
 	;;
 esac
-
-#########################################
-
+#######################################
