@@ -64,24 +64,19 @@
 
 ;;the silver searcher
 (use-package helm-ag
-  :defer t)
-
-(use-package helm-migemo
   :defer t
+  :bind (("C-c g" . helm-ag)
+	 ("C-c k" . backward-kill-sexp))
   :config
-  ;;; この修正が必要
-  (with-eval-after-load "helm-migemo"
-    (defun helm-compile-source--candidates-in-buffer (source)
-      (helm-aif (assoc 'candidates-in-buffer source)
-	  (append source
-		  `((candidates
-		     . ,(or (cdr it)
-			    (lambda ()
-			      ;; Do not use `source' because other plugins
-			      ;; (such as helm-migemo) may change it
-			      (helm-candidates-in-buffer (helm-get-current-source)))))
-		    (volatile) (match identity)))
-	source))
-    ;; [2015-09-06 Sun]helm-match-plugin -> helm-multi-match変更の煽りを受けて
-    (defalias 'helm-mp-3-get-patterns 'helm-mm-3-get-patterns)
-    (defalias 'helm-mp-3-search-base 'helm-mm-3-search-base)))
+  ;;; ag以外の検索コマンドも使える
+  ;; (setq helm-ag-base-command "grep -rin")
+  ;; (setq helm-ag-base-command "csearch -n")
+  ;; (setq helm-ag-base-command "pt --nocolor --nogroup")
+  ;; (setq helm-ag-base-command "rg --vimgrep --no-heading")
+  ;; 現在のシンボルをデフォルトのクエリにする
+  (setq helm-ag-insert-at-point 'symbol)
+
+  (defun helm-ag-dot-emacs ()
+    ".emacs.d以下を検索"
+    (interactive)
+    (helm-ag "~/.emacs.d/")))
