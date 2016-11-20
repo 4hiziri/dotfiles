@@ -64,4 +64,19 @@
 
 ;;the silver searcher
 (use-package helm-ag
-  :defer t)
+  :defer t
+  :bind (("C-c g" . helm-ag)
+	 ("C-c k" . backward-kill-sexp))
+  :config
+  ;;; ag以外の検索コマンドも使える
+  ;; (setq helm-ag-base-command "grep -rin")
+  ;; (setq helm-ag-base-command "csearch -n")
+  ;; (setq helm-ag-base-command "pt --nocolor --nogroup")
+  ;; (setq helm-ag-base-command "rg --vimgrep --no-heading")
+  ;; 現在のシンボルをデフォルトのクエリにする
+  (setq helm-ag-insert-at-point 'symbol)
+
+  (defun helm-ag-dot-emacs ()
+    ".emacs.d以下を検索"
+    (interactive)
+    (helm-ag "~/.emacs.d/")))

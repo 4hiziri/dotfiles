@@ -89,13 +89,8 @@ zplug load --verbose
 ################################
 # zsh-syntax-highlighting
 ################################
-# if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ];then
-#     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# fi
-
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line pattern)
 ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
-
 
 ################################
 # zsh-notify
@@ -128,15 +123,6 @@ setopt prompt_subst
 # custamize
 # zstyle ':zsh-python-prompt:pyenv:' symbol '⌘'
 
-################################
-# zsh prompt
-################################
-# プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
-PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
-%# "
 ################################
 # other
 ################################
@@ -187,6 +173,7 @@ compctl -K _pip_completion pip
 #########################################
 # powerline
 ########################################
+
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]
 then
     export TERM='xterm-256color'
