@@ -61,8 +61,6 @@ zplug "oknowton/zsh-dwim"
 
 zplug "peco/peco"
 
-zplug "~/.zsh", from:local
-
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -91,13 +89,8 @@ zplug load --verbose
 ################################
 # zsh-syntax-highlighting
 ################################
-# if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ];then
-#     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# fi
-
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line pattern)
 ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
-
 
 ################################
 # zsh-notify
@@ -116,11 +109,6 @@ export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 bindkey '^o' autosuggest-accept
 
 ################################
-# power-line
-################################
-export TERM='xterm-256color'
-
-################################
 # pyenv zsh-python-prompt
 ################################
 autoload -Uz add-zsh-hook
@@ -135,15 +123,6 @@ setopt prompt_subst
 # custamize
 # zstyle ':zsh-python-prompt:pyenv:' symbol '⌘'
 
-################################
-# zsh prompt
-################################
-# プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
-PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
-%# "
 ################################
 # other
 ################################
@@ -194,9 +173,10 @@ compctl -K _pip_completion pip
 #########################################
 # powerline
 ########################################
+export TERM='xterm-256color'
 export PATH=$PATH:~/.local/bin
 powerline-daemon -q
-source /Users/seiya/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+. "$HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh"
 
 ########################################
 # 環境変数
@@ -228,8 +208,8 @@ SAVEHIST=1000000
 # 1行表示
 # PROMPT="%~ %# "
 # 2行表示
-PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
- %# "
+# PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
+#  %# "
  
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
