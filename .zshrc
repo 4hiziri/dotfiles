@@ -12,6 +12,9 @@ case `uname -s` in
 	alias ekill='emacsclient -e (kill-emacs)'
 	export EDITOR='emacsclient -nw -a ""'
 	export VISUAL='emacsclient -nw -a ""'
+	# for golang
+	export GOPATH="$HOME/.go"
+	export PATH=$PATH:$HOME/.go/bin
 	;;
     Darwin)
 	export ZPLUG_HOME=/usr/local/opt/zplug
