@@ -10,8 +10,8 @@ case `uname -s` in
 	#=============================
 	alias emacs='emacsclient -nw -a ""'
 	alias ekill='emacsclient -e (kill-emacs)'
-	export EDITOR='emacsclient -nw -a'
-	export VISUAL='emacsclient -nw -a'
+	export EDITOR='emacsclient -nw -a ""'
+	export VISUAL='emacsclient -nw -a ""'
 	;;
     Darwin)
 	export ZPLUG_HOME=/usr/local/opt/zplug
