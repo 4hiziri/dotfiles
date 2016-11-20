@@ -256,21 +256,14 @@ add-zsh-hook precmd _update_vcs_info_msg
 ########################################
 # peco
 ########################################
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-	tac="tac"
-    else
-	tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-		    eval $tac | \
-		    peco --query "$LBUFFER")
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
-    zle clear-screen
+    zle reset-prompt
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
  
 ########################################
 # オプション
@@ -314,7 +307,7 @@ setopt extended_glob
 # キーバインド
  
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-bindkey '^R' history-incremental-pattern-search-backward
+# bindkey '^R' history-incremental-pattern-search-backward
  
 ########################################
 # エイリアス
