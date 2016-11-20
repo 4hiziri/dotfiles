@@ -256,14 +256,21 @@ add-zsh-hook precmd _update_vcs_info_msg
 ########################################
 # peco
 ########################################
-function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
     CURSOR=$#BUFFER
-    zle reset-prompt
+    zle clear-screen
 }
-
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+zle -N peco-select-history
+bindkey '^r' peco-select-history
  
 ########################################
 # オプション
