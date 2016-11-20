@@ -134,9 +134,6 @@ typeset -U path cdpath fpath nmanpath
 CMD_EXPORT="$HOME/my-bin"
 export CMD_EXPORT
 
-# current dir add to path
-export PATH=".:$PATH"
-
 # add my sh-scripts
 export PATH="$HOME/my-bin:$PATH"
 
