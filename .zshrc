@@ -61,8 +61,6 @@ zplug "oknowton/zsh-dwim"
 
 zplug "peco/peco"
 
-zplug "~/.zsh", from:local
-
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -114,11 +112,6 @@ export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 # zsh-autosuggestions
 ################################
 bindkey '^o' autosuggest-accept
-
-################################
-# power-line
-################################
-export TERM='xterm-256color'
 
 ################################
 # pyenv zsh-python-prompt
@@ -194,9 +187,13 @@ compctl -K _pip_completion pip
 #########################################
 # powerline
 ########################################
-export PATH=$PATH:~/.local/bin
-powerline-daemon -q
-source /Users/seiya/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]
+then
+    export TERM='xterm-256color'
+    export PATH=$PATH:~/.local/bin
+    powerline-daemon -q
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+fi
 
 ########################################
 # 環境変数
@@ -228,8 +225,8 @@ SAVEHIST=1000000
 # 1行表示
 # PROMPT="%~ %# "
 # 2行表示
-PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
- %# "
+# PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
+#  %# "
  
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
