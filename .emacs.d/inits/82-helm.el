@@ -53,8 +53,9 @@
 (use-package helm-company
   :defer t
   :init
-  (dind-key "C-:" 'helm-company company-mode-map)
-  (dind-key "C-:" 'helm-company company-active-map))
+  ;; :TODO
+  (bind-key "C-:" 'helm-company company-mode-map)
+  (bind-key "C-:" 'helm-company company-active-map))
 
 ;;helm-descbinds
 (use-package helm-descbinds
