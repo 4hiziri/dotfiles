@@ -3,7 +3,7 @@
 ;; P130-131 利用可能にする
 
 ;;; Code:
-(use-package auto-complete-config
+(use-package auto-complete
   :bind (("C-c ;" . ac-mode-mop))
   :config
   (ac-config-default)

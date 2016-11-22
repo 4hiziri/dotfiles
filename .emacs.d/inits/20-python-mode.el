@@ -30,12 +30,18 @@
     '(("C-n" . flycheck-next-error)
       ("C-p" . flycheck-previous-error))))
 
+;; jedi
+(use-package jedi-core
+  :defer t
+  :init
+  (add-hook 'python-mode-hook 'jedi:setup)
+   ;; backendに追加
+  (add-to-list 'company-backends 'company-jedi)
+  :config
+  (setq jedi:complete-on-dot t)
+  (setq jedi:use-shortcuts t)) 
+
 ;; yapf
 (use-package py-yapf
   :defer t
   :init (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
-
-(use-package company-jedi
-  :defer t
-  :init
-  (add-to-list 'company-backends 'company-jedi) (add-to-list 'company-backends 'company-jedi))

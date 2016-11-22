@@ -32,6 +32,13 @@ case `uname -s` in
 		fpath=($brew_completion $fpath)
 	    fi
 	done
+
+	#=============================
+	#gnu commnad path
+	#=============================
+	PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+	
 	#=============================
 	# editor
 	#=============================
@@ -57,6 +64,7 @@ zplug "chrissicool/zsh-256color"
 zplug "Tarrasch/zsh-colors"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 # zplug "ascii-soup/zsh-url-highlighter", use:url/zsh-url-highlighter :WARN erorr
+zplug 'joel-porquet/zsh-dircolors-solarized'
 
 # tools
 zplug "marzocchi/zsh-notify"
@@ -78,6 +86,8 @@ zplug load --verbose
 ################################
 # zsh-256color
 ################################
+# color view
+# for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
 
 ################################
 # zsh-colors
@@ -191,10 +201,11 @@ autoload -Uz colors
 colors
 
 # color setting
-export LSCOLORS=exfxcxdxbxegedabagacad
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+setupsolarized dircolors.256dark
+# export LSCOLORS=exfxcxdxbxegedabagacad
+# export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
-zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+# zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -360,8 +371,9 @@ fi
 case ${OSTYPE} in
     darwin*)
 	#Mac用の設定
-	export CLICOLOR=1
-	alias ls='ls -G -F'
+	# export CLICOLOR=1
+	# alias ls='ls -G -F'
+	alias ls='ls -F --color=auto'
 	;;
     linux*)
 	#Linux用の設定
