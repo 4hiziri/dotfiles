@@ -48,7 +48,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (wgrep-ag wgrep-helm ace-isearch bison-mode hl-line+ dash drag-stuff git-commit helm helm-core ivy projectile with-editor yasnippet helm-company slime-company company-jedi ctags-update clj-refactor sequential-command egg-grep egg color-moccur auto-async-byte-compile smartrep flycheck py-yapf pyenv-mode py-autopep8 rust-mode elpy flymake-python-pyflakes flymake-cursor yatex wgrep undo-tree swift-mode sml-mode slamhound scala-mode rainbow-delimiters quickrun python-mode paredit markdown-mode init-loader ido-migemo hideshowvis helm-migemo helm-descbinds helm-ag fold-dwim emacs-cl ctags clojure-test-mode bind-key auto-save-buffers-enhanced auto-install ag ac-slime ac-skk ac-helm ac-cider)))
+    (zenburn-theme solarized-theme wgrep-ag wgrep-helm ace-isearch bison-mode hl-line+ dash drag-stuff git-commit helm helm-core ivy projectile with-editor yasnippet helm-company slime-company company-jedi ctags-update clj-refactor sequential-command egg-grep egg color-moccur auto-async-byte-compile smartrep flycheck py-yapf pyenv-mode py-autopep8 rust-mode elpy flymake-python-pyflakes flymake-cursor yatex wgrep undo-tree swift-mode sml-mode slamhound scala-mode rainbow-delimiters quickrun python-mode paredit markdown-mode init-loader ido-migemo hideshowvis helm-migemo helm-descbinds helm-ag fold-dwim emacs-cl ctags clojure-test-mode bind-key auto-save-buffers-enhanced auto-install ag ac-slime ac-skk ac-helm ac-cider)))
  '(py-indent-offset 4)
  '(swift-repl-excutable "swift"))
 (custom-set-faces

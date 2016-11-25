@@ -21,7 +21,7 @@ case `uname -s` in
 	# Finished adapting your PATH environment variable for use with MacPorts.
 	export PATH="/usr/local/bin:$PATH"
 	#token
-	export HOMEBREW_GITHUB_API_TOKEN="832b654d3603021658907b6d10f176aa6f1b24d8"
+	export HOMEBREW_GITHUB_API_TOKEN="9f75a1faf132cbcced6968db39031c3dbba68a34"
 	# brew
 	for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions";do
 	    brew_completion=$(brew --prefix 2>/dev/null)$d

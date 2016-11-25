@@ -1,2 +1,2 @@
 ;;color set
-(load-theme 'tango-dark t)
+(load-theme 'zenburn t)
