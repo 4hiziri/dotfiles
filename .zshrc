@@ -21,7 +21,7 @@ case `uname -s` in
 	# Finished adapting your PATH environment variable for use with MacPorts.
 	export PATH="/usr/local/bin:$PATH"
 	# load secret file
-	source "~/.zshrc.secret"
+        . "$HOME/.zshrc.secret"
 	# brew
 	for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions";do
 	    brew_completion=$(brew --prefix 2>/dev/null)$d
