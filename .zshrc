@@ -123,8 +123,9 @@ bindkey '^o' autosuggest-accept
 # powerlevel9k
 ################################
 # POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs pyenv vcs ram time)
+POWORLEVEL9K_VCS_CLEAN_BACKGROUND='yellow'
 
 ################################
 # pyenv zsh-python-prompt

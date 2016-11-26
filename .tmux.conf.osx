@@ -4,3 +4,7 @@ set-option -g default-command "which reattach-to-user-namespace > /dev/null && r
 set-option -g default-shell $SHELL
 # set-option -g default-command "reattach-to-user-namespace -l ${SHELL}"
 # bind C-q run-shell 'reattach-to-user-namespace pbcopy'
+
+# Wi-Fi、バッテリー残量、現在時刻
+# 最右に表示
+set-option -g status-right '#(get_ssid) #(battery -c tmux) [%Y-%m-%d(%a) %H:%M]'
