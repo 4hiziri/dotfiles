@@ -62,6 +62,7 @@ zplug "Tarrasch/zsh-colors"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 # zplug "ascii-soup/zsh-url-highlighter", use:url/zsh-url-highlighter :WARN erorr
 zplug 'joel-porquet/zsh-dircolors-solarized'
+zplug 'bhilburn/powerlevel9k'
 
 # tools
 zplug "marzocchi/zsh-notify"
@@ -119,15 +120,22 @@ export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 bindkey '^o' autosuggest-accept
 
 ################################
+# powerlevel9k
+################################
+# POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs pyenv vcs ram time)
+
+################################
 # pyenv zsh-python-prompt
 ################################
 autoload -Uz add-zsh-hook
 
-function _update_pyenv() {
-    RPROMPT="[$ZSH_PYTHON_PROMPT] "    
-}
+# function _update_pyenv() {
+#     RPROMPT="[$ZSH_PYTHON_PROMPT] "
+# }
 
-add-zsh-hook precmd _update_pyenv
+# add-zsh-hook precmd _update_pyenv
 
 setopt prompt_subst
 # custamize
@@ -258,11 +266,11 @@ autoload -Uz add-zsh-hook
 zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
  
-function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT+="${vcs_info_msg_0_}"
-}
-add-zsh-hook precmd _update_vcs_info_msg
+# function _update_vcs_info_msg() {
+#     LANG=en_US.UTF-8 vcs_info
+#     RPROMPT+="${vcs_info_msg_0_}"
+# }
+# add-zsh-hook precmd _update_vcs_info_msg
 
 ########################################
 # peco
