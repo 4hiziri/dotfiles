@@ -125,7 +125,7 @@ bindkey '^o' autosuggest-accept
 # POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
 # typeset -gAH vcs_states
 vcs_states=(
-    'clean' 'blue'
+    'clean' '109'
     'modified' 'yellow'
     'untracked' 'red'
 )
