@@ -15,11 +15,10 @@ case `uname -s` in
 	;;
     Darwin)
 	export ZPLUG_HOME=/usr/local/opt/zplug
-	# MacPorts Installer addition on 2014-07-15_at_12:00:34: adding an appropriate PATH vari\
-	#able for use with MacPorts.
+	
 	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-	# Finished adapting your PATH environment variable for use with MacPorts.
 	export PATH="/usr/local/bin:$PATH"
+	
 	# load secret file
         . "$HOME/.zshrc.secret"
 	# brew
@@ -62,7 +61,7 @@ zplug "Tarrasch/zsh-colors"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 # zplug "ascii-soup/zsh-url-highlighter", use:url/zsh-url-highlighter :WARN erorr
 zplug 'joel-porquet/zsh-dircolors-solarized'
-zplug 'bhilburn/powerlevel9k'
+zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
 
 # tools
 zplug "marzocchi/zsh-notify"
