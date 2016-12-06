@@ -18,6 +18,12 @@ case `uname -s` in
 	
 	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 	export PATH="/usr/local/bin:$PATH"
+
+	## rust setup :TODO install linux
+	export PATH="~/.cargo/bin:$PATH"
+	# rustup and path for rust src
+	export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+	source ~/.cargo/env
 	
 	# load secret file
         . "$HOME/.zshrc.secret"
