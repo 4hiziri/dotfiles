@@ -5,10 +5,10 @@
   :defer t
   :init
   (setq racer-rust-src-path "~/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src")
-  
+  (setq rust-format-on-save t)
   ;; hooks
   (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
+  ;;  (add-hook 'rust-mode-hook #'rustfmt-enable-on-save) obsolete
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)

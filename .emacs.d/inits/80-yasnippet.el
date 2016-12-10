@@ -1,4 +1,5 @@
 ;; 次の入力項目に飛ぶには、TAB
+;; :TODO view to template
 (define-key global-map (kbd "C-x i") nil)
 (use-package yasnippet
   :ensure t

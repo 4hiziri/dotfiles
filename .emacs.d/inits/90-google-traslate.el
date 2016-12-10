@@ -1,5 +1,5 @@
 (use-package google-translate
-  :defer t
+  :ensure t
   :init
   (defvar google-translate-english-chars "[:ascii:]’“”–"
     "これらの文字が含まれているときは英語とみなす")
