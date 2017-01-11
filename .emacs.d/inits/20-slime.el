@@ -1,5 +1,5 @@
-(defvar slime-dir "~/projects/dotfiles/.emacs.d/slime/")
-(add-to-list 'load-path (expand-file-name slime-dir))
+(add-to-list 'load-path (expand-file-name "~/.roswell/helper.el"))
+
 ;; slime
 (use-package slime
   :defer t
@@ -113,6 +113,5 @@
       (switch-to-buffer buf)
       (pop-to-buffer "*eww*"))))
 
-;; ;;roswell
-;; (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+;; roswell
 ;; (setq inferior-lisp-program "ros -L clisp -Q run")
