@@ -1,21 +1,26 @@
+; cargo-minor-mode
 (use-package rust-mode
-  :defer t)
+  :defer t
+  :config
+  (setq rust-format-on-save t))
 
 (use-package company-racer
   :defer t
   :init
   (setq racer-rust-src-path "~/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src")
-  (setq rust-format-on-save t)
   ;; hooks
   (add-hook 'rust-mode-hook #'racer-mode)
   ;;  (add-hook 'rust-mode-hook #'rustfmt-enable-on-save) obsolete
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (add-to-list 'company-backends 'company-racer)
-  
-  :config
-  (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+  (add-hook 'rust-mode-hook
+	    '(lambda ()
+	       (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
+	       (local-set-key (kbd "C-c <tab>") #'rust-format-buffer)))
+    (add-to-list 'company-backends 'company-racer)
+  :config 
+;;  (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
   (setq company-tooltip-align-annotations t))
 
 ;; (use-package racer
