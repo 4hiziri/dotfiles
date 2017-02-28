@@ -390,6 +390,7 @@ case ${OSTYPE} in
 	# export CLICOLOR=1
 	# alias ls='ls -G -F'
 	alias ls='ls -F --color=auto'
+	export GNUTERM=x11
 	;;
     linux*)
 	#Linux用の設定
