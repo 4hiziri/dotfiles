@@ -40,6 +40,7 @@
 (depends-on "ivy")
 (depends-on "jedi")
 (depends-on "magit")
+(depends-on "markdown-mode")
 (depends-on "migemo")
 (depends-on "multiple-cursors")
 (depends-on "nyan-mode")
