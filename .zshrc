@@ -391,6 +391,11 @@ case ${OSTYPE} in
 	# alias ls='ls -G -F'
 	alias ls='ls -F --color=auto'
 	export GNUTERM=x11
+	
+	# for openssl header
+	export PATH=/usr/local/opt/openssl/bin:$PATH
+	export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
+	export CPATH=/usr/local/opt/openssl/include:$LD_LIBRARY_PATH
 	;;
     linux*)
 	#Linux用の設定
