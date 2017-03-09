@@ -26,6 +26,7 @@
   (setq skk-minibuffer-origin-mode `latin)
   (setq skk-display-code-method nil)
   (require 'skk-study)
+  (require 'context-skk)
 
   ;; 辞書の設定
   (setq skk-large-jisyo "~/.emacs.d/.skk/SKK-JISYO.L")

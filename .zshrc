@@ -18,13 +18,18 @@ case `uname -s` in
 	;;
     Darwin)
 	export ZPLUG_HOME=/usr/local/opt/zplug
-	# MacPorts Installer addition on 2014-07-15_at_12:00:34: adding an appropriate PATH vari\
-	#able for use with MacPorts.
+	
 	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-	# Finished adapting your PATH environment variable for use with MacPorts.
 	export PATH="/usr/local/bin:$PATH"
-	#token
-	export HOMEBREW_GITHUB_API_TOKEN="832b654d3603021658907b6d10f176aa6f1b24d8"
+
+	## rust setup :TODO install linux
+	export PATH="~/.cargo/bin:$PATH"
+	# rustup and path for rust src
+	export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+	source ~/.cargo/env
+	
+	# load secret file
+        . "$HOME/.zshrc.secret"
 	# brew
 	for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions";do
 	    brew_completion=$(brew --prefix 2>/dev/null)$d
@@ -65,7 +70,11 @@ zplug "Tarrasch/zsh-colors"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 # zplug "ascii-soup/zsh-url-highlighter", use:url/zsh-url-highlighter :WARN erorr
 zplug 'joel-porquet/zsh-dircolors-solarized'
+
 zplug "seebi/dircolors-solarized"
+
+zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
+
 
 # tools
 zplug "marzocchi/zsh-notify"
@@ -119,19 +128,33 @@ export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 
 ################################
 # zsh-autosuggestions
+=======
 ################################
 bindkey '^o' autosuggest-accept
+
+################################
+# powerlevel9k
+################################
+# POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
+# typeset -gAH vcs_states
+vcs_states=(
+    'clean' '122'
+    'modified' 'yellow'
+    'untracked' 'red'
+)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs pyenv vcs ram time)
 
 ################################
 # pyenv zsh-python-prompt
 ################################
 autoload -Uz add-zsh-hook
 
-function _update_pyenv() {
-    RPROMPT="[$ZSH_PYTHON_PROMPT] "    
-}
+# function _update_pyenv() {
+#     RPROMPT="[$ZSH_PYTHON_PROMPT] "
+# }
 
-add-zsh-hook precmd _update_pyenv
+# add-zsh-hook precmd _update_pyenv
 
 setopt prompt_subst
 # custamize
@@ -262,11 +285,11 @@ autoload -Uz add-zsh-hook
 zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
  
-function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT+="${vcs_info_msg_0_}"
-}
-add-zsh-hook precmd _update_vcs_info_msg
+# function _update_vcs_info_msg() {
+#     LANG=en_US.UTF-8 vcs_info
+#     RPROMPT+="${vcs_info_msg_0_}"
+# }
+# add-zsh-hook precmd _update_vcs_info_msg
 
 ########################################
 # peco
@@ -375,6 +398,12 @@ case ${OSTYPE} in
 	# export CLICOLOR=1
 	# alias ls='ls -G -F'
 	alias ls='ls -F --color=auto'
+	export GNUTERM=x11
+	
+	# for openssl header
+	export PATH=/usr/local/opt/openssl/bin:$PATH
+	export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
+	export CPATH=/usr/local/opt/openssl/include:$LD_LIBRARY_PATH
 	;;
     linux*)
 	#Linux用の設定

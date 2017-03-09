@@ -1,2 +1,10 @@
 # for mac
-set-option -g default-command "reattach-to-user-namespace -l zsh"
+# Patch for OS X pbpaste and pbcopy under tmux.
+set-option -g default-command "which reattach-to-user-namespace > /dev/null && reattach-to-user-namespace -l $SHELL || $SHELL"
+set-option -g default-shell $SHELL
+bind-key -t emacs-copy C-w copy-pipe "pbcopy"
+
+# Wi-Fi、バッテリー残量、現在時刻
+# 最右に表示
+# set-option -g status-right '#(get_ssid) #(battery -c tmux) [%Y-%m-%d(%a) %H:%M]'
+# todo
