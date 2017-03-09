@@ -65,6 +65,7 @@ zplug "Tarrasch/zsh-colors"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 # zplug "ascii-soup/zsh-url-highlighter", use:url/zsh-url-highlighter :WARN erorr
 zplug 'joel-porquet/zsh-dircolors-solarized'
+zplug "seebi/dircolors-solarized"
 
 # tools
 zplug "marzocchi/zsh-notify"
@@ -207,10 +208,6 @@ setupsolarized dircolors.256dark
 
 # zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
-if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-fi
-
 # emacs 風キーバインドにする
 bindkey -e
  
@@ -252,7 +249,11 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
  
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
- 
+
+if [ -n "$LS_COLORS" ]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
+
 ########################################
 # vcs_info
 autoload -Uz vcs_info
