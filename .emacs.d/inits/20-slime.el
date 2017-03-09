@@ -7,7 +7,7 @@
   (add-hook 'slime-mood-hook 'paredit-mode 'rainbow-delimiters-mode)
   :config
   (setq inferior-lisp-program "SBCL") ; your Lisp system
-  (slime-setup '(slime-repl slime-fancy slime-banner))
+  (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
 
   (setq slime-net-coding-system 'utf-8-unix)
 
