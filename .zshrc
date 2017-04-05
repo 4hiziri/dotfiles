@@ -77,7 +77,7 @@ zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
 
 # tools
 zplug "marzocchi/zsh-notify"
-zplug "oknowton/zsh-dwim"
+# zplug "oknowton/zsh-dwim"
 
 zplug "peco/peco"
 
