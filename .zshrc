@@ -1,20 +1,19 @@
-################################
-# zplug
-################################
-
+### OS ###
 case `uname -s` in
     Linux)
 	export ZPLUG_HOME=~/.zplug
-	#=============================
-	# editor
-	#=============================
+
+	### editor ###
 	alias emacs='emacsclient -nw -a ""'
 	alias ekill='emacsclient -e (kill-emacs)'
 	export EDITOR='emacsclient -nw -a ""'
 	export VISUAL='emacsclient -nw -a ""'
-	# for golang
+	### editor ###
+	### golang ###
 	export GOPATH="$HOME/.go"
 	export PATH=$PATH:$HOME/.go/bin
+	### golang ###
+	xmodmap ~/.xmodmap-`uname -n`
 	;;
     Darwin)
 	export ZPLUG_HOME=/usr/local/opt/zplug
@@ -90,6 +89,9 @@ if ! zplug check --verbose; then
     fi
 fi
 
+# color setting
+export TERM="xterm-256color"
+
 # source each file and alias command
 zplug load --verbose
 
@@ -128,7 +130,7 @@ export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 
 ################################
 # zsh-autosuggestions
-=======
+
 ################################
 bindkey '^o' autosuggest-accept
 
@@ -175,7 +177,7 @@ export CMD_EXPORT
 export PATH="$HOME/my-bin:$PATH"
 
 # path for cask
-PATH="$HOME/.cask/bin:$PATH"
+export PATH="$HOME/.cask/bin:$PATH"
 
 #============================
 # python setting
