@@ -66,7 +66,7 @@ zplug "zsh-users/zsh-completions"
 # syntax and color
 zplug "chrissicool/zsh-256color"
 zplug "Tarrasch/zsh-colors"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:3
 # zplug "ascii-soup/zsh-url-highlighter", use:url/zsh-url-highlighter :WARN erorr
 zplug 'joel-porquet/zsh-dircolors-solarized'
 
@@ -93,7 +93,7 @@ fi
 export TERM="xterm-256color"
 
 # source each file and alias command
-zplug load --verbose
+zplug load
 
 ################################
 # zsh-256color
@@ -413,3 +413,9 @@ case ${OSTYPE} in
 	;;
 esac
 #######################################
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/qt5/bin:$PATH"
