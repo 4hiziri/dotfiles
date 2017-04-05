@@ -5,10 +5,9 @@
   :defer t
   :init
   (add-hook 'slime-mood-hook 'paredit-mode 'rainbow-delimiters-mode)
+  (setq inferior-lisp-program "ros -L sbcl -Q run -- --dynamic-space-size 2048") ; your Lisp system
   :config
-  (setq inferior-lisp-program "SBCL") ; your Lisp system
   (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
-
   (setq slime-net-coding-system 'utf-8-unix)
 
   ;; solve confilct between skk and slime
@@ -112,6 +111,3 @@
       ad-do-it
       (switch-to-buffer buf)
       (pop-to-buffer "*eww*"))))
-
-;; roswell
-;; (setq inferior-lisp-program "ros -L clisp -Q run")
