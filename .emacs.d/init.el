@@ -12,12 +12,23 @@
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
 
+(defun add-to-load-path (&rest paths)
+  "LOAD-PATHを追加する関数."
+  (dolist (path paths paths)
+    (let ((default-directory
+	    (expand-file-name (concat user-emacs-directory path))))
+      (add-to-list 'load-path default-directory)
+      (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+	  (normal-top-level-add-subdirs-to-load-path)))))
+
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
-(add-to-load-path "elisp"
-		  "conf"
-		  "public_repos"
-		  "elpa"
-		  ".cask/")
+;; 存在するディレクトリに対してのみpathに追加
+(defun add-to-load-path-if-exists (&rest paths)
+  (dolist (path paths paths)
+    (when (file-exists-p path)
+      (add-to-load-path path))))
+
+(add-to-load-path-if-exists ".cask" "elisp" "elpa")
 
 ;;; P115-116 Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネージャ
 ;; package.elの設定
