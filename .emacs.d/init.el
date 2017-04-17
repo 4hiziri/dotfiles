@@ -14,12 +14,13 @@
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; 存在するディレクトリに対してのみpathに追加
-(defun add-to-load-path-if-exists (&rest paths)
-  (dolist (path paths paths)
-    (when (file-exists-p path)
-      (add-to-load-path path))))
+(defun path-if-exists (&rest paths)
+  (let ((ret nil))
+    (dolist (path paths ret)
+      (when (file-exists-p path)
+	(push path ret)))))
 
-(add-to-load-path-if-exists ".cask" "elisp" "elpa")
+(apply #'add-to-load-path (path-if-exists ".cask" "elisp" "elpa" "public_repos" "conf"))
 
 ;;; P115-116 Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネージャ
 ;; package.elの設定
