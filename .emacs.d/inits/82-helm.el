@@ -14,7 +14,7 @@
   (bind-key "C-c C-s" 'helm-do-ag global-map)
   :config
   (helm-mode 1)
-  (helm-migemo-mode 1)
+;  (helm-migemo-mode 1)
   ;;emulate kill-line in mini-helm
   ;; Emulate `kill-line' in helm minibuffer
   (setq helm-delete-minibuffer-contents-from-point t)
