@@ -1,0 +1,95 @@
+conky.config = {
+gap_x = 0,
+gap_y = 0,
+
+double_buffer = true,
+background = true,
+
+default_color = "green",
+-- default_outline_color = "black",
+-- default_shade_color = "cyan",
+
+draw_borders = false,
+draw_graph_borders = true,
+draw_outline = false,
+draw_shades = false,
+
+use_xft = true,
+font = "Lucida Sans Uncode:style=Reguler:size=10",
+
+override_utf8_locale = true,
+out_to_console = false,
+out_to_stderr = false,
+extra_newline = false,
+
+update_interval = 1.0,
+uppercase = false,
+
+show_graph_scale = true,
+show_graph_range = false,
+
+own_window = true,
+own_window_class = "Conky",
+own_window_type = "normal",
+own_window_hints = "undecorated,below,skip_taskbar,skip_pager,sticky",
+own_window_transparent = true,
+
+-- own_window_transparent = false,
+-- own_window_color = 123456,
+-- own_window_argb_visual = true,
+-- own_window_argb_value = 180,
+
+cpu_avg_samples = 2,
+}
+
+conky.text = [[
+${texeci -1 whoami}@$nodename
+$sysname
+$hr
+Date: ${time %Y/%m/%d-%A}
+Time: ${time %k:%M:%S} 
+Uptime:$uptime
+$hr
+Load AVG: $loadavg
+Proc: $processes Run: $running_processes
+Top:
+Name	PID	CPU%	MEM%
+$hr
+${top name 1}	${top pid 1}	${top cpu 1}	${top mem 1}
+${top name 2}	${top pid 2}	${top cpu 2}	${top mem 2}
+${top name 3}	${top pid 3}	${top cpu 3}	${top mem 3}
+${top name 4}	${top pid 4}	${top cpu 4}	${top mem 4}
+$hr
+Threads: $Threads
+CPU Freq: ${freq_g}GHz
+CPU1 Usage: ${cpu cpu1}%
+${cpugraph cpu1 -l 000000 ffffff}
+CPU2 Usage: ${cpu cpu2}%
+${cpugraph cpu2 -l 000000 ffffff}
+$hr
+RAM Usage: $mem/$memmax
+${membar}
+${memgraph 000000 ffffff}
+Swap Usage: $swap/$swapmax
+${swapbar}
+$hr
+File Sys:
+${fs_used /}/${fs_size /}
+${fs_bar 6 /}
+${diskiograph}
+${if_existing /proc/net/route enp1s0}$hr
+Networking: enp1s0
+Up: ${upspeed enp1s0} - Down: ${downspeed enp1s0}
+${upspeedgraph enp1s0 32,140} ${downspeedgraph enp1s0 32,140}
+${endif}
+${if_existing /proc/net/route wlp2s0}$hr
+Wireless:
+${wireless_essid wlp2s0} - ${wireless_bitrate wlp2s0}
+${wireless_link_qual_perc wlp2s0}% ${wireless_link_bar wlp2s0}
+${endif}
+${if_existing /sys/class/power_supply/BAT0/status}$hr
+Battery:
+${battery}
+${battery_time} ${battery_bar}
+${endif}
+]]
