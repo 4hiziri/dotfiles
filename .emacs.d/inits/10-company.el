@@ -2,7 +2,7 @@
   :defer t
   :init
   (global-company-mode)
-  :config    
+  :config
   (setq company-minimum-prefix-length 2)
   (setq company-selection-wrap-around t)
   (bind-key "C-n" 'company-select-next company-active-map)
