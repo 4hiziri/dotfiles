@@ -4,7 +4,8 @@
 ;;; Code:
 
 (use-package cask
-  :load-path "../.cask/"
+  :load-path
+  "~/.cask/cask.el"
   :config
   (cask-initialize))
 
