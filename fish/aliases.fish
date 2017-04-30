@@ -1,5 +1,5 @@
-balias emacs 'emacsclient -nw -a ""'
-balias ekill 'emacsclient -e (kill-emacs)'
+balias emacs '/usr/local/bin/emacsclient -nw -a ""'
+balias ekill '/usr/local/bin/emacsclient -e (kill-emacs)'
 balias rm 'rm -i'
 
 balias cp 'cp -i'
