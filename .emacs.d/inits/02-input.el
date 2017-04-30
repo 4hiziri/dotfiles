@@ -29,7 +29,7 @@
   (require 'context-skk)
 
   ;; 辞書の設定
-  (setq skk-large-jisyo "~/.emacs.d/.skk/SKK-JISYO.L")
+  (setq skk-large-jisyo "~/.skk/SKK-JISYO.L")
   ;; (setq skk-extra-jisyo-file-list
   ;; 	(list '("~/.emacs.d/share/skk/SKK-JISYO.geo"
   ;; 		"~/.emacs.d/share/skk/SKK-JISYO.jinmei"
