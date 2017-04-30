@@ -4,7 +4,7 @@
 
 ;; Author: 高木聖也 <seiya@hiziri0014.local>
 ;; Keywords: local, tools, files
-
-(global-ace-isearch-mode 1)
-
+(use-package ace-isearch
+  :config
+  (global-ace-isearch-mode 1))
 ;;; 
