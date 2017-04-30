@@ -103,3 +103,4 @@
 (depends-on "yasnippet")
 (depends-on "yatemplate")
 (depends-on "yatex")
+(depends-on "zenburn-theme")
