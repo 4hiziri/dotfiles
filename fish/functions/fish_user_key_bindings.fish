@@ -39,9 +39,6 @@ function fish_user_key_bindings
     ### peco ###
     bind \cr 'peco_select_history (commandline -b)'
     ### peco ###
-    ### forward-char ###
-    bind \cf 'forward-char'
-    ### forward-char ###
     ### fzf ###
     bind \ct '__fzf_find_file'
     ### fzf ###
