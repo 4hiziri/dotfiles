@@ -10,7 +10,10 @@ set -x EDITOR 'emacsclient -nw -a ""'
 set -x VISUAL 'emacsclient -nw -a ""'
 ### editor ###
 ### pyenv ###
-set -x PYENV_ROOT "$HOME/.pyenv"
+set -x PATH "/home/tkgsy/.pyenv/bin" $PATH
+status --is-interactive; and . (pyenv init -|psub)
+status --is-interactive; and . (pyenv virtualenv-init -|psub)
+
 if [ -d "$PYENV_ROOT" ]
     set -U fish_user_paths "$PYENV_ROOT/bin" $fish_user_paths
     pyenv init -
