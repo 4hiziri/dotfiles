@@ -1,5 +1,3 @@
-(add-to-list 'load-path (expand-file-name "~/.roswell/helper.el"))
-
 ;; slime
 (use-package slime
   :defer t
@@ -43,16 +41,6 @@
   (push '(slime-repl-mode) popwin:special-display-config)
   ;; Connections
   (push '(slime-connection-list-mode) popwin:special-display-config))
-
-;;ac-slime
-;; (use-package ac-slime
-;;   :defer t
-;;   :init
-;;   (add-hook 'slime-mode-hook 'set-up-slime-ac)
-;;   (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-;;   (eval-after-load "auto-complete"
-;;     '(add-to-list 'ac-modes 'slime-repl-mode))
-;;   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; company-slime
 (use-package slime-company

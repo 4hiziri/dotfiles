@@ -47,7 +47,7 @@ ${texeci -1 whoami}@$nodename
 $sysname
 $hr
 Date: ${time %Y/%m/%d-%A}
-Time: ${time %k:%M:%S} 
+Time: ${time %k:%M:%S}
 Uptime:$uptime
 $hr
 Load AVG: $loadavg

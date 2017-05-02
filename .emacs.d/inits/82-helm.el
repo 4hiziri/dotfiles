@@ -1,6 +1,5 @@
 ;;helm
 (use-package helm
-  :defer t
   :init
   (bind-key "C-c C-y" 'helm-show-kill-ring)
   (bind-key "C-x C-b" 'helm-for-files)

@@ -39,9 +39,9 @@
   (add-to-list 'company-backends 'company-jedi)
   :config
   (setq jedi:complete-on-dot t)
-  (setq jedi:use-shortcuts t)) 
+  (setq jedi:use-shortcuts t))
 
 ;; yapf
 (use-package py-yapf
   :defer t
-  :init (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
+  :init (add-hook 'python-mode-hook 'py-yapf-enable-on-save));
