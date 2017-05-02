@@ -3,12 +3,13 @@ fisherman/await
 oh-my-fish/plugin-balias
 edc/bass
 0rax/fish-bd
-oh-my-fish/theme-chain
 oh-my-fish/plugin-expand
 oh-my-fish/plugin-extract
+oh-my-fish/theme-fishbone
 fisherman/fzf
 fisherman/get
 fisherman/getopts
+fisherman/git_util
 fisherman/gitignore
 fisherman/last_job_id
 oh-my-fish/plugin-pbcopy
