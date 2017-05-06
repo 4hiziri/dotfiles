@@ -9,7 +9,6 @@
   :config
   (cask-initialize))
 
-(use-package pallet
-  :defer t)
+(use-package pallet)
 
 ;;; 01-cask.el ends here
