@@ -1,5 +1,3 @@
-### fisherman ###
-### fisherman ###
 ### fzf ###
 set -U FZF_LEGACY_KEYBINDINGS 1
 ### fzf ###
@@ -8,11 +6,11 @@ set -U FZF_LEGACY_KEYBINDINGS 1
 ### emacs ###
 
 . ~/.config/fish/env.fish
-. ~/.config/fish/aliases.fish
+
+if functions fisher >/dev/null
+    . ~/.config/fish/aliases.fish
+end
 ### load config file ###
 ### keyboard setting ###
 setxkbmap -option ctrl:nocaps
 ### keyboard setting ###
-
-# xmodmap ~/.xmodmap-(uname -n)
-. ~/.config/fish/aliases.fish
