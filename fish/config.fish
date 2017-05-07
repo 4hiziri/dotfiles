@@ -7,7 +7,7 @@ set -U FZF_LEGACY_KEYBINDINGS 1
 
 . ~/.config/fish/env.fish
 
-if functions fisher >/dev/null
+if functions balias >/dev/null
     . ~/.config/fish/aliases.fish
 end
 ### load config file ###
