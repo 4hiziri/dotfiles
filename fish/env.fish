@@ -12,7 +12,7 @@ set -x VISUAL 'emacsclient -nw -a ""'
 set -x EMACS '/usr/local/bin/emacs'
 ### cask ###
 ### pyenv ###
-if which pyenv
+if which pyenv >/dev/null
     set -x PATH $HOME/.pyenv/bin $PATH
     status --is-interactive
     and source (pyenv init -|psub)
@@ -30,7 +30,7 @@ if [ -f "~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 end
 ### powerline ###
 ### go ###
-if which go
+if which go >/dev/null
     set -x GOPATH "$HOME/.go"
     set -U fish_user_paths "$GOPATH/bin" $fish_user_paths
     set -x GOROOT "/usr/local/go"
