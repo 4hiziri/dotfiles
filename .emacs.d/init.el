@@ -5,20 +5,26 @@
 ;; load-path を追加する関数を定義
 (defun add-to-load-path (paths)
   "LOAD-PATHを追加する関数."
-  (dolist (path paths paths)
-    (let ((default-directory
-	    (expand-file-name (concat user-emacs-directory path))))      
-      (add-to-list 'load-path default-directory)
-      (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-	  (normal-top-level-add-subdirs-to-load-path)))))
+  (dolist (default-directory paths paths)
+    (add-to-list 'load-path default-directory)
+    (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+	(normal-top-level-add-subdirs-to-load-path))))
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; 存在するディレクトリに対してのみpathに追加
 (defun path-if-exists (&rest paths)
   (let ((ret nil))
     (dolist (path paths ret)
-      (when (file-exists-p path)
-	(push path ret)))))
+      (let ((default-directory
+	      (expand-file-name (concat user-emacs-directory path))))
+	(when (file-exists-p default-directory)
+	  (push default-directory ret))))))
+
+(add-to-load-path (path-if-exists "elisp"
+				  "elpa"
+				  "conf"
+				  "public_repos"
+				  ".cask"))
 
 ;;; P115-116 Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネージャ
 ;; package.elの設定
@@ -31,12 +37,6 @@
 	                    '("melpa" . "http://melpa.milkbox.net/packages/") t)
   ;; インストールしたパッケージにロードパスを通して読み込む
   (package-initialize))
-
-(add-to-load-path (path-if-exists "elisp"
-				  "elpa"
-				  "conf"
-				  "public_repos"
-				  ".cask"))
 
 ;; use-package -- package util
 (require 'use-package)
