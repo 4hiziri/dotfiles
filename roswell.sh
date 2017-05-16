@@ -7,5 +7,5 @@ git clone https://github.com/snmsts/roswell.git
 cd roswell
 ./bootstrap
 ./configure
-make
-make install
+sudo make
+sudo make install

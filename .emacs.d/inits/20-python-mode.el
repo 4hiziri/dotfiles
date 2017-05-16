@@ -1,3 +1,5 @@
+;; memo pip install flake8 importmagic yapf autopep8 ipdb
+
 (use-package python
   :defer t
   :mode ("\\.py\\'" . python-mode))
