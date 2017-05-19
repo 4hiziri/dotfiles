@@ -1,6 +1,6 @@
 switch (uname)
     case Linux
-        balias emacs '/usr/bin/emacsclient.emacs25 -nw -a ""'
+        balias emacs '/usr/local/bin/emacsclient -nw -a ""'
     case '*'
         balias emacs '/usr/local/bin/emacsclient -nw -a ""'
 end
