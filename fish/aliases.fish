@@ -1,9 +1,4 @@
-switch (uname)
-    case Linux
-        balias emacs '/usr/bin/emacsclient.emacs25 -nw -a ""'
-    case '*'
-        balias emacs '/usr/local/bin/emacsclient -nw -a ""'
-end
+balias emacs '/usr/local/bin/emacsclient -nw -a ""'
 
 balias ekill '/usr/local/bin/emacsclient -e (kill-emacs)'
 balias rm 'rm -i'
