@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: let-lisp
+# key: let
+# --
+(let (($1))
+  $0)

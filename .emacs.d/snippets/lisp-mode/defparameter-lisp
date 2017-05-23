@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: defparameter-lisp
+# key: defparameter
+# --
+(defparameter $0)

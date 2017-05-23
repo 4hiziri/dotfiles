@@ -29,7 +29,6 @@ recentf~
 setup-environment.el
 setup-environment.elc
 share/
-snippets/
 tramp
 url/
 wget*

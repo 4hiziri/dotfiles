@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: flet-lisp
+# key: flet
+# --
+(flet (($1))
+  $0)
