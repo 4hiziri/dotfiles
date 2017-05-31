@@ -3,10 +3,12 @@
 (use-package slime
   :defer t
   :init
-  (add-hook 'slime-mood-hook 'paredit-mode 'rainbow-delimiters-mode)
+  (add-hook 'slime-mood-hook 'paredit-mode 'rainbow-delimiters-mode 'ansi-color-for-comint-mode-on)
   (setq inferior-lisp-program "ros -L sbcl -Q run") ; your Lisp system
   :config
-  (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
+  ;; slime-repl-ansi-color must be installed from
+  ;; https://github.com/enriquefernandez/slime-repl-ansi-color  
+  (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation slime-repl-ansi-color))
   (setq slime-net-coding-system 'utf-8-unix)
 
   ;; solve confilct between skk and slime
