@@ -45,5 +45,4 @@
 
 ;; yapf
 (use-package py-yapf
-  :defer t
-  :init (add-hook 'python-mode-hook 'py-yapf-enable-on-save));
+  :defer t)
