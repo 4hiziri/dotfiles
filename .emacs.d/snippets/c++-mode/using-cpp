@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: using-cpp
+# key: using
+# --
+using namespace $0;

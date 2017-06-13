@@ -1,0 +1,16 @@
+# key: hack
+# name: hacker-rank-cpp-temp
+# --
+#include<cmath>
+#include<cstdio>
+#include<vector>
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+
+int main(){
+    $0
+
+    return 0;
+}
