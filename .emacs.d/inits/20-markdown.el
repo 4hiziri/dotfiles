@@ -6,8 +6,7 @@
 ;; Keywords:
 
 (use-package w3m)
-(use-package markdown-mode
-  :defer t)
+(use-package markdown-mode)
 
 (define-key markdown-mode-map "\C-c\C-cm"
     (lambda ()
