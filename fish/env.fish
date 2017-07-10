@@ -13,9 +13,10 @@ set -x EMACS '/usr/local/bin/emacs'
 ### cask ###
 ### pyenv ###
 if which pyenv >/dev/null
-    set -x PATH $HOME/.pyenv/bin $PATH
+    set -x PATH "$HOME/.pyenv/shims" $PATH
+    set -x PATH "$HOME/.pyenv/bin" $PATH
     status --is-interactive
-    and source (pyenv init -|psub)
+    and . (pyenv init - | psub)
 end
 ### pyenv ###
 ### virtualenv ###
