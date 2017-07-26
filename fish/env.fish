@@ -39,3 +39,6 @@ if which go >/dev/null
     set -x GOARCH "amd64"
 end
 ### go ###
+### rust ###
+source $HOME/.cargo/env
+### rust ###

@@ -16,3 +16,4 @@ done
 
 ln -sf "$HOME/dotfiles/fish/fishfile" "$HOME/.config/fish/fishfile"
 ln -sf "$HOME/dotfiles/fish/functions/fish_user_key_bindings.fish" "$HOME/.config/fish/functions/fish_user_key_bindings.fish"
+ln -sf "$HOME/dotfiles/fish/completions/rustup.fish" "$HOME/.config/fish/completions/rustup.fish"

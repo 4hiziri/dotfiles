@@ -1,11 +1,12 @@
-# key: hack
-# name: hacker-rank-cpp-temp
+# key: comp
+# name: comp-programming-c++
 # --
 #include<cmath>
 #include<vector>
 #include<iostream>
 #include<algorithm>
 #define debug(ARGS) cout << #ARGS << ": " << ARGS << endl;
+#define ll long long
 using namespace std;
 
 int main(){
