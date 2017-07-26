@@ -1,2 +1,3 @@
 *.secret
 .DS_store
+.emacs.d/request/*
