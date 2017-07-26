@@ -13,6 +13,7 @@ set -x EMACS '/usr/local/bin/emacs'
 ### cask ###
 ### pyenv ###
 if which pyenv >/dev/null
+    set -x PATH '/home/tkgsy/.pyenv/shims' $PATH
     set -x PATH $HOME/.pyenv/bin $PATH
     status --is-interactive
     and source (pyenv init -|psub)
@@ -38,3 +39,6 @@ if which go >/dev/null
     set -x GOARCH "amd64"
 end
 ### go ###
+### rust ###
+source $HOME/.cargo/env
+### rust ###
