@@ -56,23 +56,7 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-    (cargo toml-mode ac-cider ac-helm ac-skk ac-slime ag auto-install
-	   auto-save-buffers-enhanced bind-key clojure-test-mode ctags emacs-cl fold-dwim
-	   helm-ag helm-descbinds helm-migemo hideshowvis ido-migemo init-loader
-	   markdown-mode paredit python-mode quickrun rainbow-delimiters scala-mode
-	   slamhound sml-mode swift-mode undo-tree wgrep yatex flymake-cursor
-	   flymake-python-pyflakes elpy rust-mode py-autopep8 pyenv-mode py-yapf flycheck
-	   smartrep auto-async-byte-compile color-moccur egg egg-grep sequential-command
-	   clj-refactor ctags-update company-jedi slime-company helm-company yasnippet
-	   with-editor projectile ivy helm-core helm git-commit drag-stuff dash hl-line+
-	   bison-mode ace-isearch wgrep-helm wgrep-ag solarized-theme zenburn-theme
-	   hc-zenburn-theme flycheck-rust flycheck-scala-sbt google-translate
-	   company-racer racer yatemplate sticky smartparens helm-bind-key
-	   helm-c-yasnippet fish-mode simpleclip xclip web-mode slime sbt-mode s
-	   package-build nyan-mode magit-popup magit ensime diminish company cider async
-	   company-irony flycheck-irony hl-todo w3m lua-mode restclient request)
- '(py-indent-offset 4)
- '(swift-repl-excutable "swift"))
+    (async-await promise zenburn-theme yatex yatemplate xclip web-mode w3m use-package undo-tree toml-mode summarye smex smartrep smartparens slime-company simpleclip sequential-command request redo+ recentf-ext rainbow-delimiters quickrun py-yapf py-autopep8 projectile prodigy popwin point-undo paredit pallet nyan-mode multiple-cursors markdown-mode magit jedi init-loader idle-highlight-mode htmlize hl-todo hl-line+ helm-swoop helm-migemo helm-descbinds helm-company helm-ag google-translate flycheck-rust flycheck-irony flycheck-cask fish-mode expand-region exec-path-from-shell ensime elpy drag-stuff ctags-update company-racer company-jedi company-irony clojure-cheatsheet cargo avy auto-save-buffers-enhanced auto-install auto-async-byte-compile ag ace-jump-mode ace-isearch ac-skk ac-helm ac-cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
