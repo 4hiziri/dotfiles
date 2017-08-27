@@ -13,10 +13,26 @@ set -x EMACS '/usr/local/bin/emacs'
 ### cask ###
 ### pyenv ###
 if which pyenv >/dev/null
-    set -x PATH "$HOME/.pyenv/shims" $PATH
-    set -x PATH "$HOME/.pyenv/bin" $PATH
-    status --is-interactive
-    and . (pyenv init - | psub)
+    # set -x PATH "$HOME/.pyenv/shims" $PATH
+    # set -x PATH "$HOME/.pyenv/bin" $PATH
+    # and . (pyenv init - | psub) # raise error!
+    if status --is-interactive
+        set -x PATH "$HOME/.pyenv/shims" $PATH
+        setenv PYENV_SHELL fish
+        . '/home/tkgsy/.pyenv/libexec/../completions/pyenv.fish'
+        command pyenv rehash 2>/dev/null
+        function pyenv
+            set command $argv[1]
+            set -e argv[1]
+
+            switch "$command"
+                case activate deactivate rehash shell
+                    . (pyenv "sh-$command" $argv|psub)
+                case '*'
+                    command pyenv "$command" $argv
+            end
+        end
+    end
 end
 ### pyenv ###
 ### virtualenv ###
