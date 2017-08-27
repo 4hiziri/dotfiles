@@ -1,3 +1,4 @@
 *.secret
 .DS_store
 .emacs.d/request/*
+.emacs.d/eshell/*
