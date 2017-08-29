@@ -2,3 +2,4 @@
 .DS_store
 .emacs.d/request/*
 .emacs.d/eshell/*
+.emacs.d/async-bytecomp.log
