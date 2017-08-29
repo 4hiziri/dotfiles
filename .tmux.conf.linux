@@ -10,3 +10,9 @@ bind C-w run -b "tmux show-buffer | xclip -i"
 bind C-y run -b "exec </dev/null; xclip -o | awk 1 ORS=' ' | tmux load-buffer - ; tmux paste-buffer"
 # Same as `C-y' binding except that the newline chars are not replaced with space
 bind Y run -b "exec </dev/null; xclip -o | tmux load-buffer - ; tmux paste-buffer"
+
+####################
+# shell
+####################
+set-option -g default-shell /usr/bin/fish
+set-option -g default-command /usr/bin/fish

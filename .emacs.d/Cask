@@ -106,3 +106,4 @@
 (depends-on "yatemplate")
 (depends-on "yatex")
 (depends-on "zenburn-theme")
+(depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
