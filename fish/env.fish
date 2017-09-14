@@ -59,5 +59,17 @@ end
 source $HOME/.cargo/env
 ### rust ###
 ### john ###
-set PATH "/usr/local/src/JohnTheRipper/run/" $PATH
+if [ -d "$HOME/src/JohnTheRipper/run" ]
+    set PATH "$HOME/src/JohnTheRipper/run" $PATH
+end
 ### john ###
+### hashcat ###
+if [ -d "$HOME/src/hashcat" ]
+    set PATH "$HOME/src/hashcat" $PATH
+end
+### hashcat ###
+### checksec ###
+if [ -d "$HOME/src/checksec.sh/" ]
+    set PATH "$HOME/src/checksec.sh/" $PATH
+end
+### checksec ###
