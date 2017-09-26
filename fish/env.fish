@@ -56,7 +56,9 @@ if which go >/dev/null
 end
 ### go ###
 ### rust ###
-source $HOME/.cargo/env
+if [ -f "$HOME/.cargo/env" ]
+    source "$HOME/.cargo/env"
+end
 ### rust ###
 ### john ###
 if [ -d "$HOME/src/JohnTheRipper/run" ]
