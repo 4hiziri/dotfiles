@@ -2,7 +2,8 @@
 
 if [ -d "$HOME/.config/fish" ]
 then
-    for f in `ls fish | grep ".*\.fish"`
+    cd "$HOME/dotfiles/fish/"
+    for f in `ls | grep ".*\.fish"`
     do
 	ln -sf "$HOME/dotfiles/fish/$f" "$HOME/.config/fish/$f"
     done
