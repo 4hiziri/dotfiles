@@ -9,5 +9,9 @@
 "$HOME/dotfiles/bin/phantomjs.sh"
 "$HOME/dotfiles/bin/pyenv.sh"
 "$HOME/dotfiles/bin/roswell.sh"
-"$HOME/dotfiles/bin/rustup.sh "
+"$HOME/dotfiles/bin/rustup.sh"
+"$HOME/dotfiles/bin/install-emacs.sh"
+"$HOME/dotfiles/bin/install-emacs-d.sh"
+"$HOME/dotfiles/bin/cask.sh"
+"$HOME/dotfiles/bin/slime-repl-ansi-color.sh"
 
