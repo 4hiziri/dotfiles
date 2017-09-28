@@ -1,5 +1,4 @@
 ;; C-h をBackspaceに割り当て
-;; (bind-key "C-h" 'delete-backward-char global-map)
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 ;;C-q を空けて，C-q C-qにする
 (global-unset-key (kbd "C-q"))
