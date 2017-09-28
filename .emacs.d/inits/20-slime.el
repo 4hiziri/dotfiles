@@ -5,12 +5,12 @@
 (use-package slime
   :defer t
   :init
-  (add-hook 'slime-mood-hook 'turn-on-smartparens-strict-mode 'rainbow-delimiters-mode 'ansi-color-for-comint-mode-on)
+  (add-hook 'slime-mood-hook 'rainbow-delimiters-mode 'ansi-color-for-comint-mode-on)
   (setq inferior-lisp-program "ros -L sbcl -Q run") ; your Lisp system
   :config
 
-  (require 'smartparens-lisp)  
-  
+  (require 'smartparens-lisp)
+  (turn-on-smartparens-mode)
   ;; slime-repl-ansi-color must be installed from https://github.com/enriquefernandez/slime-repl-ansi-color
   ;; or use slime-repl-ansi-color.sh
   (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation slime-repl-ansi-color slime-company))
