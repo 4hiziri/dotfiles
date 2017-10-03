@@ -66,6 +66,8 @@
   ;; bind-key
   )
 
+
+;; TODO error check
 (load "~/.emacs.d/elpa/flycheck-cargo.el")
 (add-hook 'rust-mode-hook
           (lambda ()
