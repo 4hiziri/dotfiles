@@ -48,6 +48,13 @@
 	     (init-loader-load "~/.emacs.d/inits"))
 
 
+(defun conflict-check (set1 set2)
+  (let ((same (intersection set1 set2)))
+    (if (> (length set1) (length set2))
+	(set-difference set1 same)
+      (set-difference set2 same))))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
