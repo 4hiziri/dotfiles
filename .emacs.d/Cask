@@ -55,6 +55,7 @@
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "init-loader")
+(depends-on "irony")
 (depends-on "ivy")
 (depends-on "jedi")
 (depends-on "jedi-core")
@@ -107,3 +108,5 @@
 (depends-on "yatex")
 (depends-on "zenburn-theme")
 (depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
+(depends-on "tuareg-mode")
+(depends-on "flycheck-ocaml")
