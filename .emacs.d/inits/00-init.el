@@ -59,4 +59,10 @@
 (defvar auto-insert-directory "~/projects/dotfiles/.emacs.d/insert/")
 (define-auto-insert "\\.c" "c-template.c")
 
+;; linum
+(use-package linum
+  :config
+  (global-linum-mode)
+  (setq linum-format "%d "))
+
 ;;; 00-init.el ends here
