@@ -1,4 +1,5 @@
 ;; memo pip install flake8 importmagic yapf autopep8 ipdb
+;; check hacking?
 
 (use-package python
   :defer t
@@ -10,6 +11,7 @@
   :after python
   :init
   (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook '(lambda () hs-minor-mode 1))
   (remove-hook 'elpy-modules 'elpy-module-flymake)
   (add-hook 'elpy-mode-hook 'flycheck-mode)
   (package-initialize)
