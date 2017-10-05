@@ -1,4 +1,4 @@
-;; memo pip install flake8 importmagic yapf autopep8 ipdb
+;; memo pip install flake8 importmagic yapf autopep8 ipdb ipython
 ;; check hacking?
 
 (use-package python
