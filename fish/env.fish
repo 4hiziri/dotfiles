@@ -1,13 +1,19 @@
-### path ###
+### PATH ###
 set PATH "$HOME/.cask/bin" $PATH
-### path ###
-### lang ###
+### PATH ###
+### LANG ###
 set -x LANG ja_JP.UTF-8
-### lang ###
-### editor ###
+### LANG ###
+### EDITOR ###
 set -x EDITOR 'emacsclient -nw -a ""'
 set -x VISUAL 'emacsclient -nw -a ""'
-### editor ###
+### EDITOR ###
+### DISPLAY ###
+if test -n "$SSH_CLIENT"
+    or test -n "$SSH_CONNECTION"
+    set -x DISPLAY ':0.0'
+end
+### DISPLAY ###
 ### cask ###
 set -x EMACS '/usr/local/bin/emacs'
 ### cask ###
