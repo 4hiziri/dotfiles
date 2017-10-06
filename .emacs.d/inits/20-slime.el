@@ -13,12 +13,17 @@
   (add-hook 'slime-mood-hook 'rainbow-delimiters-mode 'ansi-color-for-comint-mode-on)
   (setq inferior-lisp-program "ros -L sbcl -Q run") ; your Lisp system
   :config
-  
+  ;; smartparens  
   (load-lisp-smartparens)
+  
   ;; slime-repl-ansi-color must be installed from https://github.com/enriquefernandez/slime-repl-ansi-color
   ;; or use slime-repl-ansi-color.sh
   (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation slime-repl-ansi-color slime-company))
+
+  ;; toggle
+  (hs-minor-mode 1)
   
+  ;; encode
   (setq slime-net-coding-system 'utf-8-unix)
 
   ;; solve confilct between skk and slime
