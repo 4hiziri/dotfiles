@@ -11,7 +11,8 @@
   :after python
   :init
   (add-hook 'python-mode-hook 'jedi:setup)
-  (add-hook 'python-mode-hook '(lambda () hs-minor-mode 1))
+  (add-hook 'python-mode-hook '(lambda () (hs-minor-mode 1)))
+  (add-hook 'python-mode-hook 'turn-on-smartparens-mode)
   (remove-hook 'elpy-modules 'elpy-module-flymake)
   (add-hook 'elpy-mode-hook 'flycheck-mode)
   (package-initialize)
