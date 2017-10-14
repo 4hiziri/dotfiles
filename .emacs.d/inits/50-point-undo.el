@@ -1,5 +1,5 @@
 ;; point-undoの設定
 (use-package point-undo
   :defer t
-  :bind (("M-[" . point-undo)
-	 ("M-]" . point-redo)))
+  :bind (("C-c p C-u" . point-undo)
+	 ("C-c p C-r" . point-redo)))
