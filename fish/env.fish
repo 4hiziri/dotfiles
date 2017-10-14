@@ -1,6 +1,9 @@
 ### PATH ###
 set PATH "$HOME/.cask/bin" $PATH
 ### PATH ###
+### LOCAL/LIB ###
+set PATH "/usr/local/lib" $PATH
+### LOCAL/LIB ###
 ### LANG ###
 set -x LANG ja_JP.UTF-8
 ### LANG ###
@@ -9,10 +12,10 @@ set -x EDITOR 'emacsclient -nw -a ""'
 set -x VISUAL 'emacsclient -nw -a ""'
 ### EDITOR ###
 ### DISPLAY ###
-if test -n "$SSH_CLIENT"
-    or test -n "$SSH_CONNECTION"
-    set -x DISPLAY ':0.0'
-end
+# if test -n "$SSH_CLIENT"
+#     or test -n "$SSH_CONNECTION"
+#     set -x DISPLAY ':0.0'
+# end
 ### DISPLAY ###
 ### cask ###
 set -x EMACS '/usr/local/bin/emacs'
@@ -81,3 +84,8 @@ if [ -d "$HOME/src/checksec.sh/" ]
     set PATH "$HOME/src/checksec.sh/" $PATH
 end
 ### checksec ###
+### ninix ###
+if [ -d "$HOME/src/ninix-aya/bin/" ]
+    set PATH "$HOME/src/ninix-aya/bin/" $PATH
+end
+### ninix ###
