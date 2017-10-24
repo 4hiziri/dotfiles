@@ -21,6 +21,8 @@
 (depends-on "company-irony")
 (depends-on "company-jedi")
 (depends-on "company-racer")
+(depends-on "racer")
+(depends-on "cargo")
 (depends-on "concurrent")
 (depends-on "ctable")
 (depends-on "ctags-update")
