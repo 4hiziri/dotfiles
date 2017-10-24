@@ -1,8 +1,3 @@
-(use-package rust-mode
-  :defer t
-  :config
-  (setq rust-format-on-save t))
-
 ;; cargo-minor-mode
 ;; Cargo Minor mode.
 ;; Provides a number of key combinations and functions for managing Cargo.
@@ -26,9 +21,15 @@
 ;;  * C-c C-c C-k - cargo-process-check
 ;;  * C-c C-c C-K - cargo-process-clippy
 (use-package cargo
+  :defer t)
+
+(use-package rust-mode
   :defer t
   :init
-  (add-hook 'rust-mode-hook 'cargo-minor-mode))
+  (add-hook 'rust-mode-hook 'cargo-minor-mode)
+  (add-hook 'rust-mode-hook 'turn-on-smartparens-mode)
+  :config
+  (setq rust-format-on-save t))
 
 (use-package company-racer
   :defer t
