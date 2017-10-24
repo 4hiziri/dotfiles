@@ -7,6 +7,8 @@
   (require 'smartparens-lisp)
   (turn-on-smartparens-mode))
 
+(add-hook 'emacs-lisp-mode-hook 'load-lisp-smartparens)
+
 (use-package slime
   :defer t
   :init
