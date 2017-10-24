@@ -51,7 +51,6 @@
   (setq company-tooltip-align-annotations t))
 
 (use-package racer
-  :defer
   :init
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'company-mode)
