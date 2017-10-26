@@ -59,8 +59,7 @@
           (lambda ()
             (setq flycheck-checker 'cargo)))
   (add-hook 'rust-mode-hook 
-	    '(lambda () 
-	       (racer-activate)
+	    '(lambda ()                
 	       (local-set-key (kbd "M-.") #'racer-find-definition)
 	       (local-set-key (kbd "TAB") #'racer-complete-or-indent)))
   :config
