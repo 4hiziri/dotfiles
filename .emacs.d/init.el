@@ -43,9 +43,10 @@
 (require 'bind-key)
 
 ;;init-loader
-(use-package init-loader
-	     :config
-	     (init-loader-load "~/.emacs.d/inits"))
+(use-package init-loader)
+(custom-set-variables
+ '(init-loader-show-log-after-init 'error-only))
+(init-loader-load "~/.emacs.d/inits")
 
 
 (defun conflict-check (set1 set2)
