@@ -28,6 +28,7 @@
   :init
   (add-hook 'rust-mode-hook 'cargo-minor-mode)
   (add-hook 'rust-mode-hook 'turn-on-smartparens-mode)
+  (add-hook 'rust-mode-hook 'hs-minor-mode)
   :config
   (setq rust-format-on-save t))
 
