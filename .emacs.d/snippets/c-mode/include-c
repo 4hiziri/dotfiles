@@ -2,5 +2,4 @@
 # name: include-c
 # key: include
 # --
-#include <$1>
-$0
+#include <$0>
