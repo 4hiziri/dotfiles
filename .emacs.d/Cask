@@ -112,3 +112,4 @@
 (depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
 (depends-on "tuareg-mode")
 (depends-on "flycheck-ocaml")
+(depends-on "w3m")
