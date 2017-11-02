@@ -72,8 +72,8 @@
 (use-package hyperspec
   :after slime
   :config
-  (setq common-lisp-hyperspec-root         (expand-file-name "~/.emacs.d/share/HyperSpec/")
-	common-lisp-hyperspec-symbol-table (expand-file-name "~/.emacs.d/share/HyperSpec/Data/Map_Sym.txt"))
+  (setq common-lisp-hyperspec-root         (expand-file-name "/usr/share/doc/hyperspec/")
+	common-lisp-hyperspec-symbol-table (expand-file-name "/usr/share/doc/hyperspec/Data/Map_Sym.txt"))
   (defun common-lisp-hyperspec (symbol-name)
     (interactive (list (common-lisp-hyperspec-read-symbol-name)))
     (let ((name (common-lisp-hyperspec--strip-cl-package
