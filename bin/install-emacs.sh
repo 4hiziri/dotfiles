@@ -1,7 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install gcc make ncurses-dev
-sudo apt-get install gcc make ncurses-dev
+sudo apt-get install gcc make ncurses-dev libxml2
 
 cd
 ver="25.3"
