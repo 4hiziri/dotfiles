@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install curl
+sudo apt install curl python
 
 curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 export PATH="$HOME/.cask/bin:$PATH"
