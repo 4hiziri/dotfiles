@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: main-python
+# key: main
+# --
+def main($0):
+    pass
+
+
+if __name__ == '__main__':
+    main()
