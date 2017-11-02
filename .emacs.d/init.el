@@ -45,7 +45,17 @@
 ;;init-loader
 (use-package init-loader)
 (custom-set-variables
- '(init-loader-show-log-after-init 'error-only))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(init-loader-show-log-after-init (quote error-only))
+ '(irony-additional-clang-options (quote ("-std=c++11")))
+ '(package-selected-packages
+   (quote
+    (helm-w3m rocket-chat caml flycheck racer flycheck-ocaml tuareg php-mode async cask cider company dash git-commit helm helm-core irony ivy magit-popup package-build rust-mode s slime with-editor yasnippet async-await promise zenburn-theme yatex yatemplate xclip web-mode w3m use-package undo-tree toml-mode summarye smex smartrep smartparens slime-company simpleclip sequential-command request redo+ recentf-ext rainbow-delimiters quickrun py-yapf py-autopep8 projectile prodigy popwin point-undo paredit pallet nyan-mode multiple-cursors markdown-mode magit jedi init-loader idle-highlight-mode htmlize hl-todo hl-line+ helm-swoop helm-migemo helm-descbinds helm-company helm-ag google-translate flycheck-rust flycheck-irony flycheck-cask fish-mode expand-region exec-path-from-shell ensime elpy drag-stuff ctags-update company-racer company-jedi company-irony clojure-cheatsheet cargo avy auto-save-buffers-enhanced auto-install auto-async-byte-compile ag ace-jump-mode ace-isearch ac-skk ac-helm ac-cider)))
+ '(rc-default-server "https://rc.net.itc.nagoya-u.ac.jp")
+ '(rc-default-username "tkgsy"))
 (init-loader-load "~/.emacs.d/inits")
 
 
@@ -56,17 +66,7 @@
       (set-difference set2 same))))
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(irony-additional-clang-options (quote ("-std=c++11")))
- '(package-selected-packages
-   (quote
-    (rocket-chat caml flycheck racer flycheck-ocaml tuareg php-mode async cask cider company dash git-commit helm helm-core irony ivy magit-popup package-build rust-mode s slime with-editor yasnippet async-await promise zenburn-theme yatex yatemplate xclip web-mode w3m use-package undo-tree toml-mode summarye smex smartrep smartparens slime-company simpleclip sequential-command request redo+ recentf-ext rainbow-delimiters quickrun py-yapf py-autopep8 projectile prodigy popwin point-undo paredit pallet nyan-mode multiple-cursors markdown-mode magit jedi init-loader idle-highlight-mode htmlize hl-todo hl-line+ helm-swoop helm-migemo helm-descbinds helm-company helm-ag google-translate flycheck-rust flycheck-irony flycheck-cask fish-mode expand-region exec-path-from-shell ensime elpy drag-stuff ctags-update company-racer company-jedi company-irony clojure-cheatsheet cargo avy auto-save-buffers-enhanced auto-install auto-async-byte-compile ag ace-jump-mode ace-isearch ac-skk ac-helm ac-cider)))
- '(rc-default-server "https://rc.net.itc.nagoya-u.ac.jp")
- '(rc-default-username "tkgsy"))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
