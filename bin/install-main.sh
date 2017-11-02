@@ -11,7 +11,7 @@
 "$HOME/dotfiles/bin/roswell.sh"
 "$HOME/dotfiles/bin/rustup.sh"
 "$HOME/dotfiles/bin/install-emacs.sh"
+mv -f "$HOME/.emacs.d/" "$HOME/.emacs.d.bak"
 "$HOME/dotfiles/bin/install-emacs-d.sh"
 "$HOME/dotfiles/bin/cask.sh"
 "$HOME/dotfiles/bin/slime-repl-ansi-color.sh"
-
