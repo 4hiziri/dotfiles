@@ -65,4 +65,7 @@
   (global-linum-mode)
   (setq linum-format "%d "))
 
+(use-package w3m
+  :defer t)
+
 ;;; 00-init.el ends here
