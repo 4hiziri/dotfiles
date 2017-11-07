@@ -89,3 +89,7 @@ if [ -d "$HOME/src/ninix-aya/bin/" ]
     set PATH "$HOME/src/ninix-aya/bin/" $PATH
 end
 ### ninix ###
+### global ###
+set -x GTAGSCONF "$HOME/.globalrc"
+set -x GTAGSLABEL "ctags"
+### global ###
