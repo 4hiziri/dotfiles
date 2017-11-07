@@ -33,7 +33,7 @@
   (setq rust-format-on-save t))
 
 (use-package company-racer
-  :defer t
+   :defer t
   :init
   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
   ;; hooks
@@ -47,21 +47,26 @@
 	       (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
 	       (local-set-key (kbd "C-c <tab>") #'rust-format-buffer)))
     (add-to-list 'company-backends 'company-racer)
-  :config
-;;  (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+  :config 
   (setq company-tooltip-align-annotations t))
 
+;;; Usage
+;; M-. find-difinition, does not support macro yet.
+;; F1, help or completion
+;; M-x racer-describe
+;; source download: rustup component add rust-src
 (use-package racer
   :init
   (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'company-mode)
+  (add-hook 'racer-mode-hook #'company-mode)  
   (add-hook 'rust-mode-hook
           (lambda ()
             (setq flycheck-checker 'cargo)))
   (add-hook 'rust-mode-hook 
 	    '(lambda ()                
 	       (local-set-key (kbd "M-.") #'racer-find-definition)
-	       (local-set-key (kbd "TAB") #'racer-complete-or-indent)))
+	       ;;(local-set-key (kbd "TAB") #'racer-complete-or-indent)
+	       ))
   :config
   ;; bind-key
   )
@@ -73,3 +78,30 @@
           (lambda ()
             (setq flycheck-checker 'cargo)))
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+;; available in racer-find-difinition?
+;; global
+;; (use-package cl-lib)
+;; (defadvice helm-gtags-dwim
+;;     (around update-libpath activate)
+;;   (setenv "GTAGSLIBPATH"
+;;           (cl-case major-mode
+;;             (rust-mode (file-truename
+;;                         ;; rustのソースコードへのパスを指定する
+;;                         "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src"))
+;;             (t nil)))
+;;   ad-do-it)
+
+;; (require 'helm-gtags)
+;; ;; (add-hook 'go-mode-hook (lambda () (helm-gtags-mode)))
+;; ;; (add-hook 'python-mode-hook (lambda () (helm-gtags-mode)))  
+;; ;; (add-hook 'ruby-mode-hook (lambda () (helm-gtags-mode)))
+;; (add-hook 'rust-mode-hook (lambda () (helm-gtags-mode)))
+;; (setq helm-gtags-path-style 'root)
+;; (setq helm-gtags-auto-update t)
+;; (add-hook 'helm-gtags-mode-hook
+;;           '(lambda ()                                                                   
+;;              (local-set-key (kbd "M-g") 'helm-gtags-dwim)
+;;              (local-set-key (kbd "M-s") 'helm-gtags-show-stack)
+;;              (local-set-key (kbd "M-p") 'helm-gtags-previous-history)
+;;              (local-set-key (kbd "M-n") 'helm-gtags-next-history)))
