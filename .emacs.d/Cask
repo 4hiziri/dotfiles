@@ -110,6 +110,6 @@
 (depends-on "yatex")
 (depends-on "zenburn-theme")
 (depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
-(depends-on "tuareg-mode")
+(depends-on "tuareg")
 (depends-on "flycheck-ocaml")
 (depends-on "w3m")
