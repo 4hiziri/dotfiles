@@ -1,15 +1,21 @@
 ### fzf ###
 set -U FZF_LEGACY_KEYBINDINGS 1
 ### fzf ###
+
+### load config file ###
 . ~/.config/fish/env.fish
 
 if functions balias >/dev/null
     . ~/.config/fish/aliases.fish
 end
 ### load config file ###
+
 ### keyboard setting ###
-setxkbmap -option ctrl:nocaps
+if which setxkbmap >/dev/null
+    setxkbmap -option ctrl:nocaps
+end
 ### keyboard setting ###
+
 ### dict ###
 # 辞書を引く(英和)
 function ej
