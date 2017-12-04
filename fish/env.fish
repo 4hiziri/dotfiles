@@ -1,6 +1,7 @@
-### PATH ###
+### cask ###
 set PATH "$HOME/.cask/bin" $PATH
-### PATH ###
+set -x EMACS '/usr/local/bin/emacs'
+### cask ###
 ### LOCAL/LIB ###
 set PATH "/usr/local/lib" $PATH
 ### LOCAL/LIB ###
@@ -17,9 +18,6 @@ set -x VISUAL 'emacsclient -nw -a ""'
 #     set -x DISPLAY ':0.0'
 # end
 ### DISPLAY ###
-### cask ###
-set -x EMACS '/usr/local/bin/emacs'
-### cask ###
 ### pyenv ###
 if which pyenv >/dev/null
     # set -x PATH "$HOME/.pyenv/shims" $PATH
@@ -93,3 +91,8 @@ end
 set -x GTAGSCONF "$HOME/.globalrc"
 set -x GTAGSLABEL "ctags"
 ### global ###
+### tex ###
+if [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
+    set PATH "/usr/local/texlive/2017/bin/x86_64-linux" $PATH
+end
+### tex ###
