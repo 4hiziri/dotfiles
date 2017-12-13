@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: define-macro
+# key: define
+# --
+#define $0
