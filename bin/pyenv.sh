@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install zlib1g libbz2-dev tk-dev libssl-dev libreadline-dev libsqlite3-dev
+sudo apt-get -y install zlib1g libbz2-dev tk-dev libssl-dev libreadline-dev libsqlite3-dev
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv

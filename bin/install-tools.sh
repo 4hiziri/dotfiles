@@ -2,4 +2,4 @@
 
 # for debian
 
-sudo apt install build-essential guake terminator
+sudo apt-get -y install build-essential guake terminator
