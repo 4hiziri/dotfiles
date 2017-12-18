@@ -11,3 +11,6 @@ balias lsc 'ls -F --color=auto'
 balias mkdirp 'mkdir -p'
 
 balias sudo 'sudo '
+
+# for ctf
+balias exploit 'python exploit.py'
