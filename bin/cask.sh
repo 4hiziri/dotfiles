@@ -2,10 +2,7 @@
 
 if [ -d "$HOME/.emacs.d/" ]
 then
-    echo 'plz install emacs!'
-else
     sudo apt-get -y install curl python
-
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
     # TODO: bash config
     export PATH="$HOME/.cask/bin:$PATH"
@@ -13,5 +10,7 @@ else
     cd
     cask upgrade-cask
     cd ~/.emacs.d
-    cask install
+    cask install  
+else
+    echo 'plz install emacs!'
 fi
