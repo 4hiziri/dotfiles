@@ -1,5 +1,5 @@
 ### cask ###
-if [ -d "$HOME/.cask/bin"]
+if [ -d "$HOME/.cask/bin" ]
     set PATH "$HOME/.cask/bin" $PATH
 end
 set -x EMACS '/usr/local/bin/emacs'
