@@ -5,6 +5,4 @@ cd $HOME/dotfiles/bin/
 ./fisherman.sh
 ./fish-conf.sh
 
-fish
-fisher install
-exit
+fish -c 'fisher install'
