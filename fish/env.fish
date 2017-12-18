@@ -1,5 +1,7 @@
 ### cask ###
-set PATH "$HOME/.cask/bin" $PATH
+if [ -d "$HOME/.cask/bin"]
+    set PATH "$HOME/.cask/bin" $PATH
+end
 set -x EMACS '/usr/local/bin/emacs'
 ### cask ###
 ### LOCAL/LIB ###
