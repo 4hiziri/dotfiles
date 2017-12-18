@@ -2,7 +2,7 @@
 
 cd $HOME/dotfiles/bin/
 ./fish.sh
-./fisher.sh
+./fisherman.sh
 ./fish-conf.sh
 
 fish
