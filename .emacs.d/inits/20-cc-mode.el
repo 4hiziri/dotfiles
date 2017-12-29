@@ -6,7 +6,8 @@
 			      (bind-key "C-c c" 'compile c-mode-map)
 			      (bind-key "C-c d" 'gdb c-mode-map)))
   (add-hook 'c-mode-common-hook 'flycheck-mode)
-  (add-hook 'c-mode-common-hook 'hs-minor-mode))
+  (add-hook 'c-mode-common-hook 'hs-minor-mode)
+  (add-hook 'c-mode-common-hook 'turn-on-smartparens-mode))
 
 ;; semantic-refactoring
 
