@@ -3,3 +3,4 @@
 .emacs.d/request/*
 .emacs.d/eshell/*
 .emacs.d/async-bytecomp.log
+.zsh/.zcompdump
