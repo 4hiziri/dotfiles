@@ -3,8 +3,6 @@ set -U FZF_LEGACY_KEYBINDINGS 1
 ### fzf ###
 
 ### load config file ###
-. ~/.config/fish/env.fish
-
 if functions balias >/dev/null
     . ~/.config/fish/aliases.fish
 end
@@ -26,3 +24,7 @@ function je
     grep "$argv" /usr/share/dict/dict -E -B 1 -wi --color=always | less -R -FX
 end
 ### dict ###
+
+### env ###
+. ~/.config/fish/env.fish
+### env ###
