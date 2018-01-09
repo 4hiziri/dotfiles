@@ -11,3 +11,4 @@ cd 'JohnTheRipper/src'
 ./configure
 make clean
 make -sj4
+sudo make install
