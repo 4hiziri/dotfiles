@@ -1,5 +1,4 @@
 balias emacs '/usr/local/bin/emacsclient -nw -a ""'
-
 balias ekill '/usr/local/bin/emacsclient -e (kill-emacs)'
 balias rmi 'rm -i'
 

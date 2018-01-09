@@ -1,0 +1,6 @@
+# key: class
+# name: class-cpp
+# --
+class $1 {
+      $0
+};

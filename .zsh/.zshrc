@@ -1,57 +1,8 @@
 ### OS ###
-case `uname -s` in
-    Linux)
-	export ZPLUG_HOME=~/.zplug
+[ -f $ZDOTDIR/.zshrc-`uname` ] && . $ZDOTDIR/.zshrc-`uname`
 
-	### editor ###
-	alias emacs='emacsclient -nw -a ""'
-	alias ekill='emacsclient -e (kill-emacs)'
-	export EDITOR='emacsclient -nw -a ""'
-	export VISUAL='emacsclient -nw -a ""'
-	### editor ###
-	### golang ###
-	export GOPATH="$HOME/.go"
-	export PATH=$PATH:$HOME/.go/bin
-	### golang ###
-	xmodmap ~/.xmodmap-`uname -n`
-	;;
-    Darwin)
-	export ZPLUG_HOME=/usr/local/opt/zplug
-	
-	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-	export PATH="/usr/local/bin:$PATH"
-
-	## rust setup :TODO install linux
-	export PATH="~/.cargo/bin:$PATH"
-	# rustup and path for rust src
-	export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
-	source ~/.cargo/env
-	
-	# load secret file
-        . "$HOME/.zshrc.secret"
-	# brew
-	for d in "/share/zsh-completions" "/share/zsh/zsh-site-functions";do
-	    brew_completion=$(brew --prefix 2>/dev/null)$d
-	    if [ $? -eq 0 ] && [ -d "$brew_completion" ];then
-		fpath=($brew_completion $fpath)
-	    fi
-	done
-
-	#=============================
-	#gnu commnad path
-	#=============================
-	PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-	
-	#=============================
-	# editor
-	#=============================
-	alias emacs='/usr/local/bin/emacsclient -nw -a ""'
-	alias ekill='emacsclient -e "(kill-emacs)"'
-	export EDITOR='/usr/local/bin/emacsclient -nw'
-	export VISUAL='/usr/local/bin/emacsclient -nw'
-	;;
-esac
+### zplug ###
+export ZPLUG_HOME="$HOME/.zplug"
 
 source $ZPLUG_HOME/init.zsh
 
@@ -67,13 +18,12 @@ zplug "zsh-users/zsh-completions"
 zplug "chrissicool/zsh-256color"
 zplug "Tarrasch/zsh-colors"
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
-# zplug "ascii-soup/zsh-url-highlighter", use:url/zsh-url-highlighter :WARN erorr
-zplug 'joel-porquet/zsh-dircolors-solarized'
 
 zplug "seebi/dircolors-solarized"
 
-zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
-
+# theme
+# zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
+zplug 'themes/kardan', from:oh-my-zsh
 
 # tools
 zplug "marzocchi/zsh-notify"
@@ -94,6 +44,16 @@ export TERM="xterm-256color"
 
 # source each file and alias command
 zplug load
+
+### editor ###
+alias emacs='emacsclient -nw -a ""'
+alias ekill='emacsclient -e (kill-emacs)'
+export EDITOR='emacsclient -nw -a ""'
+export VISUAL='emacsclient -nw -a ""'
+
+### golang ###
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$HOME/.go/bin"
 
 ################################
 # zsh-256color
@@ -139,13 +99,13 @@ bindkey '^o' autosuggest-accept
 ################################
 # POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
 # typeset -gAH vcs_states
-vcs_states=(
-    'clean' '122'
-    'modified' 'yellow'
-    'untracked' 'red'
-)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs pyenv vcs ram time)
+# vcs_states=(
+#     'clean' '122'
+#     'modified' 'yellow'
+#     'untracked' 'red'
+# )
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs pyenv vcs ram time)
 
 ################################
 # pyenv zsh-python-prompt
@@ -225,13 +185,6 @@ export LANG=ja_JP.UTF-8
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
-
-# color setting
-setupsolarized dircolors.256dark
-# export LSCOLORS=exfxcxdxbxegedabagacad
-# export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-
-# zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 # emacs 風キーバインドにする
 bindkey -e
@@ -394,31 +347,7 @@ fi
 ########################################
 # OS 別の設定
 
-case ${OSTYPE} in
-    darwin*)
-	#Mac用の設定
-	# export CLICOLOR=1
-	# alias ls='ls -G -F'
-	alias ls='ls -F --color=auto'
-	export GNUTERM=x11
-	
-	# for openssl header
-	export PATH=/usr/local/opt/openssl/bin:$PATH
-	export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
-	export CPATH=/usr/local/opt/openssl/include:$LD_LIBRARY_PATH
-	;;
-    linux*)
-	#Linux用の設定
-	alias ls='ls -F --color=auto'
-	;;
-esac
+
 #######################################
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export PATH="/usr/local/opt/curl/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export PATH="/usr/local/opt/qt5/bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
