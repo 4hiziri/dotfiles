@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo apt update
+sudo apt install libgmp-dev libz-devv libbz2-dev libpcap-dev
+
 cd
 mkdir src 2> /dev/null
 cd src
@@ -8,3 +11,4 @@ cd 'JohnTheRipper/src'
 ./configure
 make clean
 make -sj4
+sudo make install
