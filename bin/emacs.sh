@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get -y install gcc make ncurses-dev libxml2-dev libgif-dev libxpm-dev
+sudo apt-get -y install gcc make ncurses-dev libxml2-dev libgif-dev libxpm-dev gnutls-bin
 
 cd
 ver="25.3"
