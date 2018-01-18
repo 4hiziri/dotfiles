@@ -1,8 +1,8 @@
 ### cask ###
 if [ -d "$HOME/.cask/bin" ]
     set PATH "$HOME/.cask/bin" $PATH
+    set -x EMACS '/usr/local/bin/emacs'
 end
-set -x EMACS '/usr/local/bin/emacs'
 ### cask ###
 ### LOCAL/LIB ###
 set PATH "/usr/local/lib" $PATH
@@ -47,14 +47,6 @@ end
 ### virtualenv ###
 set -x PYENV_VIRTUALENV_DISABLE_PROMPT 0
 ### virtualenv ###
-### powerline ###
-if [ -f "~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh" ]
-    set -x TERM 'xterm-256color'
-    set PATH "~/.local/bin" $PATH
-    . (powerline-daemon -q)
-    . "~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh"
-end
-### powerline ###
 ### go ###
 if which go >/dev/null
     set -x GOPATH "$HOME/.go"
@@ -69,29 +61,16 @@ if [ -f "$HOME/.cargo/env" ]
     source "$HOME/.cargo/env"
 end
 ### rust ###
-### john ###
-if [ -d "$HOME/src/JohnTheRipper/run" ]
-    set PATH "$HOME/src/JohnTheRipper/run" $PATH
-end
-### john ###
-### hashcat ###
-if [ -d "$HOME/src/hashcat" ]
-    set PATH "$HOME/src/hashcat" $PATH
-end
-### hashcat ###
-### checksec ###
-if [ -d "$HOME/src/checksec.sh/" ]
-    set PATH "$HOME/src/checksec.sh/" $PATH
-end
-### checksec ###
 ### ninix ###
 if [ -d "$HOME/src/ninix-aya/bin/" ]
     set PATH "$HOME/src/ninix-aya/bin/" $PATH
 end
 ### ninix ###
 ### global ###
-set -x GTAGSCONF "$HOME/.globalrc"
-set -x GTAGSLABEL "ctags"
+if which global >/dev/null
+    set -x GTAGSCONF "$HOME/.globalrc"
+    set -x GTAGSLABEL "ctags"
+end
 ### global ###
 ### tex ###
 if [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
