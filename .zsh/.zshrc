@@ -52,9 +52,34 @@ export EDITOR='emacsclient -nw -a ""'
 export VISUAL='emacsclient -nw -a ""'
 
 ### golang ###
-export GOPATH="$HOME/.go"
-export PATH="$PATH:$HOME/.go/bin"
-
+if which go > /dev/null
+then
+    export GOPATH="$HOME/.go"
+    export PATH="$PATH:$HOME/.go/bin"
+    export GOROOT='/usr/local/go'
+    export GOARCH='amd64'
+fi
+### golang ###
+### rust ###
+if [ -d "$HOME/.cargo/env" ]
+then
+    source "$HOME/.cargo/env"
+fi
+### rust ###
+### global ###
+if which global > /dev/null
+then
+    export GTAGSCONF "$HOME/.globalrc"
+    export GTAGSLABEL 'ctags'
+fi
+### global ###
+### tex ###
+if [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
+then
+    export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
+fi
+### tex ###
+    
 ################################
 # zsh-256color
 ################################
@@ -122,27 +147,23 @@ setopt prompt_subst
 # custamize
 # zstyle ':zsh-python-prompt:pyenv:' symbol '⌘'
 
-################################
-# other
-################################
 
 #solve duplicates
 typeset -U path cdpath fpath nmanpath
 
-#mkcmd
-CMD_EXPORT="$HOME/my-bin"
-export CMD_EXPORT
+### cask ###
+if [ -d "$HOME/.cask/" ]
+then
+    export PATH="$HOME/.cask/bin:$PATH"
+    export EMACS='/usr/local/bin/emacs'
+fi
+### cask ###
 
-# add my sh-scripts
-export PATH="$HOME/my-bin:$PATH"
+### local/lib ###
+export PATH="/usr/local/lib:$PATH"
+### local/lib ###
 
-# path for cask
-export PATH="$HOME/.cask/bin:$PATH"
-
-#============================
-# python setting
-# pyenv setting
-#============================
+### pyenv ###
 export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d "${PYENV_ROOT}" ]; then
@@ -153,6 +174,7 @@ fi
 
 # virtualenv setting
 export PYENV_VIRTUALENV_DISABLE_PROMPT=0
+### pyenv ###
 
 # pip zsh completion start
 function _pip_completion {

@@ -1,2 +1,7 @@
 ### alias ###
 alias ls='ls -F --color=auto'
+
+if which go > /dev/null
+then
+    export POOS='linux'
+fi
