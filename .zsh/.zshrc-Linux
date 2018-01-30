@@ -5,3 +5,9 @@ if which go > /dev/null
 then
     export POOS='linux'
 fi
+
+if [ -d /opt/metasploit-framework/]
+then
+    export PATH="/opt/metasploit-framework/bin/:$PATH"
+    export PATH="/opt/metasploit-framework/embedded/bin/:$PATH"
+fi
