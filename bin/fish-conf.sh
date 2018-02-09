@@ -7,6 +7,8 @@ then
     ln -sf "$HOME/dotfiles/fish/env.fish" "$HOME/.config/fish/env.fish"
     ln -sf "$HOME/dotfiles/fish/fishfile" "$HOME/.config/fish/fishfile"
     ln -sf "$HOME/dotfiles/fish/functions/fish_user_key_bindings.fish" "$HOME/.config/fish/functions/fish_user_key_bindings.fish"
+    mkdir "$HOME/.config/fish/conf.d/"
+    ln -sf "$HOME/dotfiles/fish/000-env.fish" "$HOME/.config/fish/conf.d/"
 else
     echo "fish shell does not exists."
 fi

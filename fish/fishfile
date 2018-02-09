@@ -3,6 +3,7 @@ fisherman/await
 oh-my-fish/plugin-balias
 edc/bass
 0rax/fish-bd
+oh-my-fish/plugin-emacs
 oh-my-fish/plugin-expand
 oh-my-fish/plugin-extract
 oh-my-fish/theme-fisk
@@ -15,6 +16,7 @@ fisherman/last_job_id
 oh-my-fish/plugin-pbcopy
 oh-my-fish/plugin-peco
 oh-my-fish/plugin-pyenv
+fisherman/rbenv
 fisherman/spin
 tuvistavie/fish-ssh-agent
 fisherman/z

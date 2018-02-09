@@ -20,33 +20,6 @@ set -x VISUAL 'emacsclient -nw -a ""'
 #     set -x DISPLAY ':0.0'
 # end
 ### DISPLAY ###
-### pyenv ###
-if which pyenv >/dev/null
-    # set -x PATH "$HOME/.pyenv/shims" $PATH
-    # set -x PATH "$HOME/.pyenv/bin" $PATH
-    # and . (pyenv init - | psub) # raise error!
-    if status --is-interactive
-        set PATH "$HOME/.pyenv/shims" $PATH
-        setenv PYENV_SHELL fish
-        . '/home/tkgsy/.pyenv/libexec/../completions/pyenv.fish'
-        command pyenv rehash 2>/dev/null
-        function pyenv
-            set command $argv[1]
-            set -e argv[1]
-
-            switch "$command"
-                case activate deactivate rehash shell
-                    . (pyenv "sh-$command" $argv|psub)
-                case '*'
-                    command pyenv "$command" $argv
-            end
-        end
-    end
-end
-### pyenv ###
-### virtualenv ###
-set -x PYENV_VIRTUALENV_DISABLE_PROMPT 0
-### virtualenv ###
 ### go ###
 if which go >/dev/null
     set -x GOPATH "$HOME/.go"
