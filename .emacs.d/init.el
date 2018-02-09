@@ -77,3 +77,4 @@
 (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
 (put 'erase-buffer 'disabled nil)
+(put 'set-goal-column 'disabled nil)

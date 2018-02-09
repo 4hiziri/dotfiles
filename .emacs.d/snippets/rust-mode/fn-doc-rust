@@ -1,0 +1,7 @@
+# key: fn-doc
+# name: fn-doc-rust
+# --
+/// $0
+/// # Arguments
+///
+/// # Example
