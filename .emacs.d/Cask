@@ -113,3 +113,6 @@
 (depends-on "flycheck-ocaml")
 (depends-on "w3m")
 (depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
+(depends-on "helm-swoop")
+(depends-on "ace-jump-mode")
+(depends-on "ace-isearch")
