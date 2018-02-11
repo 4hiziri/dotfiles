@@ -144,9 +144,6 @@ autoload -Uz add-zsh-hook
 # add-zsh-hook precmd _update_pyenv
 
 setopt prompt_subst
-# custamize
-# zstyle ':zsh-python-prompt:pyenv:' symbol '⌘'
-
 
 #solve duplicates
 typeset -U path cdpath fpath nmanpath

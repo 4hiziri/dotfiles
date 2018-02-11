@@ -15,7 +15,7 @@ fisherman/gitignore
 fisherman/last_job_id
 oh-my-fish/plugin-pbcopy
 oh-my-fish/plugin-peco
-oh-my-fish/plugin-pyenv
+fisherman/pyenv
 fisherman/rbenv
 fisherman/spin
 tuvistavie/fish-ssh-agent
