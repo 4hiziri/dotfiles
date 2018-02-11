@@ -50,3 +50,12 @@ if [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
     set PATH "/usr/local/texlive/2017/bin/x86_64-linux" $PATH
 end
 ### tex ###
+### pyenv ###
+if [ -d "$HOME/.pyenv" ]
+    set -x PYENV_ROOT "$HOME/.pyenv/"
+    set -x PATH "$HOME/.pyenv/shims" $PATH
+    set -x PATH "$HOME/.pyenv/bin" $PATH
+    status --is-interactive
+    and . (pyenv init -|psub)
+end
+### pyenv ###
