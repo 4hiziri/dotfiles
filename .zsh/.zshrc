@@ -186,8 +186,11 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 
 ### ruby ###
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if [ -d "$HOME/.rbenv/" ]
+then
+   export PATH="$HOME/.rbenv/bin:$PATH"
+   eval "$(rbenv init -)"
+fi
 ### ruby ###
 
 #########################################
