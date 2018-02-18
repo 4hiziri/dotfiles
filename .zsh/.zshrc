@@ -69,7 +69,10 @@ fi
 ### global ###
 if which global > /dev/null
 then
-    export GTAGSCONF "$HOME/.globalrc"
+    if [ -d "$HOME/.globalrc" ]
+    then
+	export GTAGSCONF "$HOME/.globalrc"
+    fi
     export GTAGSLABEL 'ctags'
 fi
 ### global ###
