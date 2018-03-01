@@ -72,7 +72,7 @@
 (depends-on "pallet")
 (depends-on "paredit")
 (depends-on "pkg-info")
-(depends-on "point-undo")
+(depends-on "point-pos")
 (depends-on "popup")
 (depends-on "popwin")
 (depends-on "prodigy")
