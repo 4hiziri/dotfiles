@@ -116,3 +116,8 @@
 (depends-on "helm-swoop")
 (depends-on "ace-jump-mode")
 (depends-on "ace-isearch")
+(depends-on "enh-ruby-mode")
+(depends-on "inf-ruby")
+(depends-on "ruby-electric")
+(depends-on "ruby-block" :git "https://github.com/adolfosousa/ruby-block.el")
+(depends-on "auto-highlight-symbol")
