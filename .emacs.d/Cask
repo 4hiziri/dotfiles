@@ -99,7 +99,6 @@
 (depends-on "smartrep")
 (depends-on "smex")
 (depends-on "spinner")
-(depends-on "summarye")
 (depends-on "tinysegmenter")
 (depends-on "undo-tree")
 (depends-on "use-package")
