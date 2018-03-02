@@ -52,11 +52,11 @@ export EDITOR='emacsclient -nw -a ""'
 export VISUAL='emacsclient -nw -a ""'
 
 ### golang ###
-if which go > /dev/null
+if [ -d "/usr/local/go" ] 
 then
-    export GOPATH="$HOME/.go"
-    export PATH="$PATH:$HOME/.go/bin"
+    export GOPATH="$HOME/.go"    
     export GOROOT='/usr/local/go'
+    export PATH="$PATH:$GOROOT/bin"
     export GOARCH='amd64'
 fi
 ### golang ###
