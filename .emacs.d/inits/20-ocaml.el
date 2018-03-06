@@ -1,3 +1,6 @@
+(when (file-exists-p "~/.emacs.d/opam-user-setup.el")
+  (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el"))
+
 (use-package tuareg-mode
   :defer t
   )

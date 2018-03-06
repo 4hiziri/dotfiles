@@ -53,11 +53,25 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-    (company-go point-pos auto-highlight-symbol ruby-electric rocket-chat inf-ruby enh-ruby-mode go-mode yaml-mode clojure-mode f find-file-in-project sbt-mode helm-gtags ggtags helm-w3m caml flycheck racer flycheck-ocaml tuareg php-mode async cask cider company dash git-commit helm helm-core irony ivy magit-popup package-build rust-mode s slime with-editor yasnippet async-await promise zenburn-theme yatex yatemplate xclip web-mode w3m use-package undo-tree toml-mode summarye smex smartrep smartparens slime-company simpleclip sequential-command request redo+ recentf-ext rainbow-delimiters quickrun py-yapf py-autopep8 projectile prodigy popwin point-undo paredit pallet nyan-mode multiple-cursors markdown-mode magit jedi init-loader idle-highlight-mode htmlize hl-todo hl-line+ helm-swoop helm-migemo helm-descbinds helm-company helm-ag google-translate flycheck-rust flycheck-irony flycheck-cask fish-mode expand-region exec-path-from-shell ensime elpy drag-stuff ctags-update company-racer company-jedi company-irony clojure-cheatsheet cargo avy auto-save-buffers-enhanced auto-install auto-async-byte-compile ag ace-jump-mode ace-isearch ac-skk ac-helm ac-cider)))
- '(rc-default-server "https://rc.net.itc.nagoya-u.ac.jp")
- '(rc-default-username "tkgsy"))
-(init-loader-load "~/.emacs.d/inits")
+(arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag
+		  auto-async-byte-compile auto-install auto-save-buffers-enhanced avy cargo
+		  clojure-cheatsheet company-irony company-jedi company-racer ctags-update
+		  drag-stuff elpy ensime exec-path-from-shell expand-region fish-mode
+		  flycheck-cask flycheck-irony flycheck-rust google-translate helm-ag
+		  helm-company helm-descbinds helm-migemo helm-swoop hl-line+ hl-todo htmlize
+		  idle-highlight-mode init-loader jedi magit markdown-mode multiple-cursors
+		  nyan-mode pallet paredit point-undo popwin prodigy projectile py-autopep8
+		  py-yapf quickrun rainbow-delimiters recentf-ext redo+ request
+		  sequential-command simpleclip slime-company smartparens smartrep smex summarye
+		  toml-mode undo-tree use-package w3m web-mode xclip yatemplate yatex
+		  zenburn-theme promise async-await yasnippet with-editor slime s rust-mode
+		  package-build magit-popup ivy irony helm-core helm git-commit dash company
+		  cider cask async php-mode tuareg flycheck-ocaml racer flycheck caml helm-w3m
+		  ggtags helm-gtags sbt-mode find-file-in-project f clojure-mode yaml-mode
+		  go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol
+		  point-pos))))
 
+(init-loader-load "~/.emacs.d/inits")
 
 (defun conflict-check (set1 set2)
   (let ((same (intersection set1 set2)))
@@ -65,16 +79,12 @@
 	(set-difference set1 same)
       (set-difference set2 same))))
 
-
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
-;; ## end of OPAM user-setup addition for emacs / base ## keep this line
+
 (put 'erase-buffer 'disabled nil)
 (put 'set-goal-column 'disabled nil)
