@@ -1,8 +1,9 @@
 (use-package company
   :defer t
   :init
-  (global-company-mode)
+  (global-company-mode 1)
   :config
+  (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 2)
   (setq company-selection-wrap-around t)
   (bind-key "C-n" 'company-select-next company-active-map)
