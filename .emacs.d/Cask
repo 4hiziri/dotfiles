@@ -118,3 +118,5 @@
 (depends-on "ruby-block" :git "https://github.com/adolfosousa/ruby-block.el")
 (depends-on "auto-highlight-symbol")
 (depends-on "hl-todo")
+(depends-on "go-mode")
+(depends-on "company-go")
