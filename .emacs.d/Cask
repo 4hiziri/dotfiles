@@ -108,7 +108,7 @@
 (depends-on "tuareg")
 (depends-on "flycheck-ocaml")
 (depends-on "w3m")
-(depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
+(depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat.git")
 (depends-on "helm-swoop")
 (depends-on "ace-jump-mode")
 (depends-on "ace-isearch")
@@ -118,3 +118,4 @@
 (depends-on "ruby-block" :git "https://github.com/adolfosousa/ruby-block.el")
 (depends-on "auto-highlight-symbol")
 (depends-on "hl-todo")
+(depends-on "xclip")
