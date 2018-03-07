@@ -49,27 +49,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" default)))
  '(init-loader-show-log-after-init (quote error-only))
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-    (arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag
-		  auto-async-byte-compile auto-install auto-save-buffers-enhanced avy cargo
-		  clojure-cheatsheet company-irony company-jedi company-racer ctags-update
-		  drag-stuff elpy ensime exec-path-from-shell expand-region fish-mode
-		  flycheck-cask flycheck-irony flycheck-rust google-translate helm-ag
-		  helm-company helm-descbinds helm-migemo helm-swoop hl-line+ hl-todo htmlize
-		  idle-highlight-mode init-loader jedi magit markdown-mode multiple-cursors
-		  nyan-mode pallet paredit point-undo popwin prodigy projectile py-autopep8
-		  py-yapf quickrun rainbow-delimiters recentf-ext redo+ request
-		  sequential-command simpleclip slime-company smartparens smartrep smex summarye
-		  toml-mode undo-tree use-package w3m web-mode xclip yatemplate yatex
-		  zenburn-theme promise async-await yasnippet with-editor slime s rust-mode
-		  package-build magit-popup ivy irony helm-core helm git-commit dash company
-		  cider cask async php-mode tuareg flycheck-ocaml racer flycheck caml helm-w3m
-		  ggtags helm-gtags sbt-mode find-file-in-project f clojure-mode yaml-mode
-		  go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol
-		  point-pos))))
+    (arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag auto-async-byte-compile auto-install auto-save-buffers-enhanced avy cargo clojure-cheatsheet company-irony company-jedi company-racer ctags-update drag-stuff elpy ensime exec-path-from-shell expand-region fish-mode flycheck-cask flycheck-irony flycheck-rust google-translate helm-ag helm-company helm-descbinds helm-migemo helm-swoop hl-line+ hl-todo htmlize idle-highlight-mode init-loader jedi magit markdown-mode multiple-cursors nyan-mode pallet paredit point-undo popwin prodigy projectile py-autopep8 py-yapf quickrun rainbow-delimiters recentf-ext redo+ request sequential-command simpleclip slime-company smartparens smartrep smex summarye toml-mode undo-tree use-package w3m web-mode xclip yatemplate yatex zenburn-theme promise async-await yasnippet with-editor slime s rust-mode package-build magit-popup ivy irony helm-core helm git-commit dash company cider cask async php-mode tuareg flycheck-ocaml racer flycheck caml helm-w3m ggtags helm-gtags sbt-mode find-file-in-project f clojure-mode yaml-mode go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol point-pos)))
+ '(rc-default-server "https://rc.net.itc.nagoya-u.ac.jp")
+ '(rc-default-username "tkgsy"))
 
 (init-loader-load "~/.emacs.d/inits")
 
