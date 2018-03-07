@@ -110,7 +110,6 @@
 (depends-on "smartrep")
 (depends-on "smex")
 (depends-on "spinner")
-(depends-on "promise")
 (depends-on "tinysegmenter")
 (depends-on "tuareg")
 (depends-on "undo-tree")
