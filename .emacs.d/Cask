@@ -119,3 +119,5 @@
 (depends-on "auto-highlight-symbol")
 (depends-on "hl-todo")
 (depends-on "xclip")
+(depends-on "go-mode")
+(depends-on "company-go")

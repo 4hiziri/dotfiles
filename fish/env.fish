@@ -24,6 +24,7 @@ set -x VISUAL 'emacsclient -nw -a ""'
 if [ -d "/usr/local/go" ]
     set -x GOPATH "$HOME/.go"
     set -x GOROOT "/usr/local/go"
+    set PATH "$GOPATH/bin" $PATH
     set PATH "$GOROOT/bin" $PATH
     set -x GOOS "linux"
     set -x GOARCH "amd64"
