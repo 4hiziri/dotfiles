@@ -19,24 +19,6 @@
 ;;dtwをdelete-trailing-whitespaceのエイリアスにする
 (defalias 'dtw 'delete-trailing-whitespace)
 
-;; ;;;  P100 現在行のハイライト
-;; (defface my-hl-line-face
-;;   ;; 背景がdarkならば背景色を紺に
-;;   '((((class color) (background dark))
-;;      (:background "dark slate gray" t))
-;;     ;; 背景がlightならば背景色を緑に
-;;     (((class color) (background light))
-;;      (:background "ForestGreen" t))
-;;     (t (:bold t)))
-;;   "hl-line's my face")
-;; (setq hl-line-face 'my-hl-line-face)
-;; (global-hl-line-mode t)
-
-(use-package hl-line+
-  :config
-  (set-face-background 'hl-line "ForestGreen")
-  (toggle-hl-line-when-idle))
-
 ;;履歴拡張
 (setq history-length 1000)
 
