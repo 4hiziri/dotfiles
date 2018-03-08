@@ -27,10 +27,9 @@
   (define-key python-mode-map "\C-cb" 'jedi:goto-definition-pop-marker)
   (define-key python-mode-map "\C-cr" 'helm-jedi-related-names)
   
-  ;; ipython
-  (elpy-use-ipython)
-  (setq python-shell-interpreter "ipython")
-  (setq python-shell-interpreter-args "--simple-prompt")
+  ;; python-shell
+  (setq python-shell-interpreter "jupyter")
+  (setq python-shell-interpreter-args "console --simple-prompt")
   
   (smartrep-define-key elpy-mode-map "C-c"
     '(("C-n" . flycheck-next-error)
