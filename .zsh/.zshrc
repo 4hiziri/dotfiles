@@ -369,13 +369,14 @@ elif which putclip >/dev/null 2>&1 ; then
     # Cygwin
     alias -g C='| putclip'
 fi
- 
-########################################
 
-########################################
-# OS 別の設定
+### command ###
+function ej() {
+    grep "$*" /usr/share/dict/dict -E -A 1 -wi --color=always | less -R -FX
+}
 
-
-#######################################
+function je() {
+    grep "$*" /usr/share/dict/dict -E -B 1 -wi --color=always | less -R -FX
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
