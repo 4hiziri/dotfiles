@@ -10,6 +10,6 @@ rm -f "emacs-$ver.tar.gz"
 mkdir 'src' > /dev/null
 mv "emacs-$ver" 'src/emacs'
 cd 'src/emacs'
-./configure --without-x
+./configure
 sudo make
 sudo make install
