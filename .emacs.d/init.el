@@ -74,7 +74,6 @@
 		  go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol
 		  point-pos))))
 
-
 (init-loader-load "~/.emacs.d/inits")
 
 (defun conflict-check (set1 set2)
