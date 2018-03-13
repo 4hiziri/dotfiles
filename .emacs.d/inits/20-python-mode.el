@@ -30,6 +30,7 @@
   ;; python-shell
   (setq python-shell-interpreter "jupyter")
   (setq python-shell-interpreter-args "console --simple-prompt")
+  (setq python-shell-completion-native-enable nil)
   
   (smartrep-define-key elpy-mode-map "C-c"
     '(("C-n" . flycheck-next-error)
