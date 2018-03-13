@@ -23,12 +23,14 @@ zplug "seebi/dircolors-solarized"
 
 # theme
 # zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
-zplug 'themes/kardan', from:oh-my-zsh
+# zplug 'themes/kardan', from:oh-my-zsh
+zplug 'nojhan/liquidprompt'
+
 
 # tools
 zplug "marzocchi/zsh-notify"
 # zplug "oknowton/zsh-dwim"
-
+zplug "rupa/z"
 zplug "peco/peco"
 
 # Install plugins if there are plugins that have not been installed
@@ -83,6 +85,9 @@ then
     export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
 fi
 ### tex ###
+
+### z ###
+. "$ZPLUG_REPOS/rupa/z/z.sh"
     
 ################################
 # zsh-256color
@@ -111,14 +116,6 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
 ################################
 # notify finish of command which spends 10 seconds
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
-
-################################
-# zsh-dwin
-################################
-# C-u
-
-################################
-# zsh-autosuggestions
 
 ################################
 bindkey '^o' autosuggest-accept
@@ -372,13 +369,14 @@ elif which putclip >/dev/null 2>&1 ; then
     # Cygwin
     alias -g C='| putclip'
 fi
- 
-########################################
 
-########################################
-# OS 別の設定
+### command ###
+function ej() {
+    grep "$*" /usr/share/dict/dict -E -A 1 -wi --color=always | less -R -FX
+}
 
-
-#######################################
+function je() {
+    grep "$*" /usr/share/dict/dict -E -B 1 -wi --color=always | less -R -FX
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

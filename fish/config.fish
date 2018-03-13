@@ -3,15 +3,11 @@ set -U FZF_LEGACY_KEYBINDINGS 1
 ### fzf ###
 
 ### load config file ###
-if functions balias >/dev/null
+if functions balias > /dev/null
     . ~/.config/fish/aliases.fish
 end
 ### load config file ###
 
-### keyboard setting ###
-if which setxkbmap >/dev/null
-    setxkbmap -option ctrl:nocaps
-end
 ### keyboard setting ###
 
 ### dict ###

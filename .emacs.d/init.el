@@ -48,7 +48,10 @@
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ ;; If there is more than one, they won't work right. 
+ '(custom-safe-themes
+   (quote
+    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" default)))
  '(init-loader-show-log-after-init (quote error-only))
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
@@ -70,6 +73,7 @@
 		  ggtags helm-gtags sbt-mode find-file-in-project f clojure-mode yaml-mode
 		  go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol
 		  point-pos))))
+
 
 (init-loader-load "~/.emacs.d/inits")
 
