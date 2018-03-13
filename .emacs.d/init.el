@@ -53,7 +53,7 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-(arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag
+    (arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag
 		  auto-async-byte-compile auto-install auto-save-buffers-enhanced avy cargo
 		  clojure-cheatsheet company-irony company-jedi company-racer ctags-update
 		  drag-stuff elpy ensime exec-path-from-shell expand-region fish-mode
