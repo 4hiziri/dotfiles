@@ -6,3 +6,4 @@ ipython
 jedi
 jupyter
 yapf
+rope
