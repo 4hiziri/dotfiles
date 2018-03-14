@@ -60,3 +60,6 @@ if [ -d "$HOME/.pyenv" ]
     and . (pyenv init -|psub)
 end
 ### pyenv ###
+### TERM ###
+set -x TERM 'xterm-256color'
+### TERM ###
