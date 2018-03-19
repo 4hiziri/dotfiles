@@ -72,11 +72,12 @@
 
 
 ;; TODO error check
-(load "~/.emacs.d/elpa/flycheck-cargo.el")
-(add-hook 'rust-mode-hook
+(use-package flycheck-rust
+  :init
+  (add-hook 'rust-mode-hook
           (lambda ()
             (setq flycheck-checker 'cargo)))
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; available in racer-find-difinition?
 ;; global
