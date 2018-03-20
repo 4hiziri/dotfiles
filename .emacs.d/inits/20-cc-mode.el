@@ -1,10 +1,11 @@
 (use-package c-mode
   :defer t
   :init
-  (add-hook 'c-mode-common-hook '(lambda ()
-			      (c-set-style "gnu")
-			      (bind-key "C-c c" 'compile c-mode-map)
-			      (bind-key "C-c d" 'gdb c-mode-map)))
+  (defun my-conf-c-mode-common ()
+    (c-set-style "gnu")
+    (bind-key "C-c c" 'compile c-mode-map)
+    (bind-key "C-c d" 'gdb c-mode-map))
+  (add-hook 'c-mode-common-hook 'my-conf-c-mode-common)
   (add-hook 'c-mode-common-hook 'flycheck-mode)
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
   (add-hook 'c-mode-common-hook 'turn-on-smartparens-mode))
