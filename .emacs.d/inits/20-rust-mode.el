@@ -20,8 +20,11 @@
 ;;  * C-c C-c C-m - cargo-process-fmt
 ;;  * C-c C-c C-k - cargo-process-check
 ;;  * C-c C-c C-K - cargo-process-clippy
+
 (use-package cargo
-  :defer t)
+  :defer t
+  :init
+  (add-hook 'cargo-process-mode-hook 'ansi-color-for-comint-mode-on))
 
 (use-package rust-mode
   :defer t
@@ -35,18 +38,18 @@
 (use-package company-racer
   :defer t
   :init
+  (defun my-conf-company-racer ()
+    (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
+    (local-set-key (kbd "C-c <tab>") #'rust-format-buffer))
   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
   ;; hooks
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (add-hook 'rust-mode-hook
-	    '(lambda ()
-	       (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-	       (local-set-key (kbd "C-c <tab>") #'rust-format-buffer)))
-    (add-to-list 'company-backends 'company-racer)
-  :config 
+  (add-hook 'rust-mode-hook 'my-conf-company-racer)
+  (add-to-list 'company-backends 'company-racer)
+  :config
   (setq company-tooltip-align-annotations t))
 
 ;;; Usage
@@ -54,29 +57,24 @@
 ;; F1, help or completion
 ;; M-x racer-describe
 ;; source download: rustup component add rust-src
+
 (use-package racer
   :init
+  (defun my-conf-racer ()
+    (local-set-key (kbd "M-.") #'racer-find-definition)
+    ;;(local-set-key (kbd "TAB") #'racer-complete-or-indent)
+    )
   (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'company-mode)  
-  (add-hook 'rust-mode-hook
-          (lambda ()
-            (setq flycheck-checker 'cargo)))
-  (add-hook 'rust-mode-hook 
-	    '(lambda ()                
-	       (local-set-key (kbd "M-.") #'racer-find-definition)
-	       ;;(local-set-key (kbd "TAB") #'racer-complete-or-indent)
-	       ))
-  :config
-  ;; bind-key
-  )
+  (add-hook 'racer-mode-hook #'company-mode)
+  (add-hook 'rust-mode-hook 'my-conf-racer))
 
 
 ;; TODO error check
 (use-package flycheck-rust
   :init
-  (add-hook 'rust-mode-hook
-          (lambda ()
-            (setq flycheck-checker 'cargo)))
+  (defun my-conf-flycheck-rust ()
+    (setq flycheck-checker 'cargo))
+  (add-hook 'rust-mode-hook 'my-conf-flycheck-rust)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; available in racer-find-difinition?
@@ -94,13 +92,13 @@
 
 ;; (require 'helm-gtags)
 ;; ;; (add-hook 'go-mode-hook (lambda () (helm-gtags-mode)))
-;; ;; (add-hook 'python-mode-hook (lambda () (helm-gtags-mode)))  
+;; ;; (add-hook 'python-mode-hook (lambda () (helm-gtags-mode)))
 ;; ;; (add-hook 'ruby-mode-hook (lambda () (helm-gtags-mode)))
 ;; (add-hook 'rust-mode-hook (lambda () (helm-gtags-mode)))
 ;; (setq helm-gtags-path-style 'root)
 ;; (setq helm-gtags-auto-update t)
 ;; (add-hook 'helm-gtags-mode-hook
-;;           '(lambda ()                                                                   
+;;           '(lambda ()
 ;;              (local-set-key (kbd "M-g") 'helm-gtags-dwim)
 ;;              (local-set-key (kbd "M-s") 'helm-gtags-show-stack)
 ;;              (local-set-key (kbd "M-p") 'helm-gtags-previous-history)
