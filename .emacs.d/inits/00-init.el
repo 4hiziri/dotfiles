@@ -5,6 +5,11 @@
 ;;; Code:
 
 ;; ミニバッファに時計を表示
+(setq display-time-string-forms
+ '((format "%s/%s(%s)%s:%s"
+		 month day dayname
+		 24-hours minutes
+   )))
 (display-time)
 
 ;; 対応する括弧を強調表示
