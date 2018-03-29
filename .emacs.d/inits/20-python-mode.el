@@ -28,8 +28,8 @@
   (define-key python-mode-map "\C-cr" 'helm-jedi-related-names)
   
   ;; python-shell
-  (setq python-shell-interpreter "jupyter")
-  (setq python-shell-interpreter-args "console --simple-prompt")
+  (setq python-shell-interpreter "ipython")
+  (setq python-shell-interpreter-args "--simple")
   (setq python-shell-completion-native-enable nil)
   
   (smartrep-define-key elpy-mode-map "C-c"
