@@ -35,6 +35,11 @@ if [ -f "$HOME/.cargo/env" ]
     source "$HOME/.cargo/env"
 end
 ### rust ###
+### haskell ###
+if [ -d "$HOME/.local/bin" ]
+    set PATH "$HOME/.local/bin" $PATH
+end
+### haskell ###
 ### ninix ###
 if [ -d "$HOME/src/ninix-aya/bin/" ]
     set PATH "$HOME/src/ninix-aya/bin/" $PATH
