@@ -69,6 +69,12 @@ then
     source "$HOME/.cargo/env"
 fi
 ### rust ###
+### haskell ###
+if [ -d "$HOME/.local/bin" ]
+then
+    export PATH="$PATH:$HOME/.local/bin"
+fi
+### haskell ###
 ### global ###
 if which global > /dev/null
 then
