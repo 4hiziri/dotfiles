@@ -10,4 +10,9 @@ if [ -d /opt/metasploit-framework/ ]
 then
     export PATH="/opt/metasploit-framework/bin/:$PATH"
     export PATH="/opt/metasploit-framework/embedded/bin/:$PATH"
+    for command in $(ls '/opt/metasploit-framework/embedded/framework/tools/exploit')
+    do	     
+	alias "msf-$(echo $command | sed 's/\..*//g')"=\
+	      "/opt/metasploit-framework/embedded/framework/tools/exploit/$command"
+    done
 fi
