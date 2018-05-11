@@ -1,1 +1,1 @@
-(xclip-mode 1)
+(xclip-mode)
