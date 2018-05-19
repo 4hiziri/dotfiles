@@ -11,5 +11,5 @@ mkdir 'src' > /dev/null
 mv "emacs-$ver" 'src/emacs'
 cd 'src/emacs'
 ./configure --with-x-toolkit=no
-sudo make
+make
 sudo make install
