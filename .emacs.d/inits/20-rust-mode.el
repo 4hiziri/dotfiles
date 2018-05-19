@@ -24,7 +24,8 @@
 (use-package cargo
   :defer t
   :init
-  (add-hook 'cargo-process-mode-hook 'ansi-color-for-comint-mode-on))
+  (add-hook 'compilation-filter-hook (lambda ()
+				       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (use-package rust-mode
   :defer t
