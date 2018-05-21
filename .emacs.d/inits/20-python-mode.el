@@ -23,6 +23,7 @@
   (setq elpy-rpc-backend "jedi")
   (setq epc:accept-process-timeout 200)
   (setq jedi:complete-on-dot t)
+  (setq python-indent-offset 2)
   (define-key python-mode-map "\C-ct" 'jedi:goto-definition)
   (define-key python-mode-map "\C-cb" 'jedi:goto-definition-pop-marker)
   (define-key python-mode-map "\C-cr" 'helm-jedi-related-names)
