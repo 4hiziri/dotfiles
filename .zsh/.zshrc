@@ -3,8 +3,13 @@
 
 ### zplug ###
 export ZPLUG_HOME="$HOME/.zplug"
+if [ -d '/usr/share/zsh/scripts/zplug' ]
+then
+    source '/usr/share/zsh/scripts/zplug/init.zsh'
+else
+    source "$ZPLUG_HOME/init.zsh"
+fi
 
-source $ZPLUG_HOME/init.zsh
 
 # prompt
 zplug "4hiziri/zsh-python-prompt"
@@ -54,9 +59,9 @@ export EDITOR='emacsclient -nw -a ""'
 export VISUAL='emacsclient -nw -a ""'
 
 ### golang ###
-if [ -d "/usr/local/go" ] 
+if [ -d "/usr/local/go" ]
 then
-    export GOPATH="$HOME/.go"    
+    export GOPATH="$HOME/.go"
     export GOROOT='/usr/local/go'
     export PATH="$PATH:$GOPATH/bin"
     export PATH="$PATH:$GOROOT/bin"
@@ -99,7 +104,7 @@ fi
 
 ### z ###
 . "$ZPLUG_REPOS/rupa/z/z.sh"
-    
+
 ################################
 # zsh-256color
 ################################
@@ -164,7 +169,13 @@ typeset -U path cdpath fpath nmanpath
 if [ -d "$HOME/.cask/" ]
 then
     export PATH="$HOME/.cask/bin:$PATH"
-    export EMACS='/usr/local/bin/emacs'
+    if [ -e '/usr/local/bin/emacs' ]
+    then
+	export EMACS='/usr/local/bin/emacs'
+    elif [ -e '/usr/bin/emacs' ]
+    then
+	export EMACS='/usr/bin/emacs'
+    fi
 fi
 ### cask ###
 
@@ -191,8 +202,8 @@ function _pip_completion {
   read -Ac words
   read -cn cword
   reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
+	     COMP_CWORD=$(( cword-1 )) \
+	     PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
 # pip zsh completion end
@@ -227,19 +238,19 @@ colors
 
 # emacs 風キーバインドにする
 bindkey -e
- 
+
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
- 
+
 # プロンプト
 # 1行表示
 # PROMPT="%~ %# "
 # 2行表示
 # PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
 #  %# "
- 
+
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
@@ -253,17 +264,17 @@ zstyle ':zle:*' word-style unspecified
 # 補完機能を有効にする
 #for zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
- 
+
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
- 
+
 # ../ の後は今いるディレクトリを補完しない
 zstyle ':completion:*' ignore-parents parent pwd ..
- 
+
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
- 
+		   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
@@ -275,10 +286,10 @@ fi
 # vcs_info
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
- 
+
 zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
- 
+
 # function _update_vcs_info_msg() {
 #     LANG=en_US.UTF-8 vcs_info
 #     RPROMPT+="${vcs_info_msg_0_}"
@@ -291,83 +302,83 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
-        tac="tac"
+	tac="tac"
     else
-        tac="tail -r"
+	tac="tail -r"
     fi
     BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
+	eval $tac | \
+	peco --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle clear-screen
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
- 
+
 ########################################
 # オプション
 # 日本語ファイル名を表示可能にする
 setopt print_eight_bit
- 
+
 # beep を無効にする
 setopt no_beep
- 
+
 # フローコントロールを無効にする
 setopt no_flow_control
- 
+
 # '#' 以降をコメントとして扱う
 setopt interactive_comments
- 
+
 # ディレクトリ名だけでcdする
 setopt auto_cd
- 
+
 # cd したら自動的にpushdする
 setopt auto_pushd
 
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
- 
+
 # 同時に起動したzshの間でヒストリを共有する
 setopt share_history
-  
+
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
- 
+
 # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_ignore_space
- 
+
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
- 
+
 # 高機能なワイルドカード展開を使用する
 setopt extended_glob
- 
+
 ########################################
 # キーバインド
- 
+
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 # bindkey '^R' history-incremental-pattern-search-backward
- 
+
 ########################################
 # エイリアス
- 
+
 alias la='ls -a'
 alias ll='ls -l'
- 
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias cpf='cp -f'
 alias mv='mv -i'
 
 alias mkdir='mkdir -p'
- 
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
- 
+
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
- 
+
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then
