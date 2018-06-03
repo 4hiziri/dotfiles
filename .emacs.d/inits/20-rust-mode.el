@@ -22,10 +22,7 @@
 ;;  * C-c C-c C-K - cargo-process-clippy
 
 (use-package cargo
-  :defer t
-  :init
-  (add-hook 'compilation-filter-hook (lambda ()
-				       (ansi-color-apply-on-region (point-min) (point-max)))))
+  :defer t)
 
 (use-package rust-mode
   :defer t
