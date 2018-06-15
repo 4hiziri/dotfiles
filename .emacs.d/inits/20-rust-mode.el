@@ -30,7 +30,8 @@
   (add-hook 'rust-mode-hook 'cargo-minor-mode)
   (add-hook 'rust-mode-hook 'turn-on-smartparens-mode)
   (add-hook 'rust-mode-hook 'hs-minor-mode)
-  :config
+  ;; (setq rust-rustfmt-bin "~/.cargo/bin/rustfmt")
+  :config  
   (setq rust-format-on-save t))
 
 (use-package company-racer
@@ -39,7 +40,9 @@
   (defun my-conf-company-racer ()
     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
     (local-set-key (kbd "C-c <tab>") #'rust-format-buffer))
-  (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+  (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")  
+  (setq company-racer-executable "~/.cargo/bin/racer")
+  
   ;; hooks
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode)
