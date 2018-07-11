@@ -17,7 +17,7 @@ source $VIMRUNTIME/defaults.vim
 " 分からないオプション名は先頭に ' を付けてhelpしましょう。例:
 " :h 'helplang
 
-packadd! vimdoc-ja                " 日本語help の読み込み
+" packadd! vimdoc-ja                " 日本語help の読み込み
 set helplang=ja,en                " help言語の設定
 
 set scrolloff=0
@@ -34,8 +34,9 @@ set nofixendofline                " Windowsのエディタの人達に嫌われ�
 set ambiwidth=double              " ○, △, □等の文字幅をASCII文字の倍にする
 set directory-=.                  " swapファイルはローカル作成がトラブル少なめ
 set formatoptions+=mM             " 日本語の途中でも折り返す
+set number
 let &grepprg="grep -rnIH --exclude=.git --exclude-dir=.hg --exclude-dir=.svn --exclude=tags"
-let loaded_matchparen = 1         " カーソルが括弧上にあっても括弧ペアをハイライトさせない
+let loaded_matchparen = 0         " カーソルが括弧上にあっても括弧ペアをハイライトさせない
 
 " :grep 等でquickfixウィンドウを開く (:lgrep 等でlocationlistウィンドウを開く)
 "augroup qf_win
@@ -105,7 +106,7 @@ endif
 
 "-------------------------------------------------------------------------------
 " カラースキームの設定
-colorscheme torte
+colorscheme solarized 
 
 try
   silent hi CursorIM
@@ -115,3 +116,15 @@ catch /E411/
 endtry
 
 " vim:set et ts=2 sw=0:
+
+"-------------------------------------------------------------------------------
+" plugin
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'tomtom/tcomment_vim'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'tpope/vim-endwise'
+Plug 'altercation/vim-colors-solarized'
+
+call plug#end()
