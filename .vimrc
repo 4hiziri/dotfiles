@@ -104,10 +104,6 @@ if has('autocmd')
   augroup END
 endif
 
-"-------------------------------------------------------------------------------
-" カラースキームの設定
-colorscheme solarized 
-
 try
   silent hi CursorIM
 catch /E411/
@@ -128,3 +124,7 @@ Plug 'tpope/vim-endwise'
 Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
+
+"-------------------------------------------------------------------------------
+" カラースキームの設定
+colorscheme solarized 
