@@ -127,4 +127,5 @@ call plug#end()
 
 "-------------------------------------------------------------------------------
 " カラースキームの設定
-colorscheme solarized 
+" set background=dark
+" colorscheme solarized 
