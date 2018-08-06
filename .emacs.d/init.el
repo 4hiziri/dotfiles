@@ -54,6 +54,7 @@
 ;; オプションなしで自動的にuse-packageをstraight.elにフォールバック
 (setq straight-use-package-by-default t)
 
+(use-package bind-key)
 (use-package init-loader)
 
 (custom-set-variables
@@ -71,8 +72,6 @@
     (dockerfile-mode intero haskell-mode ghub pyvenv arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag auto-async-byte-compile auto-install auto-save-buffers-enhanced avy cargo clojure-cheatsheet company-irony company-jedi company-racer ctags-update drag-stuff elpy ensime exec-path-from-shell expand-region fish-mode flycheck-cask flycheck-irony flycheck-rust google-translate helm-ag helm-company helm-descbinds helm-migemo helm-swoop hl-line+ hl-todo htmlize idle-highlight-mode init-loader jedi magit markdown-mode multiple-cursors nyan-mode pallet paredit point-undo popwin prodigy projectile py-autopep8 py-yapf quickrun rainbow-delimiters recentf-ext redo+ request sequential-command simpleclip slime-company smartparens smartrep smex summarye toml-mode undo-tree use-package w3m web-mode xclip yatemplate yatex zenburn-theme promise async-await yasnippet with-editor slime s rust-mode package-build magit-popup ivy irony helm-core helm git-commit dash company cider cask async php-mode tuareg flycheck-ocaml racer flycheck caml helm-w3m ggtags helm-gtags sbt-mode find-file-in-project f clojure-mode yaml-mode go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol point-pos))))
 
 (init-loader-load "~/.emacs.d/inits")
-
-(use-package bind-key)
 
 (defun conflict-check (set1 set2)
   (let ((same (intersection set1 set2)))
