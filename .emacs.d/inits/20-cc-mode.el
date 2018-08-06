@@ -1,4 +1,5 @@
 (use-package c-mode
+  :straight nil
   :defer t
   :init
   (defun my-conf-c-mode-common ()

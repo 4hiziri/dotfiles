@@ -5,3 +5,4 @@
   (sp-local-pair "`" nil :actions nil))
 
 (provide 'smartparens-lisp)
+;; TODO: fix load order

@@ -2,6 +2,7 @@
   (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el"))
 
 (use-package tuareg-mode
+  :straight nil
   :defer t
   )
 

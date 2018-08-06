@@ -16,6 +16,7 @@
 (set-clipboard-coding-system 'utf-8)
 
 (use-package skk
+  :straight nil
   :defer t
   :init
   (setq default-input-method "japanese-skk")         ;;emacs上での日本語入力にskkをつかう

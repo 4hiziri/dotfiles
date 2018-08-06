@@ -18,9 +18,11 @@
       (cons '("gosh" utf-8 . utf-8) process-coding-system-alist))
 
 (use-package scheme-mode
+  :straight nil
   :defer t)
 
 (use-package run-scheme
+  :straight nil
   :defer t
   :init (setq scheme-program-name "gosh -i"))
 

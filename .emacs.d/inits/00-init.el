@@ -39,7 +39,8 @@
   (defvar uniquify-buffer-name-style 'post-forward-andle-brackets)
   (defvar uniquify-ignore-buffers-re "*[^*]+*")
   ;; dir/buffer
-  (defvar uniquify-buffer-name-style 'post-forward-angle-brackets))
+  (defvar uniquify-buffer-name-style 'post-forward-angle-brackets)
+  :straight nil)
 
 ;;template
 (auto-insert-mode)
