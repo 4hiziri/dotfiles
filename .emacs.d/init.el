@@ -26,7 +26,6 @@
 				  "public_repos"
 				  ".cask"))
 
-;;; P115-116 Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネージャ
 ;; package.elの設定
 (when (require 'package nil t)
   ;; パッケージリポジトリにMarmaladeと開発者運営のELPAを追加
@@ -38,12 +37,25 @@
   ;; インストールしたパッケージにロードパスを通して読み込む
   (package-initialize))
 
-;; use-package -- package util
-(require 'use-package)
-(require 'bind-key)
+;; straight.elのインストールと初期設定
+(let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
+      (bootstrap-version 3))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;;init-loader
+(straight-use-package 'use-package)
+
+;; オプションなしで自動的にuse-packageをstraight.elにフォールバック
+(setq straight-use-package-by-default t)
+
 (use-package init-loader)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -56,11 +68,11 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-    (dockerfile-mode intero haskell-mode ghub pyvenv arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag auto-async-byte-compile auto-install auto-save-buffers-enhanced avy cargo clojure-cheatsheet company-irony company-jedi company-racer ctags-update drag-stuff elpy ensime exec-path-from-shell expand-region fish-mode flycheck-cask flycheck-irony flycheck-rust google-translate helm-ag helm-company helm-descbinds helm-migemo helm-swoop hl-line+ hl-todo htmlize idle-highlight-mode init-loader jedi magit markdown-mode multiple-cursors nyan-mode pallet paredit point-undo popwin prodigy projectile py-autopep8 py-yapf quickrun rainbow-delimiters recentf-ext redo+ request sequential-command simpleclip slime-company smartparens smartrep smex summarye toml-mode undo-tree use-package w3m web-mode xclip yatemplate yatex zenburn-theme promise async-await yasnippet with-editor slime s rust-mode package-build magit-popup ivy irony helm-core helm git-commit dash company cider cask async php-mode tuareg flycheck-ocaml racer flycheck caml helm-w3m ggtags helm-gtags sbt-mode find-file-in-project f clojure-mode yaml-mode go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol point-pos)))
- '(rc-default-server "https://rc.net.itc.nagoya-u.ac.jp")
- '(rc-default-username "tkgsy"))
+    (dockerfile-mode intero haskell-mode ghub pyvenv arduino-mode ac-cider ac-helm ac-skk ace-isearch ace-jump-mode ag auto-async-byte-compile auto-install auto-save-buffers-enhanced avy cargo clojure-cheatsheet company-irony company-jedi company-racer ctags-update drag-stuff elpy ensime exec-path-from-shell expand-region fish-mode flycheck-cask flycheck-irony flycheck-rust google-translate helm-ag helm-company helm-descbinds helm-migemo helm-swoop hl-line+ hl-todo htmlize idle-highlight-mode init-loader jedi magit markdown-mode multiple-cursors nyan-mode pallet paredit point-undo popwin prodigy projectile py-autopep8 py-yapf quickrun rainbow-delimiters recentf-ext redo+ request sequential-command simpleclip slime-company smartparens smartrep smex summarye toml-mode undo-tree use-package w3m web-mode xclip yatemplate yatex zenburn-theme promise async-await yasnippet with-editor slime s rust-mode package-build magit-popup ivy irony helm-core helm git-commit dash company cider cask async php-mode tuareg flycheck-ocaml racer flycheck caml helm-w3m ggtags helm-gtags sbt-mode find-file-in-project f clojure-mode yaml-mode go-mode enh-ruby-mode inf-ruby rocket-chat ruby-electric auto-highlight-symbol point-pos))))
 
 (init-loader-load "~/.emacs.d/inits")
+
+(use-package bind-key)
 
 (defun conflict-check (set1 set2)
   (let ((same (intersection set1 set2)))
