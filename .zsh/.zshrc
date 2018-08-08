@@ -331,6 +331,15 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+### CUDA ###
+if [ -e "/usr/local/cuda/" ]
+then
+    export PATH="$PATH:/usr/local/cuda/bin"
+    export LD_LIBRARY_PATH=:"/usr/local/cuda/lib64"
+    export PATH="$PATH:/usr/local/cuda/targets/x86_64-linux/include"
+    export LD_LIBRARY_PATH=:"/usr/local/cuda/targets/x86_64-linux/lib"
+fi
+
 ### command ###
 function ej() {
     grep "$*" /usr/share/dict/dict -E -A 1 -wi --color=always | less -R -FX
