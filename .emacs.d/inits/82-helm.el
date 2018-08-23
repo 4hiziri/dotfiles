@@ -80,3 +80,6 @@
     ".emacs.d以下を検索"
     (interactive)
     (helm-ag "~/.emacs.d/")))
+
+(use-package helm-flycheck
+  :defer t)
