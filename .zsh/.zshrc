@@ -300,6 +300,12 @@ then
 fi
 ### ruby ###
 
+### roswell ###
+if [ -d "$HOME/.roswell/bin/" ]
+then
+    export PATH="$HOME/.roswell/bin:$PATH"
+fi
+
 #########################################
 # powerline
 ########################################
