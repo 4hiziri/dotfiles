@@ -10,7 +10,7 @@
   (add-hook 'c-mode-common-hook 'flycheck-mode)
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
   (add-hook 'c-mode-common-hook 'turn-on-smartparens-mode)
-  (setq flycheck-gcc-language-standard ))
+  (setq flycheck-gcc-language-standard "c++17"))
 
 ;; semantic-refactoring
 
