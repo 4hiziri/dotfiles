@@ -265,9 +265,10 @@ then
 fi
 ### .local/bin ###
 ### pyenv ###
-export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
-export PYENV_ROOT="$HOME/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
+if [ -d "$HOME/.pyenv" ]
+then
+    export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
+    export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PATH:$PYENV_ROOT/bin"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
