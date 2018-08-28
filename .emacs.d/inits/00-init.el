@@ -56,4 +56,7 @@
 (use-package w3m
   :defer t)
 
+(use-package sequential-command
+  :defer t)
+
 ;;; 00-init.el ends here
