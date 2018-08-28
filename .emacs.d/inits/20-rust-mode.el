@@ -1,7 +1,4 @@
-;; cargo-minor-mode
 ;; Cargo Minor mode.
-;; Provides a number of key combinations and functions for managing Cargo.
-;; Current supported Cargo Key Combinations:
 ;;  * C-c C-c C-e - cargo-process-bench
 ;;  * C-c C-c C-b - cargo-process-build
 ;;  * C-c C-c C-l - cargo-process-clean
@@ -25,17 +22,27 @@
   :ensure t
   :defer t
   :init
+  (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
   (add-hook 'rustic-mode-hook
 	    '(lambda ()
 	       (racer-mode t)
 	       (dumb-jump-mode t)
 	       (highlight-symbol-mode t)
 	       (rainbow-delimiters-mode t)
-	       (smartparens-mode t)))
+	       (smartparens-mode t)
+	       (lsp-rust-enable)))
   :mode ("\\.rs$" . rustic-mode)
   :commands (rustic-mode)
   :config
   (use-package lsp-mode
+    :ensure t)
+  (use-package lsp-ui
+    :ensure t)
+  (use-package lsp-rust
+    :ensure t)
+  (use-package dumb-jump
+    :ensure t)
+  (use-package highlight-symbol
     :ensure t))
 
 (use-package cargo
