@@ -1,1 +1,3 @@
-(use-package xclip)
+(use-package xclip
+  :config
+  (xclip-mode))
