@@ -1,1 +1,1 @@
-(xclip-mode)
+(use-package xclip)

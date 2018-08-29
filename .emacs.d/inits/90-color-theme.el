@@ -1,2 +1,5 @@
 ;; color-theme
-(load-theme 'zenburn)
+(use-package zenburn-theme
+  :config
+  (load-theme 'zenburn))
+
