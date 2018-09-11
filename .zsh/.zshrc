@@ -29,6 +29,9 @@ zplug "seebi/dircolors-solarized"
 # zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
 # zplug 'themes/kardan', from:oh-my-zsh
 zplug 'nojhan/liquidprompt'
+# prompt setting
+export LP_PS1_POSTFIX="
+> "
 
 # tools
 zplug "marzocchi/zsh-notify"
