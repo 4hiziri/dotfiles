@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# how is goenv?
-
 wget 'https://dl.google.com/go/go1.10.linux-amd64.tar.gz'
 tar xvf 'go1.10.linux-amd64.tar.gz'
 sudo mv go /usr/local/
