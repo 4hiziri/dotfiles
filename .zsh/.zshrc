@@ -179,8 +179,9 @@ fi
 
 if [ -d "$HOME/.goenv/" ]
 then
-    export PATH="$HOME/.goenv/bin:$PATH"
-    eval "$(goenv init -)"
+    export GOENV_ROOT="$HOME/.goenv"
+    export PATH="$HOME/.goenv/bin:$PATH"    
+    eval "$(goenv init -)"    
 fi
 ### golang ###
 ### rust ###
