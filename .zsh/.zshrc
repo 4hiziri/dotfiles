@@ -176,6 +176,12 @@ then
     export PATH="$PATH:$GOROOT/bin"
     export GOARCH='amd64'
 fi
+
+if [ -d "$HOME/.goenv/" ]
+then
+    export PATH="$HOME/.goenv/bin:$PATH"
+    eval "$(goenv init -)"
+fi
 ### golang ###
 ### rust ###
 if [ -f "$HOME/.cargo/env" ]
