@@ -64,7 +64,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8fdcb0b1ccf9ceeffa763b6f9728b9cc5827fb1be952a19c4bf3ba71dbd3a7f2" "420459d6eeb45aadf5db5fbcc3d6990b65141c104911f7359454fc29fa9d87a0" "190a9882bef28d7e944aa610aa68fe1ee34ecea6127239178c7ac848754992df" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" default)))
+    ("a8c595a70865dae8c97c1c396ae9db1b959e86207d02371bc5168edac06897e6" default)))
  '(init-loader-show-log-after-init (quote error-only))
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
