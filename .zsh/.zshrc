@@ -170,10 +170,8 @@ export VISUAL='emacsclient -nw -a ""'
 ### golang ###
 if [ -d "$HOME/.goenv/" ]
 then
-    export GOPATH="$HOME/.go"
-    export GOROOT='/usr/local/go'
+    export GOPATH="$HOME/.go"    
     export PATH="$PATH:$GOPATH/bin"
-    export PATH="$PATH:$GOROOT/bin"
     export GOARCH='amd64'
 
     export GOENV_ROOT="$HOME/.goenv"
