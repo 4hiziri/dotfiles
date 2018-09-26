@@ -3,6 +3,8 @@
 (add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'slime-repl-mode-hook 'load-lisp-smartparens)
 
+;; FIXME: parens in description breaks slime's syntax checker
+
 (defun load-lisp-smartparens ()
   (require 'smartparens-lisp)
   (turn-on-smartparens-mode))
