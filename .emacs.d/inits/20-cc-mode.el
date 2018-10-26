@@ -1,3 +1,14 @@
+(use-package irony
+  :defer t
+  :init
+  (add-to-list 'company-backends 'company-irony)
+  :config
+  (flycheck-irony-setup)
+  (setq irony-additional-clang-options '("-std=c++17"))
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (add-hook 'c-mode-common-hook 'irony-mode))
+
+
 (use-package c-mode
   :straight nil
   :defer t
@@ -10,15 +21,5 @@
   (add-hook 'c-mode-common-hook 'flycheck-mode)
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
   (add-hook 'c-mode-common-hook 'turn-on-smartparens-mode)
+  (add-hook 'c-mode-common-hook 'company-mode)
   (setq flycheck-gcc-language-standard "c++17"))
-
-;; semantic-refactoring
-
-(use-package irony
-  :defer t
-  :config
-  (flycheck-irony-setup)
-  (setq irony-additional-clang-options '("-std=c++17")) 
-  (add-to-list 'company-backends 'company-irony)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (add-hook 'c-mode-common-hook 'irony-mode))
