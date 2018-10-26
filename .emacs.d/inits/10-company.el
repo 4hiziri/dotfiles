@@ -1,5 +1,4 @@
-(use-package company-statistics
-  :defer t)
+(use-package company-statistics)
 
 (use-package company
   :defer t
