@@ -349,6 +349,10 @@ then
     export LD_LIBRARY_PATH=:"/usr/local/cuda/targets/x86_64-linux/lib"
 fi
 
+### gdb ###
+alias pwndbg='gdb -ex init-pwndbg'
+alias peda='gdb -ex init-peda'
+
 ### command ###
 function ej() {
     grep "$*" /usr/share/dict/dict -E -A 1 -wi --color=always | less -R -FX

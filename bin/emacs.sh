@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get -y install gcc make ncurses-dev libxml2-dev libgif-dev libxpm-dev gnutls-bin libjpeg-dev libtiff-dev libpng-dev libacl1-dev
+sudo apt-get -y install gcc make ncurses-dev libxml2-dev libgif-dev libxpm-dev libgnutls-dev gnutls-bin libjpeg-dev libtiff-dev libpng-dev libacl1-dev
 
 cd
 mkdir 'src' 2>&1 > /dev/null
