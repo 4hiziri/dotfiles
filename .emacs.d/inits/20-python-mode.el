@@ -9,7 +9,7 @@
 
 (use-package elpy
   :after python
-  :init  
+  :init
   (add-hook 'python-mode-hook 'jedi:setup)
   ;; (add-hook 'python-mode-hook (hs-minor-mode))
   (add-hook 'python-mode-hook 'turn-on-smartparens-mode)
