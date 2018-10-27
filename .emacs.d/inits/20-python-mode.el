@@ -27,12 +27,12 @@
   (define-key python-mode-map "\C-ct" 'jedi:goto-definition)
   (define-key python-mode-map "\C-cb" 'jedi:goto-definition-pop-marker)
   (define-key python-mode-map "\C-cr" 'helm-jedi-related-names)
-  
+
   ;; python-shell
   (setq python-shell-interpreter "ipython")
   (setq python-shell-interpreter-args "--simple")
   (setq python-shell-completion-native-enable nil)
-  
+
   (smartrep-define-key elpy-mode-map "C-c"
     '(("C-n" . flycheck-next-error)
       ("C-p" . flycheck-previous-error))))

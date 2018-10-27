@@ -17,16 +17,16 @@
   (add-hook 'slime-mood-hook 'rainbow-delimiters-mode 'ansi-color-for-comint-mode-on)
   (setq inferior-lisp-program "ros -L sbcl -Q run") ; your Lisp system
   :config
-  ;; smartparens  
+  ;; smartparens
   (load-lisp-smartparens)
-  
+
   ;; slime-repl-ansi-color must be installed from https://github.com/enriquefernandez/slime-repl-ansi-color
   ;; or use slime-repl-ansi-color.sh
   (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation slime-repl-ansi-color slime-company))
 
   ;; toggle
   (hs-minor-mode 1)
-  
+
   ;; encode
   (setq slime-net-coding-system 'utf-8-unix)
 
@@ -72,7 +72,7 @@
 
 ;; reference
 ;; C-c C-d h
-(use-package hyperspec  
+(use-package hyperspec
   :defer t
   :init
   (setq common-lisp-hyperspec-root (concat "file://" (expand-file-name "/usr/share/doc/hyperspec/"))
@@ -87,37 +87,37 @@
 ;;   :after slime
 ;;   :config
 ;;   (setq common-lisp-hyperspec-root         (expand-file-name "/usr/share/doc/hyperspec/")
-;; 	common-lisp-hyperspec-symbol-table (expand-file-name "/usr/share/doc/hyperspec/Data/Map_Sym.txt"))
+;;	common-lisp-hyperspec-symbol-table (expand-file-name "/usr/share/doc/hyperspec/Data/Map_Sym.txt"))
 ;;   (defun common-lisp-hyperspec (symbol-name)
 ;;     (interactive (list (common-lisp-hyperspec-read-symbol-name)))
 ;;     (let ((name (common-lisp-hyperspec--strip-cl-package
-;; 		 (downcase symbol-name))))
+;;		 (downcase symbol-name))))
 ;;       (cl-maplist (lambda (entry)
-;; 		    (eww-open-file (concat common-lisp-hyperspec-root "Body/"
-;; 					   (car entry)))
-;; 		    (when (cdr entry)
-;; 		      (sleep-for 1.5)))
-;; 		  (or (common-lisp-hyperspec--find name)
-;; 		      (error "The symbol `%s' is not defined in Common Lisp"
-;; 			     symbol-name)))))
+;;		    (eww-open-file (concat common-lisp-hyperspec-root "Body/"
+;;					   (car entry)))
+;;		    (when (cdr entry)
+;;		      (sleep-for 1.5)))
+;;		  (or (common-lisp-hyperspec--find name)
+;;		      (error "The symbol `%s' is not defined in Common Lisp"
+;;			     symbol-name)))))
 ;;   (defun common-lisp-hyperspec-lookup-reader-macro (macro)
 ;;     (interactive
 ;;      (list
 ;;       (let ((completion-ignore-case t))
-;; 	(completing-read "Look up reader-macro: "
-;; 			 common-lisp-hyperspec--reader-macros nil t
-;; 			 (common-lisp-hyperspec-reader-macro-at-point)))))
+;;	(completing-read "Look up reader-macro: "
+;;			 common-lisp-hyperspec--reader-macros nil t
+;;			 (common-lisp-hyperspec-reader-macro-at-point)))))
 ;;     (eww-open-file
 ;;      (concat common-lisp-hyperspec-root "Body/"
-;; 	     (gethash macro common-lisp-hyperspec--reader-macros))))
+;;	     (gethash macro common-lisp-hyperspec--reader-macros))))
 ;;   (defun common-lisp-hyperspec-format (character-name)
 ;;     (interactive (list (common-lisp-hyperspec--read-format-character)))
 ;;     (cl-maplist (lambda (entry)
-;; 		  (eww-open-file (common-lisp-hyperspec-section (car entry))))
-;; 		(or (gethash character-name
-;; 			     common-lisp-hyperspec--format-characters)
-;; 		    (error "The symbol `%s' is not defined in Common Lisp"
-;; 			   character-name))))
+;;		  (eww-open-file (common-lisp-hyperspec-section (car entry))))
+;;		(or (gethash character-name
+;;			     common-lisp-hyperspec--format-characters)
+;;		    (error "The symbol `%s' is not defined in Common Lisp"
+;;			   character-name))))
 ;;   (defadvice common-lisp-hyperspec (around common-lisp-hyperspec-around activate)
 ;;     (let ((buf (current-buffer)))
 ;;       ad-do-it
