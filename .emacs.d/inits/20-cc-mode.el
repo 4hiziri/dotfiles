@@ -1,3 +1,6 @@
+(use-package flycheck-irony
+  :defer t)
+
 (use-package irony
   :defer t
   :init
