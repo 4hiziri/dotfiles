@@ -1,10 +1,7 @@
-(use-package company-statistics)
-
 (use-package company
   :defer t
   :init
-  (global-company-mode 1)
-  (setq company-transformers '(company-sort-by-statistics))
+  (global-company-mode 1)  
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 2)
@@ -32,7 +29,10 @@
 	  (company-complete-selection)
 	(company--insert-candidate2 company-common))))
 
-  (define-key company-active-map [tab] 'company-complete-common2))
+  (define-key company-active-map [tab] 'company-complete-common2)
+  (use-package company-statistics
+    :config
+    (company-statistics-mode)))
 
 ;; M-n 次の候補選択
 ;; M-p 前の候補選択
