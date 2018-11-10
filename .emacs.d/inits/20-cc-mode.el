@@ -26,7 +26,7 @@
 				  (c-set-style "gnu")
 				  (bind-key "C-c c" 'compile c-mode-map)
 				  (bind-key "C-c d" 'gdb c-mode-map)
-				  (bind-key "M-." 'helm-ngtags-dwim c-mode-map)
+				  (bind-key "M-." 'helm-gtags-dwim c-mode-map)
 				  (bind-key "M-s" 'helm-gtags-show-stack c-mode-map)
 				  (bind-key "M-p" 'helm-gtags-previous-history c-mode-map)
 				  (bind-key "M-n" 'helm-gtags-next-history c-mode-map)
