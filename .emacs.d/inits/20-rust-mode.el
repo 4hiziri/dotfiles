@@ -18,32 +18,48 @@
 ;;  * C-c C-c C-k - cargo-process-check
 ;;  * C-c C-c C-K - cargo-process-clippy
 
+(use-package lsp-mode
+  :ensure t
+  :config
+  (use-package lsp-ui
+	:ensure t)
+  (unless (fboundp 'lsp-rust-enable)
+	(defun lsp-rust-enable ()
+	  (require 'lsp-clients)
+	  ;; We don't realy need lsp-rust-rls-command for now, but we will support it
+	  (when (boundp 'lsp-rust-rls-command)
+		(lsp-register-client
+		 (make-lsp-client :new-connection (lsp-stdio-connection lsp-rust-rls-command)
+						  :major-modes '(rust-mode)
+						  :server-id 'rls
+						  :notification-handlers (lsp-ht ("window/progress" 'lsp-clients--rust-window-progress)))))
+	  (lsp))))
+
 (use-package rustic
   :ensure t
   :defer t
   :init
   (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
+  (setenv "RUST_BACKTRACE" "full")
+  (setenv "RUST_LOG" "rls::=debug")
   (add-hook 'rustic-mode-hook
-	    '(lambda ()
-	       (racer-mode t)
-	       (dumb-jump-mode t)
-	       (highlight-symbol-mode t)
-	       (rainbow-delimiters-mode t)
-	       (smartparens-mode t)
-	       (lsp-rust-enable)))
+			'(lambda ()
+			   (racer-mode t)
+			   (dumb-jump-mode t)
+			   (highlight-symbol-mode t)
+			   (rainbow-delimiters-mode t)
+			   (message "test")
+			   (smartparens-mode t)
+			   (lsp-rust-enable)))
   :mode ("\\.rs$" . rustic-mode)
   :commands (rustic-mode)
   :config
-  (use-package lsp-mode
-    :ensure t)
-  (use-package lsp-ui
-    :ensure t)
   (use-package lsp-rust
-    :ensure t)
+	:ensure t)
   (use-package dumb-jump
-    :ensure t)
+	:ensure t)
   (use-package highlight-symbol
-    :ensure t))
+	:ensure t))
 
 (use-package cargo
   :defer t)
@@ -61,8 +77,8 @@
   :defer t
   :init
   (defun my-conf-company-racer ()
-    (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-    (local-set-key (kbd "C-c <tab>") #'rust-format-buffer))
+	(local-set-key (kbd "TAB") #'company-indent-or-complete-common)
+	(local-set-key (kbd "C-c <tab>") #'rust-format-buffer))
   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
   (setq company-racer-executable "~/.cargo/bin/racer")
 
@@ -85,9 +101,9 @@
 (use-package racer
   :init
   (defun my-conf-racer ()
-    (local-set-key (kbd "M-.") #'racer-find-definition)
-    ;;(local-set-key (kbd "TAB") #'racer-complete-or-indent)
-    )
+	(local-set-key (kbd "M-.") #'racer-find-definition)
+	;;(local-set-key (kbd "TAB") #'racer-complete-or-indent)
+	)
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (add-hook 'rust-mode-hook 'my-conf-racer))
@@ -97,7 +113,7 @@
 (use-package flycheck-rust
   :init
   (defun my-conf-flycheck-rust ()
-    (setq flycheck-checker 'cargo))
+	(setq flycheck-checker 'cargo))
   (add-hook 'rust-mode-hook 'my-conf-flycheck-rust)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
