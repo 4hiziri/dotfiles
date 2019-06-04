@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install libgmp-dev libz-devv libbz2-dev libpcap-dev
+sudo apt install libgmp-dev libz-dev libbz2-dev libpcap-dev
 
 cd
 mkdir src 2> /dev/null
