@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp -f "$HOME/dotfiles/uim/custom-ja-rk-rule.scm" "$HOME/.uim.d/customs/"
+sudo apt install uim-xim uim-skk uim-pref-gtk3
