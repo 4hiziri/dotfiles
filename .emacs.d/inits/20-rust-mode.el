@@ -18,23 +18,6 @@
 ;;  * C-c C-c C-k - cargo-process-check
 ;;  * C-c C-c C-K - cargo-process-clippy
 
-(use-package lsp-mode
-  :ensure t
-  :config
-  (use-package lsp-ui
-	:ensure t)
-  (unless (fboundp 'lsp-rust-enable)
-	(defun lsp-rust-enable ()
-	  (require 'lsp-clients)
-	  ;; We don't realy need lsp-rust-rls-command for now, but we will support it
-	  (when (boundp 'lsp-rust-rls-command)
-		(lsp-register-client
-		 (make-lsp-client :new-connection (lsp-stdio-connection lsp-rust-rls-command)
-						  :major-modes '(rust-mode)
-						  :server-id 'rls
-						  :notification-handlers (lsp-ht ("window/progress" 'lsp-clients--rust-window-progress)))))
-	  (lsp))))
-
 (use-package rustic
   :ensure t
   :defer t
@@ -53,9 +36,7 @@
 			   (lsp-rust-enable)))
   :mode ("\\.rs$" . rustic-mode)
   :commands (rustic-mode)
-  :config
-  (use-package lsp-rust
-	:ensure t)
+  :config  
   (use-package dumb-jump
 	:ensure t)
   (use-package highlight-symbol
