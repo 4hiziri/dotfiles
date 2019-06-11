@@ -5,7 +5,7 @@ cd "$HOME/dotfiles/bin"
 
 . "$HOME/.cargo/env"
 rustup install nightly
-rustup component add rust-src rust-analysis rls-preview --toolchain=nightly
+rustup component add rust-src rust-analysis rls --toolchain=nightly
 
 rustup completions fish > ~/.config/fish/completions/rustup.fish # for fish
 
