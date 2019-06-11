@@ -1,6 +1,3 @@
-;; memo pip install flake8 importmagic yapf autopep8 ipdb ipython
-;; check hacking?
-
 (use-package python
   :defer t
   :mode ("\\.py\\'" . python-mode))
@@ -35,7 +32,11 @@
 
   (smartrep-define-key elpy-mode-map "C-c"
     '(("C-n" . flycheck-next-error)
-      ("C-p" . flycheck-previous-error))))
+      ("C-p" . flycheck-previous-error)))
+
+  ;; activate elpy env
+  (defvar venv-default ".emacs.d-55Ly9wqG")
+  (pyvenv-workon venv-default))
 
 ;; jedi
 (use-package jedi-core
