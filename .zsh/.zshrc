@@ -272,9 +272,9 @@ fi
 ### pyenv ###
 if [ -d "$HOME/.pyenv" ]
 then
-    export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
+    # export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
     export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PATH:$PYENV_ROOT/bin"
+    export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
@@ -378,3 +378,17 @@ function man() {
 export NVM_DIR="/home/tkgsy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 ###
+
+### Tramp ###
+case "$TERM" in
+	"dumb")
+        PS1="> "
+        ;;
+    xterm*|rxvt*|eterm*|screen*)
+        PS1="my fancy multi-line \n prompt > "
+        ;;
+    *)
+        PS1="> "
+        ;;
+esac
+### Tramp ###
