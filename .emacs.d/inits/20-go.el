@@ -1,9 +1,14 @@
 ;; Goのパスを通す
-(add-to-list 'exec-path (cl-concatenate 'string
-					   (string-trim-right
-					    (shell-command-to-string "go env GOROOT"))
-					   "/bin"))
-(add-to-list 'exec-path (expand-file-name "/home/tkgsy/.go/bin"))
+(when (file-exists-p "/usr/local/bin")
+  (add-to-list 'exec-path
+			   (cl-concatenate 'string
+							   (string-trim-right
+								(shell-command-to-string "go env GOROOT"))
+					   "/bin")))
+
+(when (file-exists-p (expand-file-name "$HOME/.go/bin"))
+  (add-to-list 'exec-path (expand-file-name )))
+
 
 ;; 必要なパッケージのロード
 (use-package company-go
