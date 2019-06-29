@@ -199,12 +199,15 @@ then
 fi
 ### global ###
 ### tex ###
-if [ -d "/usr/local/texlive/2018/bin/x86_64-linux" ]
-then
-    export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-linux"
-elif [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
+if [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
 then
     export PATH="$PATH:/usr/local/texlive/2017/bin/x86_64-linux"
+elif [ -d "/usr/local/texlive/2018/bin/x86_64-linux" ]
+then
+	 export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-linux"
+elif [ -d "/usr/local/texlive/2019/bin/x86_64-linux" ]
+then
+	 export PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 fi
 ### tex ###
 ### z ###
