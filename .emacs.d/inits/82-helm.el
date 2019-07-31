@@ -83,3 +83,6 @@
 
 (use-package helm-flycheck
   :defer t)
+
+(use-package helm-swoop
+  :defer t)
