@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VER='1.23.1'
+VER='1.25.0'
 
 sudo curl -L "https://github.com/docker/compose/releases/download/${VER}/docker-compose-$(uname -s)-$(uname -m)" -o '/usr/local/bin/docker-compose'
 
