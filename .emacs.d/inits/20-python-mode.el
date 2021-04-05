@@ -35,8 +35,13 @@
       ("C-p" . flycheck-previous-error)))
 
   ;; activate elpy env
-  (defvar venv-default ".emacs.d-55Ly9wqG")
-  (pyvenv-workon venv-default))
+  (defvar venv-default "~/.emacs.d/.venv")
+  (pyvenv-activate venv-default)
+  (setq elpy-rpc-python-command "python3")
+  )
+
+(use-package company-jedi
+  :defer t)
 
 ;; jedi
 (use-package jedi-core

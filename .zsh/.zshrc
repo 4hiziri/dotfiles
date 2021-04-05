@@ -1,3 +1,6 @@
+### for emacs ###
+# [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 ### OS ###
 [ -f $ZDOTDIR/.zshrc-`uname` ] && . $ZDOTDIR/.zshrc-`uname`
 
@@ -199,7 +202,14 @@ then
 fi
 ### global ###
 ### tex ###
-if [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
+if [ -d "/usr/local/texlive/2019/bin/x86_64-linux" ]
+then
+    export PATH="/usr/local/texlive/2019/bin/x86_64-linux:$PATH"
+elif [ -d "/usr/local/texlive/2018/bin/x86_64-linux" ]
+then
+    export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-linux"
+elif [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
+
 then
     export PATH="$PATH:/usr/local/texlive/2017/bin/x86_64-linux"
 elif [ -d "/usr/local/texlive/2018/bin/x86_64-linux" ]
@@ -275,6 +285,9 @@ then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
 
 # virtualenv setting
 export PYENV_VIRTUALENV_DISABLE_PROMPT=0
