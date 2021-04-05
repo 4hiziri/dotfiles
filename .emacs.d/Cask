@@ -121,3 +121,4 @@
 (depends-on "yatemplate")
 (depends-on "yatex")
 (depends-on "zenburn-theme")
+(depends-on "php-mode")
