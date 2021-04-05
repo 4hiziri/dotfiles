@@ -1,3 +1,8 @@
+;; stack install hlint # linter
+;; stack install stylish-haskell # formatter
+(use-package intero
+  :defer t)
+
 (use-package haskell-mode
   :defer t
   :init
@@ -8,12 +13,13 @@
   (add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
   (add-hook 'haskell-mode-hook 'font-lock-mode)
   (add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
-  ;; (setq haskell-program-name "/usr/local/bin/stack ghci") 
-  (add-hook 'haskell-mode-hook 'inferior-haskell-mode)
+  (setq haskell-program-name "/usr/local/bin/stack ghci")
   ;; (setq haskell-process-type "stack-ghci")
   ;; (setq haskell-process-path-ghci "stack")
   ;; (setq haskell-process-args-ghci "ghci")
   ;; (setq haskell-process-args-ghci nil)
+  ;; :config
+  ;; (add-hook 'haskell-mode-hook 'inferior-haskell-mode)
   )
 
 ;; (add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
