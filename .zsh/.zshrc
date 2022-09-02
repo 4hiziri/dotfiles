@@ -182,13 +182,13 @@ then
     source "$HOME/.cargo/env"
 elif [ -e "$HOME/.cargo/" ]
 then
-     export PATH="$PATH:$HOME/.cargo/bin"
+     export PATH="$PATH:$HOME/.cargo/bin/"
 fi
 ### rust ###
 ### haskell ###
 if [ -d "$HOME/.local/bin" ]
 then
-    export PATH="$PATH:$HOME/.local/bin"
+    export PATH="$PATH:$HOME/.local/bin/"
 fi
 ### haskell ###
 ### global ###
@@ -254,7 +254,7 @@ typeset -U path cdpath fpath nmanpath
 ### cask ###
 if [ -d "$HOME/.cask/" ]
 then
-    export PATH="$PATH:$HOME/.cask/bin"
+    export PATH="$PATH:$HOME/.cask/bin/"
     if [ -e '/usr/local/bin/emacs' ]
     then
 	export EMACS='/usr/local/bin/emacs'
@@ -266,13 +266,13 @@ fi
 ### cask ###
 
 ### local/lib ###
-export PATH="$PATH:/usr/local/lib"
+export PATH="$PATH:/usr/local/lib/"
 ### local/lib ###
 
 ### .local/bin ###
 if [ -d "$PATH:$HOME/.local/bin" ]
 then
-    export PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.local/bin/:$PATH"
 fi
 ### .local/bin ###
 ### pyenv ###
@@ -280,7 +280,7 @@ if [ -d "$HOME/.pyenv" ]
 then
     # export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
     export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    export PATH="$PYENV_ROOT/bin/:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
@@ -307,7 +307,7 @@ compctl -K _pip_completion pip
 ### ruby ###
 if [ -d "$HOME/.rbenv/" ]
 then
-   export PATH="$PATH:$HOME/.rbenv/bin"
+   export PATH="$PATH:$HOME/.rbenv/bin/"
    eval "$(rbenv init -)"
 fi
 ### ruby ###
@@ -315,7 +315,7 @@ fi
 ### roswell ###
 if [ -d "$HOME/.roswell/bin/" ]
 then
-    export PATH="$PATH:$HOME/.roswell/bin"
+    export PATH="$PATH:$HOME/.roswell/bin/"
 fi
 
 #########################################
@@ -325,7 +325,7 @@ fi
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]
 then
     export TERM='xterm-256color'
-    export PATH="$PATH:$HOME/.local/bin"
+    export PATH="$PATH:$HOME/.local/bin/"
     powerline-daemon -q
     source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
@@ -352,7 +352,7 @@ bindkey '^r' peco-select-history
 ### CUDA ###
 if [ -e "/usr/local/cuda/" ]
 then
-    export PATH="$PATH:/usr/local/cuda/bin"
+    export PATH="$PATH:/usr/local/cuda/bin/"
     export LD_LIBRARY_PATH=:"/usr/local/cuda/lib64"
     export PATH="$PATH:/usr/local/cuda/targets/x86_64-linux/include"
     export LD_LIBRARY_PATH=:"/usr/local/cuda/targets/x86_64-linux/lib"
@@ -401,3 +401,7 @@ case "$TERM" in
         ;;
 esac
 ### Tramp ###
+
+### john ###
+export PATH="$PATH:$HOME/src/JohnTheRipper/run/"
+alias john="$HOME/src/JohnTheRipper/run/john"
