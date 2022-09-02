@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VER="1.12.6"
+VER="1.16.3"
 
 cd "$HOME/src/"
 
