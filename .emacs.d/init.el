@@ -1,4 +1,16 @@
-(global-set-key (kbd "C-x C-c") 'server-edit)
+;;; init.el --- emacs init
+;;; Commentary:
+;;; init.el
+;;; Code:
+
+(add-hook 'server-switch-hook
+          (lambda ()
+            (when (current-local-map)
+              (use-local-map (copy-keymap (current-local-map))))
+			(when server-buffer-clients
+			  (local-set-key (kbd "C-x C-c") 'server-edit))))
+;; (global-set-key (kbd "C-x C-c") 'server-edit)
+
 ;; M-x edit kill emacs server
 (defalias 'exit 'save-buffers-kill-emacs)
 
@@ -38,12 +50,15 @@
   (package-initialize))
 
 ;; straight.elのインストールと初期設定
-(let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
-      (bootstrap-version 3))
+(defvar bootstrap-version)
+(defvar comp-deferred-compilation-deny-list ())
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
         (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
          'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
@@ -64,7 +79,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("2116ed2bb7af1ff05bef1d9caf654ae2820088c86d50c83cd8f90bf83ce0cbcc" "ef0d2cd0b5ecebd6794a2012ffa08393e536b33e3e377ac2930bf5d7304dcb21" "63e6337545edc4f404ea04a756d369e36e9974b5e7b85cce7cbc246552647516" "420459d6eeb45aadf5db5fbcc3d6990b65141c104911f7359454fc29fa9d87a0" "a8c595a70865dae8c97c1c396ae9db1b959e86207d02371bc5168edac06897e6" default)))
+	("ea5822c1b2fb8bb6194a7ee61af3fe2cc7e2c7bab272cbb498a0234984e1b2d9" "2116ed2bb7af1ff05bef1d9caf654ae2820088c86d50c83cd8f90bf83ce0cbcc" "ef0d2cd0b5ecebd6794a2012ffa08393e536b33e3e377ac2930bf5d7304dcb21" "63e6337545edc4f404ea04a756d369e36e9974b5e7b85cce7cbc246552647516" "420459d6eeb45aadf5db5fbcc3d6990b65141c104911f7359454fc29fa9d87a0" "a8c595a70865dae8c97c1c396ae9db1b959e86207d02371bc5168edac06897e6" default)))
  '(init-loader-show-log-after-init (quote error-only))
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
