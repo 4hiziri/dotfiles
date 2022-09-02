@@ -1,3 +1,5 @@
+;;; rust-mode --- rust mode
+;;; Commentary:
 ;; Cargo Minor mode.
 ;;  * C-c C-c C-e - cargo-process-bench
 ;;  * C-c C-c C-b - cargo-process-build
@@ -17,6 +19,7 @@
 ;;  * C-c C-c C-m - cargo-process-fmt
 ;;  * C-c C-c C-k - cargo-process-check
 ;;  * C-c C-c C-K - cargo-process-clippy
+;;; Code:
 
 (use-package rustic
   :ensure t
@@ -26,17 +29,17 @@
   (setenv "RUST_BACKTRACE" "full")
   (setenv "RUST_LOG" "rls::=debug")
   (add-hook 'rustic-mode-hook
-			'(lambda ()
-			   (racer-mode t)
-			   (dumb-jump-mode t)
-			   (highlight-symbol-mode t)
-			   (rainbow-delimiters-mode t)
-			   (message "test")
-			   (smartparens-mode t)
-			   (lsp-rust-enable)))
+			(lambda ()
+			  (racer-mode t)
+			  (dumb-jump-mode t)
+			  (highlight-symbol-mode t)
+			  (rainbow-delimiters-mode t)
+			  (message "test")
+			  (smartparens-mode t)
+			  (lsp-rust-enable)))
   :mode ("\\.rs$" . rustic-mode)
   :commands (rustic-mode)
-  :config  
+  :config
   (use-package dumb-jump
 	:ensure t)
   (use-package highlight-symbol
