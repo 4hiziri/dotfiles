@@ -9,7 +9,6 @@
               (use-local-map (copy-keymap (current-local-map))))
 			(when server-buffer-clients
 			  (local-set-key (kbd "C-x C-c") 'server-edit))))
-;; (global-set-key (kbd "C-x C-c") 'server-edit)
 
 ;; M-x edit kill emacs server
 (defalias 'exit 'save-buffers-kill-emacs)
