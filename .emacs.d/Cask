@@ -93,8 +93,8 @@
 (depends-on "racer")
 (depends-on "rainbow-delimiters")
 (depends-on "recentf-ext")
-(depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
-(depends-on "ruby-block" :git "https://github.com/adolfosousa/ruby-block.el")
+;; (depends-on "rocket-chat" :git "https://github.com/4hiziri/rocket-chat")
+;; (depends-on "ruby-block") ;; use instead https://h3poteto.hatenablog.com/entry/2015/04/13/015651
 (depends-on "ruby-electric")
 (depends-on "rust-mode")
 (depends-on "s")
