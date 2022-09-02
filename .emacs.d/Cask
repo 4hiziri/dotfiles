@@ -18,7 +18,7 @@
 (depends-on "ccc")
 (depends-on "cdb")
 (depends-on "cider")
-(depends-on "clojure-cheatsheet")
+;; (depends-on "clojure-cheatsheet") ;; deprecated, integrated to helm-cider
 (depends-on "clojure-mode")
 (depends-on "company")
 (depends-on "company-go")
@@ -35,7 +35,7 @@
 (depends-on "drag-stuff")
 (depends-on "elpy")
 (depends-on "enh-ruby-mode")
-(depends-on "ensime")
+;; (depends-on "ensime") ;; this package is made 12 years ago
 (depends-on "epc")
 (depends-on "epl")
 (depends-on "exec-path-from-shell")
@@ -122,3 +122,4 @@
 (depends-on "yatex")
 (depends-on "zenburn-theme")
 (depends-on "php-mode")
+(depends-on "tab-line")
