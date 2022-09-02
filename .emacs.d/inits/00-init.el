@@ -1,15 +1,18 @@
 ;;; 00-init.el -- Summary
 ;;; Commentary:
 ;; still undivided settings
-
 ;;; Code:
 
 ;; ミニバッファに時計を表示
 (setq display-time-string-forms
- '((format "%s/%s(%s)%s:%s"
-		 month day dayname
-		 24-hours minutes
-   )))
+	  '((format "%04d/%02d/%02d(%s) %02d:%02d"
+				(string-to-number year)
+				(string-to-number month)
+				(string-to-number day)
+				dayname
+				(string-to-number 24-hours)
+				(string-to-number minutes)
+				)))
 (display-time)
 
 ;; 対応する括弧を強調表示
@@ -17,9 +20,9 @@
 
 ;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
 (add-to-list 'backup-directory-alist
-             (cons ".*" "~/.emacs.d/backups/"))
+			 (cons ".*" "~/.emacs.d/backups/"))
 (setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
+	  `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 ;;dtwをdelete-trailing-whitespaceのエイリアスにする
 (defalias 'dtw 'delete-trailing-whitespace)
