@@ -1,8 +1,8 @@
-;; slime
-(add-hook 'lisp-interacton-mode-hook 'turn-on-smartparens-strict-mode)
-(add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
-(add-hook 'slime-repl-mode-hook 'load-lisp-smartparens)
+;;; slime --- lisp conf
+;;; Commentary:
+;;; Code:
 
+;; slime
 ;; FIXME: parens in description breaks slime's syntax checker
 
 (defun load-lisp-smartparens ()
@@ -14,6 +14,9 @@
 (use-package slime
   :defer t
   :init
+  (add-hook 'lisp-interacton-mode-hook 'turn-on-smartparens-strict-mode)
+  (add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
+  (add-hook 'slime-repl-mode-hook 'load-lisp-smartparens)
   (add-hook 'slime-mood-hook 'rainbow-delimiters-mode 'ansi-color-for-comint-mode-on)
   (setq inferior-lisp-program "ros -L sbcl -Q run") ; your Lisp system
   :config
@@ -133,3 +136,5 @@
 ;;       ad-do-it
 ;;       (switch-to-buffer buf)
 ;;       (pop-to-buffer "*eww*"))))
+
+;;; 20-slime.el ends here

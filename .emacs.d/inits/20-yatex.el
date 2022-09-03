@@ -1,10 +1,11 @@
-;;; YaTeX
-
+;;; YaTeX --- yatex conf
+;;; Commentary
 ;;; Code:
 
 ;; yatex-mode の起動
 (use-package yatex
-  :mode ("\\.tex$" . yatex-mode)
+  :disabled t
+  :mode ("\\.tex\\'" . yatex-mode)
   :init
   (setq YaTeX-kanji-code nil))
 
@@ -14,3 +15,5 @@
 ;; 2: ISO-2022-JP (other default)
 ;; 3: EUC
 ;; 4: UTF-8
+
+;;; 20-yatex.el ends here

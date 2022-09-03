@@ -1,3 +1,9 @@
+;;; migemo --- migemo conf
+;;; Commentary:
+;; TODO: research
+;; TODO: integrate moccur
+;;; Code:
+
 ;;migemo
 (use-package migemo
   :if (executable-find "cmigemo")
@@ -10,4 +16,4 @@
   (setq migemo-regex-dictionary nil)
   (migemo-init))
 
-;;;
+;;; 80-migemo.el ends here

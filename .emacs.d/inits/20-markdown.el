@@ -1,17 +1,17 @@
-;;; 20-markdown.el --- markdown                      -*- lexical-binding: t; -*-
+;;; 20-markdown.el --- markdown
+;;; Commentary:
+;; :TODO check
+;;; Code:
 
-;; Copyright (C) 2017  tkgsy
+(use-package w3m
+  :defer t)
 
-;; Author: tkgsy <tkgsy@GoldenBat>
-;; Keywords:
+(use-package markdown-mode
+  :defer t
+  :mode ("\\.md\\'" . markdown-mode)
+  :bind (:map markdown-mode-map
+			  ("C-c C-c m" . (lambda ()
+							   (interactive)
+							   (w3m-find-file (buffer-file-name))))))
 
-(use-package w3m)
-(use-package markdown-mode)
-
-(define-key markdown-mode-map "\C-c\C-cm"
-    (lambda ()
-      (interactive)
-      (w3m-find-file (buffer-file-name))))
-
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
+;;; 20-markdown.el ends here

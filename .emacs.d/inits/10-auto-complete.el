@@ -1,6 +1,5 @@
 ;;; 10-auto-complete -- Summary
 ;;; Commentary:
-;; P130-131 利用可能にする
 
 ;;; Code:
 (use-package auto-complete
@@ -10,4 +9,5 @@
   ;; auto-completeのポップアップメニューでC-n/C-pが使えるようにする
   (setq ac-use-menu-map t)
   (put 'pwd 'disabled t))
+
 ;;; 10-auto-complete.el ends here

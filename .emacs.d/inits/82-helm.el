@@ -1,16 +1,36 @@
-;;helm
+;;; helm --- helm
+;;; Commentary
+;; TODO: usage
+;;; Code:
+
 (use-package helm
-  :init
-  (bind-key "C-c C-y" 'helm-show-kill-ring)
-  (bind-key "C-x C-b" 'helm-for-files)
-  (bind-key "M-x" 'helm-M-x)
-  (bind-key "M-f" 'helm-recentf)
-  (bind-key "M-y" 'helm-show-kill-ring)
-  (bind-key "C-c i" 'helm-imenu)
-  (bind-key "C-x b" 'helm-buffers-list)
-  (bind-key "C-x C-f" 'helm-find-files)
-  (bind-key "C-c C-b" 'helm-descbinds global-map)
-  (bind-key "C-c C-s" 'helm-do-ag global-map)
+  ;; :init
+  ;; (bind-key "C-c C-y" 'helm-show-kill-ring)
+  ;; (bind-key "C-x C-b" 'helm-for-files)
+  ;; (bind-key "M-x" 'helm-M-x)
+  ;; (bind-key "M-f" 'helm-recentf)
+  ;; (bind-key "M-y" 'helm-show-kill-ring)
+  ;; (bind-key "C-c i" 'helm-imenu)
+  ;; (bind-key "C-x b" 'helm-buffers-list)
+  ;; (bind-key "C-x C-f" 'helm-find-files)
+  ;; (bind-key "C-c C-b" 'helm-descbinds global-map)
+  ;; (bind-key "C-c C-s" 'helm-do-ag global-map)
+  ;; (bind-key "TAB" 'helm-execute-persistent-action helm-find-files-map)
+  ;; (bind-key "TAB" 'helm-execute-persistent-action helm-read-file-map)
+  :bind (("C-c C-y" . helm-show-kill-ring)
+		 ("C-x C-b" . helm-for-files)
+		 ("M-x" . helm-M-x)
+		 ("M-y" . helm-show-kill-ring)
+		 ("C-c i" . helm-imenu)
+		 ("C-x b" . helm-buffers-list)
+		 ("C-x C-f" . helm-find-files)
+		 :map global-map
+		 ("C-c C-b" . helm-descbinds)
+		 ("C-c C-s" . 'helm-do-ag)
+		 :map helm-find-files-map
+		 ("TAB" . helm-execute-persistent-action)
+		 :map helm-read-file-map
+		 ("TAB" . helm-execute-persistent-action))
   :config
   (helm-mode 1)
   ;; (helm-migemo-mode 1)
@@ -36,9 +56,7 @@
 			;; '^' is a pattern for basename
 			;; and not required because the directory name is prepended
 			(substring input-pattern 1)
-		      (concat ".*" input-pattern))))))
-  (bind-key "TAB" 'helm-execute-persistent-action helm-find-files-map)
-  (bind-key "TAB" 'helm-execute-persistent-action helm-read-file-map))
+		      (concat ".*" input-pattern)))))))
 
 ;;helm-auto-complete
 ;; (use-package ac-helm
@@ -51,10 +69,13 @@
 
 (use-package helm-company
   :defer t
-  :init
-  ;; :TODO
-  (bind-key "C-:" 'helm-company company-mode-map)
-  (bind-key "C-:" 'helm-company company-active-map))
+  ;; :init ; TODO
+  ;; (bind-key "C-:" 'helm-company company-mode-map)
+  ;; (bind-key "C-:" 'helm-company company-active-map)
+  :bind (:map company-mode-map
+			  ("C-:" . helm-company)
+			  :map company-active-map
+			  ("C-:" . helm-company)))
 
 ;;helm-descbinds
 (use-package helm-descbinds
@@ -66,7 +87,7 @@
 (use-package helm-ag
   :defer t
   :bind (("C-c g" . helm-ag)
-	 ("C-c k" . backward-kill-sexp))
+		 ("C-c k" . backward-kill-sexp))
   :config
   ;;; ag以外の検索コマンドも使える
   ;; (setq helm-ag-base-command "grep -rin")
@@ -86,3 +107,5 @@
 
 (use-package helm-swoop
   :defer t)
+
+;;; 82-helm.el ends here
