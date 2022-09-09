@@ -276,20 +276,20 @@ then
 fi
 ### .local/bin ###
 ### pyenv ###
-if [ -d "$HOME/.pyenv" ]
-then
-    # export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin/:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
+# if [ -d "$HOME/.pyenv" ]
+# then
+#     # export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
+#     export PYENV_ROOT="$HOME/.pyenv"
+#     export PATH="$PYENV_ROOT/bin/:$PATH"
+#     eval "$(pyenv init -)"
+#     eval "$(pyenv virtualenv-init -)"
+# fi
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
 
 # virtualenv setting
-export PYENV_VIRTUALENV_DISABLE_PROMPT=0
+# export PYENV_VIRTUALENV_DISABLE_PROMPT=0
 ### pyenv ###
 
 # pip zsh completion start

@@ -6,7 +6,7 @@
 ;; yatex-mode の起動
 (use-package yatex
   :disabled t
-  :mode ("\\.tex$" . yatex-mode)
+  :mode ("\\.tex\\'" . yatex-mode)
   :init
   (setq YaTeX-kanji-code nil))
 

@@ -1,3 +1,6 @@
+;;; clojure-mode --- clojure mode conf
+;;; Commentary:
+;;; Code:
 ;; ;; helm-cider
 
 ;; ;;cider
@@ -34,3 +37,5 @@
 ;;   (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 ;;   :config
 ;;   (add-to-list 'ac-modes 'cider-repl-mode))
+
+;;; 20-clojure.el ends here

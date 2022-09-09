@@ -1,3 +1,7 @@
+;;; scheme --- scheme mode conf
+;;; Commentary:
+;;; Code:
+
 ;; 別のウィンドウに gosh を動作させる
 (defun scheme-other-window ()
   "Run Gauche on other window"
@@ -29,3 +33,4 @@
 ;(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
 ;(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
 
+;;; 20-scheme-mode.el ends here

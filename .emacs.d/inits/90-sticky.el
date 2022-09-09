@@ -1,4 +1,6 @@
-;; (use-package sticky  
+;; TODO: research
+
+;; (use-package sticky
 ;;   :config
 ;; ;  (use-sticky-key )
 ;;   )
