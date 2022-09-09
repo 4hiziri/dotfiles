@@ -1,3 +1,8 @@
+;;; yatemplate ---- template?
+;;; Commentary:
+;; TODO: usage
+;;; Code:
+
 (use-package yatemplate
   :config
   (yatemplate-fill-alist)
@@ -14,3 +19,5 @@
     (when (string-match "emacs.*/templates/" buffer-file-name)
       (yatemplate-fill-alist)))
   (add-hook 'after-save-hook 'after-save-hook--yatemplate))
+
+;;; 81-yatemplate.el ends here

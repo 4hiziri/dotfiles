@@ -1,3 +1,8 @@
+;;; yasnippet --- insert template
+;;; Commentary:
+;; TODO: usage
+;;; Code:
+
 ;; 次の入力項目に飛ぶには、TAB
 ;; :TODO view to template
 (define-key global-map (kbd "C-x i") nil)
@@ -19,6 +24,8 @@
 (use-package helm-c-yasnippet
   :defer t
   :bind (:map global-map
-	      ("C-c y" . helm-yas-complete))
+			  ("C-c y" . helm-yas-complete))
   :config
   (setq helm-yas-space-match-any-greedy t))
+
+;;; 80-yasnippet.el ends here

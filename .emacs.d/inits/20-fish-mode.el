@@ -1,6 +1,13 @@
-(use-package fish-mode
-  :defer t)
+;;; fish-mode --- fish-mode conf
+;;; Commentary:
+;;; Code:
 
-(add-hook 'fish-mode-hook
-	  (lambda ()
-	    (add-hook 'before-save-hook 'fish_indent-before-save)))
+(use-package fish-mode
+  :disabled t
+  :defer t
+  :init
+  (add-hook 'fish-mode-hook
+			(lambda ()
+			  (add-hook 'before-save-hook 'fish_indent-before-save))))
+
+;;; 20-fish-mode.el ends here

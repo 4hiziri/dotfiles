@@ -1,10 +1,9 @@
-;;; 10-auto-install -- Summary
+;;; 10-auto-install -- auto-install config
 ;;; Commentary:
-;;; P113 拡張機能を自動インストール──auto-install
-;; auto-installの設定
-
+;; disabled now
 ;;; Code:
 (use-package auto-install
+  :disabled t ; use single package manager, straight.
   :defer t
   :commands (auto-install-from-url auto-install-from-gist auto-install-from-emacswiki)
   :config

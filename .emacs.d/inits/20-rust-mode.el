@@ -37,7 +37,7 @@
 			  (message "test")
 			  (smartparens-mode t)
 			  (lsp-rust-enable)))
-  :mode ("\\.rs$" . rustic-mode)
+  :mode ("\\.rs\\'" . rustic-mode)
   :commands (rustic-mode)
   :config
   (use-package dumb-jump
@@ -127,3 +127,5 @@
 ;;              (local-set-key (kbd "M-s") 'helm-gtags-show-stack)
 ;;              (local-set-key (kbd "M-p") 'helm-gtags-previous-history)
 ;;              (local-set-key (kbd "M-n") 'helm-gtags-next-history)))
+
+;;; 20-rust-mode.el ends here

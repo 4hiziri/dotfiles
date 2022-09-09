@@ -1,3 +1,8 @@
+;;; google-translate --- translate
+;;; Commentary:
+;; FIXME:
+;;; Code:
+
 (use-package google-translate
   :ensure t
   :init
@@ -28,4 +33,6 @@
        (if asciip "en" "ja")
        (if asciip "ja" "en")
        string)))
-  (global-set-key (kbd "C-c t") 'google-translate-enja-or-jaen))
+  :bind (("C-c t" . google-translate-enja-or-jaen)))
+
+;;; 90-google-translate.el ends here

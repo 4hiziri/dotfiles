@@ -20,8 +20,9 @@
   :defer t
   :init
   (setq default-input-method "japanese-skk")         ;;emacs上での日本語入力にskkをつかう
+  :bind (("C-x j" . skk-auto-fill-mode))
   :config
-  (bind-key "C-x j" 'skk-auto-fill-mode) ;;良い感じに改行を自動入力してくれる機能
+  ; (bind-key "C-x j" 'skk-auto-fill-mode) ;;良い感じに改行を自動入力してくれる機能 -> :bindに移行
   ;; (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
   (setq skk-isearch-start-mode `latin)
   (setq skk-minibuffer-origin-mode `latin)
@@ -110,5 +111,6 @@
 (use-package ansi-color
   :defer t
   :commands (ansi-color-for-comint-mode-on))
-					; (autoload 'ansi-color-for-comint-mode-on)
+;; (autoload 'ansi-color-for-comint-mode-on)
+
 ;;; 02-input.el ends here

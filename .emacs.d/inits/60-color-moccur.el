@@ -1,7 +1,12 @@
+;;; color-moccur --- color-moccur conf
+;;; Commentary:
+;; TODO: researt
+;;; Code:
+
 ;; color-moccurの設定
 (use-package color-moccur
   :defer t
-  :bind (("M-o" . occur-by-moccur)) 
+  :bind (("M-o" . occur-by-moccur))
   :config
   ;; スペース区切りでAND検索
   (setq moccur-split-word t)
@@ -11,3 +16,5 @@
   (when (and (executable-find "cmigemo")
              (require 'migemo nil t))
     (setq moccur-use-migemo t)))
+
+;;; 60-color-moccur.el ends here

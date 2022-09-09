@@ -1,7 +1,14 @@
-(straight-use-package
+;;; rocket-chat --- rocket-chat conf
+;;; Commentary:
+;;; Code:
+
+(use-package
+ :disabled t
  '(rocket-chat
    :type git
    :host github
    :repo "4hiziri/rocket-chat"))
 
-(use-package rocket-chat)
+;; (use-package rocket-chat)
+
+;;; 20-rocket-chat.el ends here
