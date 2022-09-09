@@ -1,5 +1,6 @@
-;;; YaTeX --- yatex conf
-;;; Commentary
+;;; YaTeX --- TeX mode
+;;; Commentary:
+
 ;;; Code:
 
 ;; yatex-mode の起動
