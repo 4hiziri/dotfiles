@@ -13,5 +13,7 @@
       (interactive)
       (w3m-find-file (buffer-file-name))))
 
+(setq markdown-fontify-code-blocks-natively t)
+
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
