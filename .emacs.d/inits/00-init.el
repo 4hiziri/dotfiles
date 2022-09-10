@@ -60,7 +60,7 @@
 (use-package linum
   :config
   (global-linum-mode)
-  (setq linum-format "%2d |"))
+  (setq linum-format "%03d |"))
 
 (use-package w3m
   :defer t)
