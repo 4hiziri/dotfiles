@@ -6,6 +6,10 @@
 (use-package google-translate
   :ensure t
   :init
+  (require 'facemenu)
+  (require 'google-translate-default-ui)
+  (setq google-translate-backend-method 'curl)
+  (defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130))
   (defvar google-translate-english-chars "[:ascii:]’“”–"
     "これらの文字が含まれているときは英語とみなす")
   (defun google-translate-enja-or-jaen (&optional string)
@@ -35,4 +39,5 @@
        string)))
   :bind (("C-c t" . google-translate-enja-or-jaen)))
 
+;; FIXME typo filename
 ;;; 90-google-translate.el ends here
