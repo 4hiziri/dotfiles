@@ -405,3 +405,6 @@ esac
 ### john ###
 export PATH="$PATH:$HOME/src/JohnTheRipper/run/"
 alias john="$HOME/src/JohnTheRipper/run/john"
+
+### bat ###
+alias bat=batcat
