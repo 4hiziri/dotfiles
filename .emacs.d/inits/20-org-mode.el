@@ -90,7 +90,7 @@
   ;; 今日から予定を表示させる
   (setq org-agenda-start-on-weekday nil)
   ;; Doneにした時刻を記録
-  (setq org-log-done 'time)  
+  (setq org-log-done 'time)
   :config
   (defun org-insert-upheading (arg)
 	(interactive "P")
