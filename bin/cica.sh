@@ -1,4 +1,4 @@
-[Isudo apt install unar
+sudo apt install unar
 cd "$HOME"
 wget 'https://github.com/miiton/Cica/releases/download/v5.0.3/Cica_v5.0.3.zip'
 unar Cica_v5.0.3.zip
