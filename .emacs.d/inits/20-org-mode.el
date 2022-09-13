@@ -78,19 +78,18 @@
 			(alltodo "")))))
   ;; sample
   ;; (setq org-agenda-custom-commands
-  ;; 		'(
+  ;;		'(
   ;;         ("o" . "Original agenda view") ; description for "o" prefix
   ;;         ("ot" todo "TODO")
   ;;         ))
-  ;; org-agendaで扱うファイルは複数可だが、
-  ;; TODO・予定用のファイルのみ指定
-  (setq org-agenda-files '("~/misc/memos/TODO.org"))
+    
+  (setq org-agenda-files '("~/misc/memos/"))
   ;; TODOリストに日付つきTODOを表示しない
   (setq org-agenda-todo-ignore-with-date t)
   ;; 今日から予定を表示させる
   (setq org-agenda-start-on-weekday nil)
   ;; Doneにした時刻を記録
-  (setq org-log-done 'time)  
+  (setq org-log-done 'time)
   :config
   (defun org-insert-upheading (arg)
 	(interactive "P")
