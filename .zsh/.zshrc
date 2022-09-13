@@ -406,5 +406,13 @@ esac
 export PATH="$PATH:$HOME/src/JohnTheRipper/run/"
 alias john="$HOME/src/JohnTheRipper/run/john"
 
-### bat ###
-alias bat=batcat
+### modern command ###
+if [ -e '/usr/bin/batcat' ]
+then
+	alias bat=batcat
+fi
+
+if [ -e "$HOME/.cargo/bin/exa" ]
+then
+	alias ls=exa
+fi
