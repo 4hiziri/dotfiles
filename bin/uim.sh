@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install uim-xim uim-skk skktools
+sudo apt install uim-xim uim-skk skktools nkf
 cd $HOME/src/
 git clone 'https://github.com/skk-dev/dict'
 cd dict
