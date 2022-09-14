@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cd $HOME/dotfiles/bin/
+./go.sh
+./goenv.sh 
+
 if which go > /dev/null
 then
     go get github.com/rogpeppe/godef
