@@ -106,6 +106,15 @@
   (setq org-clock-into-drawer t)
   ;; (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("laptop" . ?l))) ;; set shortcut for tag
   ;; or #+TAGS: @work(w)  @home(h)  @tennisclub(t)  laptop(l)  pc(p)
+  (setq sunday 0)
+  (setq monday 1)
+  (setq tuesday 2)
+  (setq wednesday 3)
+  (setq thursday 4)
+  (setq friday 5)
+  (setq saturday 6)
+  (defun my-diary-day-of-week (dow-list)
+	(memq (calendar-day-of-week date) dow-list))
   )
 
 ;;; 20-org-mode.el ends here
