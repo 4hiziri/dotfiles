@@ -14,6 +14,8 @@
 (setq buffer-file-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (set-clipboard-coding-system 'utf-8)
+(setq-default indent-tabs-mode nil) ; tab -> spaces
+(setq-default show-trailing-whitespace t) ; highlight space at line end
 
 (use-package skk
   :straight nil
