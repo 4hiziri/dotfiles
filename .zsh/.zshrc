@@ -175,6 +175,11 @@ if [ -d "/usr/local/go/bin/" ]
 then
 	export PATH="/usr/local/go/bin/:$PATH"
 fi
+
+if [ -d "$HOME/go/bin/" ]
+then
+	export PATH="$HOME/go/bin/:$PATH"
+fi
 ### golang ###
 ### rust ###
 if [ -f "$HOME/.cargo/env" ]
@@ -409,7 +414,7 @@ alias john="$HOME/src/JohnTheRipper/run/john"
 ### modern command ###
 if [ -e '/usr/bin/batcat' ]
 then
-	alias bat=batcat
+	alias bat='batcat --paging=never'
 fi
 
 if [ -e "$HOME/.cargo/bin/exa" ]
