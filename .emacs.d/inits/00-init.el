@@ -57,10 +57,13 @@
   (defvar uniquify-buffer-name-style 'post-forward-angle-brackets)
   :straight nil)
 
-(use-package linum
+(if (version<= "26.0.50" emacs-version)
+    (global-display-line-numbers-mode)
+  (use-package linum
   :config
   (global-linum-mode)
-  (setq linum-format "%03d |"))
+  (setq linum-format "%03d |")))
+
 
 (use-package w3m
   :defer t)
