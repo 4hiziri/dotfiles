@@ -34,7 +34,7 @@
   :config
   (helm-mode 1)
   ;; (helm-migemo-mode 1)
-  ;;emulate kill-line in mini-helm
+  ;; emulate kill-line in mini-helm
   ;; Emulate `kill-line' in helm minibuffer
   (setq helm-delete-minibuffer-contents-from-point t)
   (defadvice helm-delete-minibuffer-contents (before helm-emulate-kill-line activate)
@@ -63,7 +63,7 @@
 ;;   :defer t
 ;;   :init
 ;;   (bind-key "C-c ;" 'ac-complete-with-helm)
-;;   
+;;
 ;;   :config
 ;;   (bind-key "C-c ;" 'ac-complete-with-helm ac-complete-mode-map))
 
