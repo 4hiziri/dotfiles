@@ -3,7 +3,6 @@
 ;; M-x sp-cheat-sheet
 ;;; Code:
 
-(use-package smartparens
-  :defer t)
+(use-package smartparens)
 
 ;;; 10-smartparens.el ends here
