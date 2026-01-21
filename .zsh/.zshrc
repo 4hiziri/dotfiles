@@ -281,14 +281,14 @@ then
 fi
 ### .local/bin ###
 ### pyenv ###
-# if [ -d "$HOME/.pyenv" ]
-# then
-#     # export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
-#     export PYENV_ROOT="$HOME/.pyenv"
-#     export PATH="$PYENV_ROOT/bin/:$PATH"
-#     eval "$(pyenv init -)"
-#     eval "$(pyenv virtualenv-init -)"
-# fi
+alias python=python3
+if [ -d "$HOME/.pyenv" ]
+then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin/:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
+fi
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
@@ -421,3 +421,7 @@ if [ -e "$HOME/.cargo/bin/exa" ]
 then
 	alias ls=exa
 fi
+
+### nvm ###
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
