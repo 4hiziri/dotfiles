@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER='6.6.3'
+VER='6.6.9'
 
 cd
 sudo apt install -y exuberant-ctags
