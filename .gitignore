@@ -4,3 +4,4 @@
 .emacs.d/eshell/*
 .emacs.d/async-bytecomp.log
 .zsh/.zcompdump
+.emacs.d/eln-cache/

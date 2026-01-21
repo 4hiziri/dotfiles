@@ -1,5 +1,5 @@
 ;;; helm --- helm
-;;; Commentary
+;;; Commentary:
 ;; TODO: usage
 ;;; Code:
 
