@@ -1,5 +1,5 @@
 #!/bin/bash
-ver="29.4"
+ver="30.2"
 
 sudo apt-get -y install gcc make ncurses-dev libxml2-dev gnutls-bin gnutls-dev libpng-dev libacl1-dev build-essential mailutils libgccjit-14-dev texinfo pkg-config libgnutls28-dev
 
