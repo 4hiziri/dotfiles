@@ -11,7 +11,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
-(setq buffer-file-coding-system 'utf-8)
+(setopt buffer-file-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (set-clipboard-coding-system 'utf-8)
 (setq-default indent-tabs-mode nil) ; tab -> spaces
@@ -22,7 +22,6 @@
 
 ;; ansi-color
 (use-package ansi-color
-  :defer t
   :ensure nil
   :commands (ansi-color-for-comint-mode-on))
 
