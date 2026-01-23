@@ -6,16 +6,17 @@
 ;; config
 
 ;; ミニバッファに時計を表示
-(eval-when-compile (defvar display-time-string-forms)) ;; to suppress error
-(setq display-time-string-forms
-	  '((format "%04d/%02d/%02d(%s) %02d:%02d"
-				(string-to-number year)
-				(string-to-number month)
-				(string-to-number day)
-				dayname
-				(string-to-number 24-hours)
-				(string-to-number minutes)
-				)))
+(eval-when-compile
+  (defvar display-time-string-forms))
+(setopt display-time-string-forms
+	    '((format "%04d/%02d/%02d(%s) %02d:%02d"
+				  (string-to-number year)
+				  (string-to-number month)
+				  (string-to-number day)
+				  dayname
+				  (string-to-number 24-hours)
+				  (string-to-number minutes)
+				  )))
 (display-time)
 
 ;; 対応する括弧を強調表示
@@ -40,13 +41,9 @@
 ;;ffap
 (ffap-bindings)
 
-;;template
-(auto-insert-mode)
-(defvar auto-insert-directory "~/projects/dotfiles/.emacs.d/insert/")
-(define-auto-insert "\\.c" "c-template.c")
-
 (setq-default tab-width 4)
-(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
+(setq tab-stop-list
+      '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
 
 ;; misc packages
 (defvar uniquify-buffer-name-style 'post-forward-andle-brackets)
@@ -62,9 +59,9 @@
 
 
 (use-package w3m
-  :defer t
-  :init (setq browse-url-browser-function 'w3m-browse-url))
+  :init (setopt browse-url-browser-function 'w3m-browse-url))
 
+;; sequential-commandの代替
 (defvar-local my/smart-nav-orig-pos nil
   "移動前のカーソル位置を記憶するバッファローカル変数")
 
@@ -112,5 +109,7 @@
 (bind-key "C-a" #'my/smart-beginning-of-line-cycle)
 (bind-key "C-e" #'my/smart-end-of-line-cycle)
 
+;; which-key config
+(which-key-mode)
 
 ;;; 00-init.el ends here
