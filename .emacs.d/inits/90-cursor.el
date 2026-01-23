@@ -3,9 +3,10 @@
 ;; TODO: research
 ;;; Code:
 
-(use-package point-undo
-  :bind (("<f7>" . point-undo)
-		 ("C-<f7>" . point-redo)))
+;; (use-package point-undo
+;;   :bind (("<f7>" . point-undo)
+;; 		 ("C-<f7>" . point-redo)))
+;; TODO: replace Consult-todo
 
 (use-package goto-chg
   :bind (("<f8>" . goto-last-change)
