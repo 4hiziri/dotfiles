@@ -5,7 +5,8 @@
 ;;; Code:
 
 (use-package autoinsert
-  :defer t  
+  :defer t
+  :ensure nil
   :init
   (setq  auto-insert-directory "~/.emacs.d/template/" )
   (add-hook 'find-file-hooks 'auto-insert)

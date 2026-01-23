@@ -4,8 +4,6 @@
 
 ;; stack install hlint # linter
 ;; stack install stylish-haskell # formatter
-(use-package intero
-  :defer t)
 
 (use-package haskell-mode
   :defer t

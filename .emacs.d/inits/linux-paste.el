@@ -1,6 +1,6 @@
 ;;; linux-paste --- emacs copy sync with clipboard
 ;;; Commentary:
-;;; Code:
+;;; Code
 
 (use-package xclip
   :config

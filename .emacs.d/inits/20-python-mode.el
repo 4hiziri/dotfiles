@@ -2,9 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package python
-  :defer t
-  :mode ("\\.py\\'" . python-mode))
+;; (use-package python
+;;   :defer t
+;;   :mode ("\\.py\\'" . python-mode))
 
 (use-package smartrep)
 

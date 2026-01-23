@@ -3,9 +3,6 @@
 
 ;;; Code:
 
-(use-package w3m
-  :defer t)
-
 (use-package markdown-mode
   :defer t
   :mode ("\\.md\\'" . markdown-mode)

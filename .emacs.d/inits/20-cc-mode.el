@@ -9,15 +9,15 @@
 (use-package irony
   :defer t
   :init
-  (add-to-list 'company-backends 'company-irony)
+;  (add-to-list 'company-backends 'company-irony)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'c-mode-common-hook 'irony-mode)
   :config
   (flycheck-irony-setup)
-  (setq irony-additional-clang-options '("-std=c++17")))
+  (setopt irony-additional-clang-options '("-std=c++17")))
 
 (use-package cc-mode
-  :straight nil
+  :ensure nil
   :defer t
   :mode ("\\.c\\'" . c-mode)
   :mode ("\\.cpp\\'" . c++-mode)
@@ -44,18 +44,19 @@
 				  ;; (bind-key "M-n" 'helm-gtags-next-history c++-mode-map)
 				  ))
   :bind (:map c-mode-map
-		 ("C-c c" . compile)
-		 ("C-c d" . gdb)
-		 ("M-." . helm-gtags-dwim)
-		 ("M-s" . helm-gtags-show-stack)
-		 ("M-p" . helm-gtags-previous-history)
-		 ("M-n" . helm-gtags-next-history)
-		 :map c++-mode-map
-		 ("M-." . helm-gtags-dwim)
-		 ("M-s" . helm-gtags-show-stack)
-		 ("M-p" . helm-gtags-previous-history)
-		 ("M-n" . helm-gtags-next-history))
-  :config
-  (setq flycheck-gcc-language-standard "c++17"))
+		      ("C-c c" . compile)
+		      ("C-c d" . gdb)
+                                        ;		 ("M-." . helm-gtags-dwim)
+                                        ;		 ("M-s" . helm-gtags-show-stack)
+                                        ;		 ("M-p" . helm-gtags-previous-history)
+                                        ;		 ("M-n" . helm-gtags-next-history)
+		      :map c++-mode-map
+                                        ;		 ("M-." . helm-gtags-dwim)
+                                        ;		 ("M-s" . helm-gtags-show-stack)
+                                        ;		 ("M-p" . helm-gtags-previous-history)
+                                        ;		 ("M-n" . helm-gtags-next-history)
+              )
+              :config
+              (setopt flycheck-gcc-language-standard "c++17"))
 
 ;;; 20-cc-mode.el ends here
