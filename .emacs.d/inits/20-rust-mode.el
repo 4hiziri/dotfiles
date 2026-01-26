@@ -57,24 +57,24 @@
 ;;   :config
 ;;   (setq rust-format-on-save t))
 
-(use-package company-racer
-  :defer t
-  :init
-  (defun my-conf-company-racer ()
-	(local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-	(local-set-key (kbd "C-c <tab>") #'rust-format-buffer))
-  (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
-  (setq company-racer-executable "~/.cargo/bin/racer")
+;; (use-package company-racer
+;;   :defer t
+;;   :init
+;;   (defun my-conf-company-racer ()
+;; 	(local-set-key (kbd "TAB") #'company-indent-or-complete-common)
+;; 	(local-set-key (kbd "C-c <tab>") #'rust-format-buffer))
+;;   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+;;   (setq company-racer-executable "~/.cargo/bin/racer")
 
-  ;; hooks
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'racer-mode-hook #'company-mode)
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (add-hook 'rust-mode-hook 'my-conf-company-racer)
-  (add-to-list 'company-backends 'company-racer)
-  :config
-  (setq company-tooltip-align-annotations t))
+;;   ;; hooks
+;;   (add-hook 'rust-mode-hook #'racer-mode)
+;;   (add-hook 'racer-mode-hook #'eldoc-mode)
+;;   (add-hook 'racer-mode-hook #'company-mode)
+;;   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+;;   (add-hook 'rust-mode-hook 'my-conf-company-racer)
+;;   (add-to-list 'company-backends 'company-racer)
+;;   :config
+;;   (setq company-tooltip-align-annotations t))
 
 ;;; Usage
 ;; M-. find-difinition, does not support macro yet.

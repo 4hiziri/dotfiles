@@ -1,15 +1,3 @@
-(use-package tabnine
-  :defer nil
-  :hook ((prog-mode . tabnine-mode)
-         (text-mode . tabnine-mode)
-         (kill-emacs . tabnine-kill-process))
-  :bind (:map  tabnine-completion-map
-	     ("TAB" . nil)
-         ("<tab>" . nil))
-  :init
-  (tabnine-start-process)
-  (global-tabnine-mode +1))
-
 (use-package cape
   :hook (((prog-mode
            text-mode
@@ -29,14 +17,12 @@
                               arg
                             (car completion-at-point-functions))
                           #'tempel-complete
-                          #'tabnine-completion-at-point
                           #'cape-dabbrev
                           #'cape-file)
                          :sort t
                          :exclusive 'no))))))
 
   (add-to-list 'completion-at-point-functions #'tempel-complete)
-  (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point)
   (add-to-list 'completion-at-point-functions #'cape-file t)
   (add-to-list 'completion-at-point-functions #'cape-tex t)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev t)
