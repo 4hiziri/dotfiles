@@ -3,6 +3,8 @@
 ;;; init.el
 ;;; Code:
 
+(message "debug")
+
 ;; for elpaca
 (defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
@@ -86,14 +88,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("ea5822c1b2fb8bb6194a7ee61af3fe2cc7e2c7bab272cbb498a0234984e1b2d9"
-     "2116ed2bb7af1ff05bef1d9caf654ae2820088c86d50c83cd8f90bf83ce0cbcc"
-     "ef0d2cd0b5ecebd6794a2012ffa08393e536b33e3e377ac2930bf5d7304dcb21"
-     "63e6337545edc4f404ea04a756d369e36e9974b5e7b85cce7cbc246552647516"
-     "420459d6eeb45aadf5db5fbcc3d6990b65141c104911f7359454fc29fa9d87a0"
-     "a8c595a70865dae8c97c1c396ae9db1b959e86207d02371bc5168edac06897e6"
-     default))
  '(init-loader-show-log-after-init 'error-only)
  '(irony-additional-clang-options '("-std=c++11"))
  '(package-selected-packages nil)
@@ -115,8 +109,5 @@
 
 (put 'erase-buffer 'disabled nil)
 (put 'set-goal-column 'disabled nil)
-(use-package zenburn-theme)
-(elpaca-wait)
-(load-theme 'zenburn t)
 
 ;;; init.el ends here
