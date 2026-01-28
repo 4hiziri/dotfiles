@@ -4,9 +4,9 @@
 ;;; Code:
 
 (use-package hl-todo
+  :init
+  (global-hl-todo-mode)
   :config
-  (push 'emacs-lisp-mode hl-todo-activate-in-modes)
-  (global-hl-todo-mode 1)  
   (add-to-list 'hl-todo-keyword-faces '("WARN" . "#f1e928")))
 
 ;;; 90-hl-todo.el ends here

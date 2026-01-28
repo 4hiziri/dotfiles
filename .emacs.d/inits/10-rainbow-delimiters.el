@@ -25,20 +25,10 @@
               (new-hex (apply #'color-rgb-to-hex (apply #'color-hsl-to-rgb stronger-hsl))))
          (set-face-foreground face new-hex))))))
 
-;; old code
-(defun rainbow-delimiters-using-stronger-colors ()
-  (interactive)
-  (cl-loop
-   for index from 1 to rainbow-delimiters-max-face-count
-   do
-   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-     (cl-callf color-saturate-color (face-foreground face) 100))))
-
 (use-package rainbow-delimiters
   :hook
   (prog-mode-hook . rainbow-delimiters-mode)
   :config
-  (rainbow-delimiters-using-stronger-colors)
-  )
+  (rainbow-delimiters-using-stronger-colors))
 
 ;;; 10-rainbow-delimiters.el ends here
