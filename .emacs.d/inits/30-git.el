@@ -3,8 +3,8 @@
 ;; TODO: research magit
 ;;; Code:
 
-(use-package transient)
-(elpaca-wait)
+(use-package transient
+  :ensure nil)
 
 ;; Gitフロントエンドの設定
 (use-package magit)

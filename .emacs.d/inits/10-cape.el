@@ -16,7 +16,7 @@
                           (if arg
                               arg
                             (car completion-at-point-functions))
-                          #'tempel-complete
+                          #'tempel-expand
                           #'cape-dabbrev
                           #'cape-file)
                          :sort t
