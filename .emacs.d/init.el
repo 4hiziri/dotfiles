@@ -3,8 +3,6 @@
 ;;; init.el
 ;;; Code:
 
-(message "debug")
-
 ;; for elpaca
 (defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
