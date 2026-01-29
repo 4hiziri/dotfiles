@@ -42,11 +42,11 @@
     (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
-
+(elpaca-wait)
 ;; Install use-package support
 (elpaca elpaca-use-package
   (elpaca-use-package-mode)
-    (setopt use-package-always-ensure t)) ;; これで常に:ensure tになる
+  (setopt use-package-always-ensure t)) ;; これで常に:ensure tになる
 
 ;; M-x edit kill emacs server
 (defalias 'exit 'save-buffers-kill-emacs)
@@ -77,9 +77,10 @@
 				                  ".cask"))
 
 ;; 初期設定ロード
-(use-package init-loader
-  :config
-  (init-loader-load "~/.emacs.d/inits/"))
+(elpaca-process-queues)
+(use-package init-loader)
+(elpaca-wait)
+(init-loader-load "~/.emacs.d/inits/")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -108,4 +109,5 @@
 (put 'erase-buffer 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
+(provide 'init)
 ;;; init.el ends here

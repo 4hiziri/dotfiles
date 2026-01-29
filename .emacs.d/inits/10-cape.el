@@ -16,13 +16,13 @@
                           (if arg
                               arg
                             (car completion-at-point-functions))
-                          #'tempel-expand
+                          ; #'tempel-expand
                           #'cape-dabbrev
                           #'cape-file)
                          :sort t
                          :exclusive 'no))))))
 
-  (add-to-list 'completion-at-point-functions #'tempel-complete)
+  ; (add-to-list 'completion-at-point-functions #'tempel-expand)
   (add-to-list 'completion-at-point-functions #'cape-file t)
   (add-to-list 'completion-at-point-functions #'cape-tex t)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev t)
