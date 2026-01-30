@@ -4,7 +4,6 @@
 ;;; Code:
 
 (use-package markdown-mode
-  :defer t
   :mode ("\\.md\\'" . markdown-mode)
   :bind (:map markdown-mode-map
 			  ("C-c C-c m" . (lambda ()

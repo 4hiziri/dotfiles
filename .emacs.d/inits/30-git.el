@@ -3,8 +3,7 @@
 ;; TODO: research magit
 ;;; Code:
 
-(use-package transient
-  :ensure nil)
+(use-package transient)
 
 ;; Gitフロントエンドの設定
 (use-package magit)
