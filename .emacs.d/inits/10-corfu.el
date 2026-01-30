@@ -25,6 +25,16 @@
   ;; (corfu-popupinfo-mode)
   )
 
+(use-package corfu-prescient
+  :after (corfu prescient)
+  :custom
+  (corfu-prescient-mode 1)
+  (prescient-persist-mode 1)
+  :config
+  (with-eval-after-load 'orderless
+    (setq corfu-prescient-enable-filtering nil))
+  (corfu-prescient-mode 1))
+
 (use-package corfu-popupinfo
   :ensure nil
   :after corfu

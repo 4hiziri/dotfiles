@@ -21,11 +21,11 @@
   (yas-global-mode 1)
   (setq yas-prompt-functions '(yas-ido-prompt)))
 
-(use-package helm-c-yasnippet
-  :defer t
-  :bind (:map global-map
-			  ("C-c y" . helm-yas-complete))
-  :config
-  (setq helm-yas-space-match-any-greedy t))
+;; (use-package helm-c-yasnippet
+;;   :defer t
+;;   :bind (:map global-map
+;; 			  ("C-c y" . helm-yas-complete))
+;;   :config
+;;   (setq helm-yas-space-match-any-greedy t))
 
 ;;; 80-yasnippet.el ends here

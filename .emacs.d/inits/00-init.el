@@ -5,6 +5,7 @@
 
 ;; config
 
+;; :TODO 表示されてない、doom-mode-lineの方で設定必要?
 ;; ミニバッファに時計を表示
 (eval-when-compile
   (defvar display-time-string-forms))
@@ -53,61 +54,25 @@
 (if (version<= "26.0.50" emacs-version)
     (global-display-line-numbers-mode)
   (use-package linum
-  :config
-  (global-linum-mode)
-  (setq linum-format "%03d |")))
+    :demand t
+    :config
+    (global-linum-mode)
+    (setq linum-format "%03d |")))
 
 
 (use-package w3m
-  :init (setopt browse-url-browser-function 'w3m-browse-url))
+  :defer t
+  :custom (browse-url-browser-function 'w3m-browse-url))
 
-;; sequential-commandの代替
-(defvar-local my/smart-nav-orig-pos nil
-  "移動前のカーソル位置を記憶するバッファローカル変数")
+(use-package sequential-command
+  :ensure (:host github :repo "HKey/sequential-command")
+  :demand t
+  :config
+  (use-package sequential-command-config
+    :ensure nil
+    :hook (elpaca-after-init-hook . sequential-command-setup-keys)))
 
-(defun my/smart-beginning-of-line-cycle ()
-  "C-a連打サイクル: 行頭(インデント無視) -> ページ先頭 -> 元の位置"
-  (interactive)
-  (cond
-   ;; 3回目（または2回目以降で既に先頭にいる場合）：元の位置へ
-   ((and (eq last-command this-command)
-         (= (point) (point-min)))
-    (when my/smart-nav-orig-pos
-      (goto-char my/smart-nav-orig-pos)
-      (setq my/smart-nav-orig-pos nil)))
-   ;; 2回目：ページ（バッファ）先頭へ
-   ((eq last-command this-command)
-    (goto-char (point-min)))
-   ;; 1回目：行頭へ
-   (t
-    ;; Markerを使って位置を記憶（編集でズレないように）
-    (setq my/smart-nav-orig-pos (point-marker))
-    (back-to-indentation)
-    ;; すでにインデント位置なら本当の行頭へ
-    (when (= (point) my/smart-nav-orig-pos)
-      (move-beginning-of-line nil)))))
-
-(defun my/smart-end-of-line-cycle ()
-  "C-e連打サイクル: 行末 -> ページ末尾 -> 元の位置"
-  (interactive)
-  (cond
-   ;; 3回目：元の位置へ
-   ((and (eq last-command this-command)
-         (= (point) (point-max)))
-    (when my/smart-nav-orig-pos
-      (goto-char my/smart-nav-orig-pos)
-      (setq my/smart-nav-orig-pos nil)))
-   ;; 2回目：ページ（バッファ）末尾へ
-   ((eq last-command this-command)
-    (goto-char (point-max)))
-   ;; 1回目：行末へ
-   (t
-    (setq my/smart-nav-orig-pos (point-marker))
-    (move-end-of-line nil))))
-
-;; キーバインドの上書き登録
-(bind-key "C-a" #'my/smart-beginning-of-line-cycle)
-(bind-key "C-e" #'my/smart-end-of-line-cycle)
+; https://github.com/HKey/sequential-command
 
 ;; which-key config
 (which-key-mode)

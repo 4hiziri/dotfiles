@@ -7,6 +7,12 @@
   :init
   (vertico-mode))
 
+(use-package vertico-prescient
+  :after vertico
+  :custom
+  (vertico-prescient-enable-filtering t)
+  (vertico-prescient-mode 1))
+
 ;; Emacs minibuffer configurations.
 (use-package emacs
   :ensure nil
