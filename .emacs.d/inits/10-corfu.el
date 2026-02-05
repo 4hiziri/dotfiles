@@ -24,9 +24,7 @@
   ;; (corfu-history-mode)
   ;; (corfu-popupinfo-mode)
   )
-
 (use-package corfu-prescient
-  :after (corfu prescient)
   :custom
   (corfu-prescient-mode 1)
   (prescient-persist-mode 1)

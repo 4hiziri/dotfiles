@@ -1,4 +1,5 @@
 (use-package doom-themes
+  :demand t
   :custom
   (doom-themes-enable-italic t)
   (doom-themes-enable-bold t)

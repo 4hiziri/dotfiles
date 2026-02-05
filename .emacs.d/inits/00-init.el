@@ -16,8 +16,7 @@
 				  (string-to-number day)
 				  dayname
 				  (string-to-number 24-hours)
-				  (string-to-number minutes)
-				  )))
+				  (string-to-number minutes))))
 (display-time)
 
 ;; 対応する括弧を強調表示
@@ -59,20 +58,19 @@
     (global-linum-mode)
     (setq linum-format "%03d |")))
 
-
 (use-package w3m
   :defer t
   :custom (browse-url-browser-function 'w3m-browse-url))
 
 (use-package sequential-command
-  :ensure (:host github :repo "HKey/sequential-command")
+  :ensure (:host github :repo "HKey/sequential-command" :wait t)
+  :demand t)
+(use-package sequential-command-config
+  :ensure nil
+  :after sequential-command
   :demand t
   :config
-  (use-package sequential-command-config
-    :ensure nil
-    :hook (elpaca-after-init-hook . sequential-command-setup-keys)))
-
-; https://github.com/HKey/sequential-command
+  (sequential-command-setup-keys))
 
 ;; which-key config
 (which-key-mode)
