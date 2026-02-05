@@ -47,6 +47,9 @@
 (elpaca elpaca-use-package
   (elpaca-use-package-mode)
   (setopt use-package-always-ensure t)) ;; これで常に:ensure tになる
+;; (setq elpaca-use-package-integrate-config t)
+(setq use-package-verbose t)
+(elpaca-wait)
 
 ;; M-x edit kill emacs server
 (defalias 'exit 'save-buffers-kill-emacs)
@@ -78,10 +81,8 @@
 
 ;; 初期設定ロード
 (use-package init-loader
-  :demand t
-  :config
-  (init-loader-load "~/.emacs.d/inits/")
-  (elpaca-process-queues))
+  :ensure (:wait t))
+(init-loader-load "~/.emacs.d/inits/") ; :configに書くとqueueに二重登録されてロードが重複するので注意
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -109,8 +110,6 @@
 
 (put 'erase-buffer 'disabled nil)
 (put 'set-goal-column 'disabled nil)
-
-(setq force-load-messages t) ;; 全てのロードを表示させる
 
 (provide 'init)
 ;;; init.el ends here

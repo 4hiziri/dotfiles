@@ -5,13 +5,26 @@
   ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
   ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
   :init
-  (vertico-mode))
+  (vertico-mode 1))
 
+;; (elpaca vertico
+;;   :demand t
+;;   ;; :custom
+;;   ;; (vertico-scroll-margin 0) ;; Different scroll margin
+;;   ;; (vertico-count 20) ;; Show more candidates
+;;   ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+;;   ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+;;   :init
+;;   (vertico-mode 1)
+;; ;  :config
+;;   )
 (use-package vertico-prescient
-  :after vertico
+  :after (vertico prescient)
   :custom
   (vertico-prescient-enable-filtering t)
   (vertico-prescient-mode 1))
+
+
 
 ;; Emacs minibuffer configurations.
 (use-package emacs

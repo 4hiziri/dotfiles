@@ -30,10 +30,9 @@
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                  nil
-                 (window-parameters (mode-line-format . none)))))
-
-;; Consult users will also want the embark-consult package.
-(use-package embark-consult
-  :ensure t ; only need to install it, embark loads it after consult if found
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
+                 (window-parameters (mode-line-format . none))))
+  ;; Consult users will also want the embark-consult package.
+  (use-package embark-consult
+    :ensure nil
+    :hook
+    (embark-collect-mode . consult-preview-at-point-mode)))
