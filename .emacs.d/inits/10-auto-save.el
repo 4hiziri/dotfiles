@@ -3,6 +3,7 @@
 
 ;;; Code:
 (use-package auto-save-buffers-enhanced
+  :demand t
   :config
   ;; auto save target buffer rule
   (setq auto-save-buffers-enhanced-include-regexps '(".+"))
@@ -10,7 +11,6 @@
   (setq auto-save-buffers-enhanced-exclude-regexps '("^not-save" "\\.ignore$"))
   ;; Wroteのメッセージを抑制
   (setq auto-save-buffers-enhanced-quiet-save-p t)
-  (auto-save-buffers-enhanced t)
-  )
+  (auto-save-buffers-enhanced t))
 
 ;;; 10-auto-save.el ends here

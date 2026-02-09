@@ -1,14 +1,23 @@
 (use-package consult
+  :hook (completion-list-mode-hook . consult-preview-at-point-mode)
   :bind
   ;; Helm のキーバインドに近い操作感にするための割り当て例
-  (("C-x b" . consult-buffer)       ; helm-mini の代わり
-   ("M-y"   . consult-yank-pop)     ; helm-show-kill-ring の代わり
-   ("M-s"   . consult-line)         ; helm-swoop の代わり (C-s から呼ぶ人も多い)
-   ("C-x r b" . consult-bookmark)   ; ブックマーク
-   ("M-g g" . consult-goto-line)    ; 指定行へジャンプ
-   ("M-g i" . consult-imenu))       ; helm-imenu の代わり
-
-  :init
+  ("C-x b" . consult-buffer)
+  ("M-y"   . consult-yank-pop)     ; キルリングの履歴を出してくれる
+  ("C-s"   . consult-line)         ; consultの賢いサーチ
+  ("C-c o" . consult-outline)
+  ("C-M-s" . nil)                  ; C-M-sをプレフィックスとして使うので外す
+  ("C-M-s s" . isearch-forward)    ; これまでのisearch
+  ("C-M-s C-s" . isearch-forward-regexp) ; regex
+  ("C-M-s r" . consult-ripgrep)
+  ("C-x r b" . consult-bookmark)   ; ブックマーク
+  ("M-g g" . consult-goto-line)    ; 指定行へジャンプ
+  ("M-g i" . consult-imenu)        ; imenu、今は空 :TODO あとで調べる
+  ("C-x p b" . consult-project-buffer) ; C-x p b
+  ("M-g f" . consult-flymake)
+  (:map minibuffer-local-map
+        :package emacs
+        ("C-r" . consult-history))
 
   :custom
   ;; デフォルトでプレビュー有効はなんだかんだ重いので、
@@ -16,4 +25,12 @@
   ;; (consult-preview-key 'any)
   (consult-preview-key nil)
   ;; プレビュー機能は M-. にバインド。
-  (consult-preview-key "M-."))
+  (consult-preview-key "M-.")
+  (xref-show-xrefs-function  #'consult-xref)
+  (xref-show-definitions-function  #'consult-xref)
+  (consult-line-start-from-top t))
+
+(use-package consult-flymake
+  :ensure nil
+  :after (consult flymake)
+  :bind (("C-c ! l" . consult-flymake)))

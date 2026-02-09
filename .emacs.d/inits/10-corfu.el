@@ -1,44 +1,51 @@
-(use-package corfu
-  ;; Optional customizations
-  ;; :custom
-  ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
-  ;; (corfu-on-exact-match 'insert) ;; Configure handling of exact matches
+;; インライン補完
 
-  ;; Enable Corfu only for certain modes. See also `global-corfu-modes'.
-  ;; :hook ((prog-mode . corfu-mode)
-  ;;        (shell-mode . corfu-mode)
-  ;;        (eshell-mode . corfu-mode))
+(use-package corfu
+  :defer t
+  :bind
+  (:map corfu-map
+        ("C-s" . corfu-insert-separator)
+        ("TAB" . corfu-complete)
+        ("<tab>" . corfu-complete))
+  :custom
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)
+  (corfu-auto-delay 0.2)
+  (corfu-auto-prefix 3)
+  (corfu-quit-at-boundary 'separator)
+  (corfu-quit-no-match t)
+  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
+  (corfu-preselect 'prompt)
+  (corfu-on-exact-match nil)
 
   :init
-
-  ;; Recommended: Enable Corfu globally.  Recommended since many modes provide
   ;; Capfs and Dabbrev can be used globally (M-/).  See also the customization
-  ;; variable `global-corfu-modes' to exclude certain modes.
-  (global-corfu-mode)
-
+  (global-corfu-mode 1)
   ;; Enable optional extension modes:
   ;; (corfu-history-mode)
-  ;; (corfu-popupinfo-mode)
+  (corfu-popupinfo-mode)
+  :config
+  ;; (unless (display-graphic-p)
+  ;;   (use-package curfu-terminal
+  ;;     :demand t
+  ;;     :config
+  ;;     (corfu-terminal-mode 1)))
   )
+
+(use-package corfu-terminal
+  :after corfu
+  :config
+  (corfu-terminal-mode 1))
+
 (use-package corfu-prescient
   :custom
-  (corfu-prescient-mode 1)
+  (corfu-prescient-mode t)
   (prescient-persist-mode 1)
   :config
   (with-eval-after-load 'orderless
-    (setq corfu-prescient-enable-filtering nil))
+    (setq corfu-prescient-enable-filtering t))
   (corfu-prescient-mode 1))
 
-(use-package corfu-popupinfo
-  :ensure nil
-  :after corfu
-  :hook (corfu-mode . corfu-popupinfo-mode))
-
-;; A few more useful configurations...
 (use-package emacs
   :ensure nil
   :custom
@@ -57,4 +64,3 @@
   ;; commands are hidden, since they are not used via M-x. This setting is
   ;; useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p))
-

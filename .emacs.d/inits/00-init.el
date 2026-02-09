@@ -5,32 +5,24 @@
 
 ;; config
 
-;; :TODO 表示されてない、doom-mode-lineの方で設定必要?
-;; ミニバッファに時計を表示
-(eval-when-compile
-  (defvar display-time-string-forms))
-(setopt display-time-string-forms
-	    '((format "%04d/%02d/%02d(%s) %02d:%02d"
-				  (string-to-number year)
-				  (string-to-number month)
-				  (string-to-number day)
-				  dayname
-				  (string-to-number 24-hours)
-				  (string-to-number minutes))))
-(display-time)
-
 ;; 対応する括弧を強調表示
-(show-paren-mode t)
+(use-package paren
+  :ensure nil
+  :demand t
+  :custom-face
+  (show-paren-match ((nil (:background "#44475a" :foreground "#f1fa8c"))))
+  :custom
+  (show-paren-style 'mixed)
+  (show-paren-when-point-inside-paren t)
+  (show-paren-when-point-in-periphery t)
+  :config
+  (show-paren-mode t))
 
 ;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
 (add-to-list 'backup-directory-alist
 			 (cons ".*" "~/.emacs.d/backups/"))
 (setq auto-save-file-name-transforms
 	  `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
-
-;; 大昔のサンプルコード、不要だが参考のため残す
-;;dtwをdelete-trailing-whitespaceのエイリアスにする
-(defalias 'dtw 'delete-trailing-whitespace)
 
 ;;履歴拡張
 (setq history-length 3000)
@@ -65,6 +57,7 @@
 (use-package sequential-command
   :ensure (:host github :repo "HKey/sequential-command" :wait t)
   :demand t)
+
 (use-package sequential-command-config
   :ensure nil
   :after sequential-command
@@ -74,5 +67,26 @@
 
 ;; which-key config
 (which-key-mode)
+
+;; alternative interface for M-x
+;; キーバインドがあるコマンドなら教えてくれる、便利
+(use-package amx)
+
+(use-package volatile-highlights
+  :demand t
+  :config
+  (volatile-highlights-mode 1))
+
+(use-package autorevert
+  :ensure nil
+  :demand t
+  :config
+  (global-auto-revert-mode))
+
+(use-package delsel
+  :ensure nil
+  :demand t
+  :config
+  (delete-selection-mode))
 
 ;;; 00-init.el ends here
