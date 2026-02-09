@@ -1,6 +1,7 @@
 ;;; 10-autoinsert.el --- config
 ;;; Commentary:
-;; https://www.math.s.chiba-u.ac.jp/~matsu/emacs/emacs22/autoinsert.html
+;; tempelへ以降
+
 ;;; Code:
 
 (use-package autoinsert

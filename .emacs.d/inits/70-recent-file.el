@@ -1,12 +1,14 @@
 ;;; recentf --- recentf conf
 ;;; Commentary:
-;; FIXME: void 821c
 ;;; Code:
 
 (use-package recentf
   :ensure nil
+  :custom
+  (recentf-max-saved-items 50) ; 記録するファイルの数
+  (recentf-exclude '(".recentf", "^/.ssh:"))
+  (recentf-auto-cleanup 'never)
   :init
-  (setopt recentf-max-saved-items 200) ; 記録するファイルの数
   (recentf-mode 1))
 
 ;;recentfile
