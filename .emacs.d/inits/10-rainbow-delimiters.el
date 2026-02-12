@@ -7,7 +7,6 @@
 (use-package cl-lib
   :ensure nil)
 
-
 ;; AI code, fuck
 (defun rainbow-delimiters-using-stronger-colors ()
   "rainbow-delimitersの各Faceの彩度を最大(100%)に高める。"
