@@ -20,12 +20,9 @@
         ("C-r" . consult-history))
 
   :custom
-  ;; デフォルトでプレビュー有効はなんだかんだ重いので、
-  ;; プレビューはデフォルト無効化。
-  ;; (consult-preview-key 'any)
-  (consult-preview-key nil)
-  ;; プレビュー機能は M-. にバインド。
-  (consult-preview-key "M-.")
+  (consult-preview-key 'any) ;; :TODO あとで適切なものだけプレビューするように設定
+  ;; プレビュー機能をM-.にバインド
+  ;; (consult-preview-key "M-.")
   (xref-show-xrefs-function  #'consult-xref)
   (xref-show-definitions-function  #'consult-xref)
   (consult-line-start-from-top t))
