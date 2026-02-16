@@ -3,7 +3,6 @@
 (use-package prescient
   :defer t
   :custom
-  (completion-styles '(orderless prescient basic))
   (completion-category-defaults nil)
   (completion-category-overrides nil)
   (prescient-aggressive-file-save 1)

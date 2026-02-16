@@ -17,20 +17,12 @@
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
   (corfu-preselect 'prompt)
   (corfu-on-exact-match nil)
-
   :init
   ;; Capfs and Dabbrev can be used globally (M-/).  See also the customization
   (global-corfu-mode 1)
   ;; Enable optional extension modes:
   ;; (corfu-history-mode)
-  (corfu-popupinfo-mode)
-  :config
-  ;; (unless (display-graphic-p)
-  ;;   (use-package curfu-terminal
-  ;;     :demand t
-  ;;     :config
-  ;;     (corfu-terminal-mode 1)))
-  )
+  (corfu-popupinfo-mode))
 
 (use-package corfu-terminal
   :after corfu
@@ -38,13 +30,11 @@
   (corfu-terminal-mode 1))
 
 (use-package corfu-prescient
+  :after orderless
   :custom
-  (corfu-prescient-mode t)
-  (prescient-persist-mode 1)
-  :config
-  (with-eval-after-load 'orderless
-    (setq corfu-prescient-enable-filtering t))
-  (corfu-prescient-mode 1))
+  (corfu-prescient-mode 1)
+  ;; orderlessをマッチングで使う、prescientはスコアリングのみ
+  (corfu-prescient-enable-filtering nil))
 
 (use-package emacs
   :ensure nil

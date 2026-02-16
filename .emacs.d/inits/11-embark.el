@@ -1,10 +1,9 @@
 (use-package embark
-  :ensure t
+  :defer t
   :bind
-  ((:map minibuffer-mode-map
-         ("C-." . embark-act)         ;; pick some comfortable binding
-         ("C-;" . embark-dwim)        ;; good alternative: M-.
-         ("C-h B" . embark-bindings))) ;; alternative for `describe-bindings'
+  (("C-c e e" . embark-act)         ;; pick some comfortable binding
+   ("C-c e d" . embark-dwim)        ;; good alternative: M-.
+   ("C-c e b" . embark-bindings)) ;; alternative for `describe-bindings'
 
   :init
   ;; Optionally replace the key help with a completing-read interface
@@ -24,17 +23,14 @@
   ;; (add-hook 'context-menu-functions #'embark-context-menu 100)
 
   :config
-
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                  nil
-                 (window-parameters (mode-line-format . none))))
-  ;; Consult users will also want the embark-consult package.
-)
+                 (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
   :after (embark consult)
-    :ensure nil
-    :hook
-    (embark-collect-mode . consult-preview-at-point-mode))
+  :ensure nil
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))

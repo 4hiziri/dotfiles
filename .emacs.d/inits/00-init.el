@@ -3,8 +3,6 @@
 ;; still undivided settings
 ;;; Code:
 
-;; config
-
 ;; 対応する括弧を強調表示
 (use-package paren
   :ensure nil
