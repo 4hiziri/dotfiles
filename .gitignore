@@ -5,3 +5,5 @@
 .emacs.d/async-bytecomp.log
 .zsh/.zcompdump
 .emacs.d/eln-cache/
+.emacs.d/tree-sitter/
+.emacs.d/amx-items
