@@ -1,9 +1,9 @@
 (use-package cape
-  :hook (((prog-mode
-           text-mode
-           conf-mode
-           eglot-managed-mode
-           lsp-completion-mode) . my/set-super-capf))
+  :hook ((prog-mode
+          text-mode
+          conf-mode
+          eglot-managed-mode
+          lsp-completion-mode) . my/set-super-capf)
   :config
   (setq cape-dabbrev-check-other-buffers nil)
 

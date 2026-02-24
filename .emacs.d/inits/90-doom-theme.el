@@ -50,8 +50,8 @@
   (doom-modeline-env-elixir-executable "iex")
   (doom-modeline-env-rust-executable "rustc")
   :hook
-  (elpaca-after-init-hook . doom-modeline-mode)
-  (doom-modeline-mode-hook . main)
+  (elpaca-after-init . doom-modeline-mode)
+  (doom-modeline-mode . main)
   :config
   ;; parrot-mode保留、true/false、on/offなどのトグルができるモード
   ;; compilation保留、バックグラウンドでのテストやビルドの状態を表示
