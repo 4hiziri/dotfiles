@@ -4,9 +4,9 @@
           conf-mode
           eglot-managed-mode
           lsp-completion-mode) . my/set-super-capf)
+  :custom
+  (cape-dabbrev-check-other-buffers nil)
   :config
-  (setq cape-dabbrev-check-other-buffers nil)
-
   (defun my/set-super-capf (&optional arg)
     (setq-local completion-at-point-functions
                 (list (cape-capf-noninterruptible
