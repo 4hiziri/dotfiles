@@ -1,5 +1,5 @@
 (use-package consult
-  :hook (completion-list-mode-hook . consult-preview-at-point-mode)
+  :hook (completion-list-mode . consult-preview-at-point-mode)
   :bind
   ;; Helm のキーバインドに近い操作感にするための割り当て例
   ("C-x b" . consult-buffer)

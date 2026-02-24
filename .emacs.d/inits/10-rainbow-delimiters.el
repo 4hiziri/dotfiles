@@ -26,7 +26,7 @@
 
 (use-package rainbow-delimiters
   :hook
-  (prog-mode-hook . rainbow-delimiters-mode)
+  prog-mode
   :config
   (rainbow-delimiters-using-stronger-colors))
 
