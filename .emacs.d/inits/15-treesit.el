@@ -5,16 +5,11 @@
         (go "https://github.com/tree-sitter/tree-sitter-go")
         (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
         (python "https://github.com/tree-sitter/tree-sitter-python")
-        (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "v0.5.1" "tree-sitter-markdown/src")
-        (markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "v0.5.1" "tree-sitter-markdown-inline/src")))
+        (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/")
+        (markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/")))
 
-;; (setq treesit-language-source-alist
-;;       '((bash "https://github.com/tree-sitter/tree-sitter-bash" "v0.23.3" nil nil nil)
-;;         (go "https://github.com/tree-sitter/tree-sitter-go" "v0.23.4" nil nil nil)
-;;         (gomod "https://github.com/camdencheek/tree-sitter-go-mod" "v1.0.2" nil nil nil)
-;;         (python "https://github.com/tree-sitter/tree-sitter-python" "v0.23.6" nil nil nil)
-;;         (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "v0.5.1" "tree-sitter-markdown/src" nil nil)
-;;         (markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "v0.5.1" "tree-sitter-markdown-inline/src" nil nil)))
+;; this repository is awesome, https://github.com/casouri/tree-sitter-module
+;; maybe, i should run this script at first time
 
 ;; :TODO docker-file-ts-modeも追加
 
@@ -40,12 +35,12 @@
         (message
          (shell-command-to-string
           (format
-           "gcc -shared -o libtree-sitter-%s.so -fPIC src/parser.c src/scanner.c -I./src"
+           "tree-sitter build -o libtree-sitter-%s.so"
            lang)))
         (message
          (shell-command-to-string
           (format "cp libtree-sitter-%s.so ~/.emacs.d/tree-sitter/" lang))))))
-
+;; check need npm install
 
 ;; (dolist (element treesit-language-source-alist)
 ;;   (let* ((lang (car element)))
