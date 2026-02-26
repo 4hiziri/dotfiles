@@ -1,7 +1,15 @@
 (setq treesit-language-source-alist
       '((json "https://github.com/tree-sitter/tree-sitter-json")
-        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript"
+             "master"
+             "tsx/src"
+             #'((let ((default-directory (expand-file-name "../" default-directory)))
+                  (message (shell-command-to-string "node install")))))
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript"
+                    "master"
+                    "typescript/src"
+                    #'((let ((default-directory (expand-file-name "../" default-directory)))
+                  (message (shell-command-to-string "node install")))))
         (go "https://github.com/tree-sitter/tree-sitter-go")
         (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
         (python "https://github.com/tree-sitter/tree-sitter-python")
@@ -23,6 +31,7 @@
              (url (nth 1 lang-elem))
              (branch (nth 2 lang-elem))
              (src-dir (nth 3 lang-elem))
+             (pre-command (nth 4 lang-elem))
              (git-command (concat "git clone --depth 1 --single-branch " url " repo")))
         (message (format "create %s tree-sitter librar" (car lang-elem)))
         (when branch
@@ -31,6 +40,8 @@
         (setq default-directory (expand-file-name  "repo" default-directory))
         (when src-dir
           (setq default-directory (expand-file-name src-dir default-directory)))
+        (when pre-command
+          (pre-command))
         (message (shell-command-to-string "tree-sitter generate --abi=14"))
         (message
          (shell-command-to-string
