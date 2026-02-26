@@ -1,15 +1,19 @@
 (setq treesit-language-source-alist
-      '((json "https://github.com/tree-sitter/tree-sitter-json")
+      `((json "https://github.com/tree-sitter/tree-sitter-json")
         (tsx "https://github.com/tree-sitter/tree-sitter-typescript"
              "master"
-             "tsx/src"
-             #'((let ((default-directory (expand-file-name "../" default-directory)))
-                  (message (shell-command-to-string "node install")))))
+             "tsx"
+             ,(lambda ()
+                (let ((default-directory (expand-file-name "../" default-directory)))
+                  (message "%s" default-directory)
+                  (message "%s" (shell-command-to-string "pwd; ls"))
+                  (message (shell-command-to-string "npm install")))))
         (typescript "https://github.com/tree-sitter/tree-sitter-typescript"
                     "master"
-                    "typescript/src"
-                    #'((let ((default-directory (expand-file-name "../" default-directory)))
-                  (message (shell-command-to-string "node install")))))
+                    "typescript"
+                    ,(lambda ()
+                       (let ((default-directory (expand-file-name "../" default-directory)))
+                         (message (shell-command-to-string "npm install")))))
         (go "https://github.com/tree-sitter/tree-sitter-go")
         (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
         (python "https://github.com/tree-sitter/tree-sitter-python")
@@ -41,7 +45,7 @@
         (when src-dir
           (setq default-directory (expand-file-name src-dir default-directory)))
         (when pre-command
-          (pre-command))
+          (funcall pre-command))
         (message (shell-command-to-string "tree-sitter generate --abi=14"))
         (message
          (shell-command-to-string
