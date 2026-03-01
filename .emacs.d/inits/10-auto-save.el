@@ -4,13 +4,15 @@
 ;;; Code:
 (use-package auto-save-buffers-enhanced
   :demand t
-  :config
+  :custom
   ;; auto save target buffer rule
-  (setq auto-save-buffers-enhanced-include-regexps '(".+"))
+  (auto-save-buffers-enhanced-include-regexps '(".+"))
   ;; not-saveと.ignoreは除外する
-  (setq auto-save-buffers-enhanced-exclude-regexps '("^not-save" "\\.ignore$"))
+  (auto-save-buffers-enhanced-exclude-regexps '("^not-save" "\\.ignore$"))
   ;; Wroteのメッセージを抑制
-  (setq auto-save-buffers-enhanced-quiet-save-p t)
+  (auto-save-buffers-enhanced-quiet-save-p t)
+  (auto-save-buffers-enhanced-interval 600)
+  :config
   (auto-save-buffers-enhanced t))
 
 ;;; 10-auto-save.el ends here
