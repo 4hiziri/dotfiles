@@ -4,14 +4,14 @@
 ;;; Code:
 (use-package auto-save-buffers-enhanced
   :demand t
-  :custom
-  ;; auto save target buffer rule
-  (auto-save-buffers-enhanced-include-regexps '(".+"))
+  ;; なぜか:customだと変数の値がうまく反映されないのでinitで設定
+  :init
+  (setq auto-save-buffers-enhanced-include-regexps '(".+"))
   ;; not-saveと.ignoreは除外する
-  (auto-save-buffers-enhanced-exclude-regexps '("^not-save" "\\.ignore$"))
+  (setq auto-save-buffers-enhanced-exclude-regexps '("^not-save" "\\.ignore$"))
   ;; Wroteのメッセージを抑制
-  (auto-save-buffers-enhanced-quiet-save-p t)
-  (auto-save-buffers-enhanced-interval 600)
+  (setq auto-save-buffers-enhanced-quiet-save-p t)
+  (setq auto-save-buffers-enhanced-interval 10)
   :config
   (auto-save-buffers-enhanced t))
 
