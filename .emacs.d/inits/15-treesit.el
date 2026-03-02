@@ -18,7 +18,8 @@
         (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/")
-        (markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/")))
+        (markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/")
+        (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")))
 
 ;; this repository is awesome, https://github.com/casouri/tree-sitter-module
 ;; maybe, i should run this script at first time
@@ -70,3 +71,7 @@
     (progn
       (message "treesit: %s is not installed" (car element))
       (my-treesit-install-language-grammar element))))
+
+(use-package treesit
+  :ensure nil
+  :custom (treesit-font-lock-level 4))
