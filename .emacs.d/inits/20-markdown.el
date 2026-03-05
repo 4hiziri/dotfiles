@@ -3,12 +3,13 @@
 
 ;;; Code:
 
-(use-package markdown-ts-mode
-  :mode ("\\.md\\'" . markdown-ts-mode)
-  :bind (:map markdown-ts-mode-map
+(use-package markdown-mode
+  :mode ("\\.md\\'" . markdown-mode)
+  :bind (:map markdown-mode-map
 			  ("C-c C-c m" . (lambda ()
 							   (interactive)
 							   (w3m-find-file (buffer-file-name)))))
+  :hook (markdown-mode-hook tree-sitter-hl-mode)
   :custom
   (markdown-fontify-code-blocks-natively t))
 
