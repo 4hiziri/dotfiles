@@ -55,7 +55,13 @@
            lang)))
         (message
          (shell-command-to-string
-          (format "cp libtree-sitter-%s.so ~/.emacs.d/tree-sitter/" lang))))))
+          (format "cp libtree-sitter-%s.so ~/.emacs.d/tree-sitter/" lang)))
+        (message
+         (shell-command-to-string
+          (format
+           "ln -s ~/.emacs.d/tree-sitter/libtree-sitter-%s.so ~/.emacs.d/tree-sitter/%s.so"
+           lang
+           lang))))))
 ;; check need npm install
 
 ;; (dolist (element treesit-language-source-alist)
@@ -75,3 +81,16 @@
 (use-package treesit
   :ensure nil
   :custom (treesit-font-lock-level 4))
+
+;; 古いモードの方が多機能なときのためにハイライトだけ有効化する
+(use-package tree-sitter
+  :config
+  (add-to-list 'tree-sitter-load-path "~/.emacs.d/tree-sitter/"))
+(use-package tree-sitter-langs
+  :after tree-sitter
+  :config
+  (tree-sitter-hl-add-alist 'markdown-mode 'markdown))
+;; (use-package tree-sitter-hl
+;;   :after tree-sitter
+;;   :config
+;;   (tree-sitter-hl-add-alist 'markdown-mode 'markdown))
