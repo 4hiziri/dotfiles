@@ -83,13 +83,16 @@
   :custom (treesit-font-lock-level 4))
 
 ;; 古いモードの方が多機能なときのためにハイライトだけ有効化する
-(use-package tree-sitter
-  :config
-  (add-to-list 'tree-sitter-load-path "~/.emacs.d/tree-sitter/"))
-(use-package tree-sitter-langs
-  :after tree-sitter
-  :config
-  (tree-sitter-hl-add-alist 'markdown-mode 'markdown))
+;; (use-package tree-sitter
+;;   :config
+;;   (setq 'tree-sitter-load-path "~/.emacs.d/tree-sitter/"))
+;; (use-package tree-sitter-langs
+;;   :after tree-sitter
+;;   :init
+;;   (setq tree-sitter-langs-install-latest-grammar-lib nil)
+;;   (setq tree-sitter-langs-bin-dir "~/.emacs.d/tree-sitter-bin/")
+;;   :config
+;;   (tree-sitter-hl-add-alist 'markdown-mode 'markdown))
 ;; (use-package tree-sitter-hl
 ;;   :after tree-sitter
 ;;   :config
