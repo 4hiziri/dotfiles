@@ -3,6 +3,7 @@
 
 ;;; Code:
 
+;; treesitは機能が貧弱なので使わない
 (use-package markdown-mode
   :mode ("\\.md\\'" . markdown-mode)
   :bind (:map markdown-mode-map

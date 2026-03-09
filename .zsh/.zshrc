@@ -87,7 +87,7 @@ zstyle ':zle:*' word-style unspecified
 autoload -Uz compinit
 ## for zsh-completions
 fpath+='/usr/local/share/zsh-completions'
-fpath+="${HOME}/.zfunc"
+fpath+="${HOME}/.zsh/.zfunc"
 compinit
 
 ## 補完で小文字でも大文字にマッチさせる
@@ -145,6 +145,7 @@ alias cpf='cp -f'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias sudo='sudo ' # sudo の後のコマンドでエイリアスを有効にする
+alias cdu="cd .."
 
 # グローバルエイリアス
 alias -g L='| less'
