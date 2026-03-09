@@ -13,7 +13,7 @@
         (c3 "https://github.com/c3lang/tree-sitter-c3")
         (c-sharp "https://github.com/tree-sitter/tree-sitter-c-sharp")
         (cmake "https://github.com/uyha/tree-sitter-cmake")
-        (cpp "https://github.com/tree-sitter/tree-sitter-c-cpp" "master" "."
+        (cpp "https://github.com/tree-sitter/tree-sitter-cpp" "master" "."
              ,(lambda ()
                 (message (shell-command-to-string "npm install"))))
         (css "https://github.com/tree-sitter/tree-sitter-css")
@@ -230,14 +230,12 @@
 ;;       (message "treesit: %s is not installed" lang)
 ;;       (my-treesit-install-language-grammar lang))))
 
-(use-package async
-  :demand t)
 
 (defun install-ts-lib (lang)
   (if (treesit-language-available-p (car lang))
       (message "treesit: %s is already installed" (car lang))
     (progn
-      (message "treesit: %s is not installed" (car lang-elem))
+      (message "treesit: %s is not installed" (car lang))
       (my-treesit-install-language-grammar lang))))
 
 
