@@ -223,13 +223,25 @@
     (message "Need git, tree-sitter, npx and stable npm")))
 ;; check need npm install
 
-;; (dolist (element treesit-language-source-alist)
-;;   (let* ((lang (car element)))
-;;     (if (treesit-language-available-p lang)
-;;         (message "treesit: %s is already installed" lang)
-;;       (message "treesit: %s is not installed" lang)
-;;       (my-treesit-install-language-grammar lang))))
+(use-package async
+  :demand t)
 
+(defun my-treesit-install-all-parallel ()
+  (interactive)
+  (dolist (lang-elem treesit-language-source-alist)
+    (let ((lang (car lang-elem)))
+      (if (treesit-language-available-p lang)
+          (message "treesit: %s is installed" lang)
+        (message "treesit: build libtree-sitter-%s.so" lang)
+        (async-start
+         `(lambda ()
+            (let ((my-install-func (lambda (lang-elem)
+                                     ,(symbol-function 'my-treesit-install-language-grammar))))
+              (funcall my-install-func ',lang-elem)))
+         `(lambda (result)
+            (message "treesit: %s is installed" ',lang)))))))
+(my-treesit-install-all-parallel)
+;; :TODO node v20じゃないと駄目なのでチェック入れる、nvm.elでやるのが楽だけどnpmインストール馬鹿遅い
 
 (defun install-ts-lib (lang)
   (let ((tlap (treesit-language-available-p (car lang) t)))
@@ -239,25 +251,9 @@
         (message "treesit: %s is not installed: %s" (car lang) (cdr tlap))
         (my-treesit-install-language-grammar lang)))))
 
-(defun install-ts-lib (lang)
-  (promise-new
-   (lambda (resolve reject)
-     (let ((tlap (treesit-language-available-p (car lang) t)))
-       (if (car tlap)
-           (message "treesit: %s is already installed" (car lang))
-         (progn
-           (message "treesit: %s is not installed: %s" (car lang) (cdr tlap))
-           (resolve (my-treesit-install-language-grammar lang))))))))
-
-
-;; :TODO language-available-pがうまく動かないのでチェック、もしかしたら使えるライブラリしか見ない?
-;; :TODO await/asyncで書き直す
-;; :TODO node v20じゃないと駄目なのでチェック入れる、nvm.elでやるのが楽だけどnpmインストール馬鹿遅い
-(dolist (lang treesit-language-source-alist)
-  (install-ts-lib lang))
+;; (dolist (lang treesit-language-source-alist)
+;;   (install-ts-lib lang))
 
 (use-package treesit
   :ensure nil
   :custom (treesit-font-lock-level 4))
-
-
