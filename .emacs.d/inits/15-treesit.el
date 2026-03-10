@@ -3,7 +3,7 @@
              ,(lambda ()
                 (message (shell-command-to-string "npm install"))))
         (autohotkey "https://github.com/holy-tao/tree-sitter-autohotkey")
-        (astero "https://github.com/virchau13/tree-sitter-astro" "master" "."
+        (astro "https://github.com/virchau13/tree-sitter-astro" "master" "."
                 ,(lambda ()
                    (message (shell-command-to-string "npm install"))))
         (agda "https://github.com/tree-sitter/tree-sitter-agda")
@@ -28,7 +28,7 @@
               ,(lambda ()
                  (message (shell-command-to-string "npm install"))))
         (gpr "https://github.com/brownts/tree-sitter-gpr")
-        (haskel "https://github.com/tree-sitter/tree-sitter-haskell")
+        (haskell "https://github.com/tree-sitter/tree-sitter-haskell")
         (heex "https://github.com/phoenixframework/tree-sitter-heex")
         (html "https://github.com/tree-sitter/tree-sitter-html")
         (janet-simple "https://github.com/sogaiu/tree-sitter-janet-simple")
@@ -42,8 +42,8 @@
         (magik "https://github.com/krn-robin/tree-sitter-magik")
         (make "https://github.com/tree-sitter-grammars/tree-sitter-make")
         (nix "https://github.com/nix-community/tree-sitter-nix")
-        (org "https://github.com/nvim-orgmode/tree-sitter-org")
-        (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml" "master" "ocaml/src")
+        ;; (org "https://github.com/nvim-orgmode/tree-sitter-org") ; error
+        (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml" "master" "grammars/ocaml")
         (fluent "https://github.com/tree-sitter/tree-sitter-fluent")
         (tsq "https://github.com/tree-sitter/tree-sitter-tsq")
         (ql-dbscheme "https://github.com/tree-sitter/tree-sitter-ql-dbscheme")
@@ -78,7 +78,7 @@
         (xml "https://github.com/tree-sitter-grammars/tree-sitter-xml" "master" "xml")
         (dtd "https://github.com/tree-sitter-grammars/tree-sitter-xml" "master" "dtd")
         (hcl "https://github.com/tree-sitter-grammars/tree-sitter-hcl")
-        (gpg-config "https://github.com/tree-sitter-grammars/tree-sitter-gpg-config")
+        (gpg "https://github.com/tree-sitter-grammars/tree-sitter-gpg-config")
         (chatito "https://github.com/tree-sitter-grammars/tree-sitter-chatito")
         (arduino "https://github.com/tree-sitter-grammars/tree-sitter-arduino" "master" "."
                  ,(lambda ()
@@ -97,7 +97,7 @@
         (csv "https://github.com/tree-sitter-grammars/tree-sitter-csv" "master" "csv")
         (psv "https://github.com/tree-sitter-grammars/tree-sitter-csv" "master" "psv")
         (tsv "https://github.com/tree-sitter-grammars/tree-sitter-csv" "master" "tsv")
-        (hyperlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang")
+        (hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang")
         (diff "https://github.com/tree-sitter-grammars/tree-sitter-diff")
         (hare "https://github.com/tree-sitter-grammars/tree-sitter-hare")
         (slang "https://github.com/tree-sitter-grammars/tree-sitter-slang" "master" "."
@@ -110,7 +110,7 @@
         (xcompose "https://github.com/tree-sitter-grammars/tree-sitter-xcompose")
         (printf "https://github.com/tree-sitter-grammars/tree-sitter-printf")
         (properties "https://github.com/tree-sitter-grammars/tree-sitter-properties")
-        (go-sum "https://github.com/tree-sitter-grammars/tree-sitter-go-sum")
+        (gosum "https://github.com/tree-sitter-grammars/tree-sitter-go-sum")
         (requirements "https://github.com/tree-sitter-grammars/tree-sitter-requirements")
         (bicep "https://github.com/tree-sitter-grammars/tree-sitter-bicep")
         (hlsl "https://github.com/tree-sitter-grammars/tree-sitter-hlsl" "master" "."
@@ -232,13 +232,27 @@
 
 
 (defun install-ts-lib (lang)
-  (if (treesit-language-available-p (car lang))
-      (message "treesit: %s is already installed" (car lang))
-    (progn
-      (message "treesit: %s is not installed" (car lang))
-      (my-treesit-install-language-grammar lang))))
+  (let ((tlap (treesit-language-available-p (car lang) t)))
+    (if (car tlap)
+        (message "treesit: %s is already installed" (car lang))
+      (progn
+        (message "treesit: %s is not installed: %s" (car lang) (cdr tlap))
+        (my-treesit-install-language-grammar lang)))))
+
+(defun install-ts-lib (lang)
+  (promise-new
+   (lambda (resolve reject)
+     (let ((tlap (treesit-language-available-p (car lang) t)))
+       (if (car tlap)
+           (message "treesit: %s is already installed" (car lang))
+         (progn
+           (message "treesit: %s is not installed: %s" (car lang) (cdr tlap))
+           (resolve (my-treesit-install-language-grammar lang))))))))
 
 
+;; :TODO language-available-pがうまく動かないのでチェック、もしかしたら使えるライブラリしか見ない?
+;; :TODO await/asyncで書き直す
+;; :TODO node v20じゃないと駄目なのでチェック入れる、nvm.elでやるのが楽だけどnpmインストール馬鹿遅い
 (dolist (lang treesit-language-source-alist)
   (install-ts-lib lang))
 
@@ -246,18 +260,4 @@
   :ensure nil
   :custom (treesit-font-lock-level 4))
 
-;; 古いモードの方が多機能なときのためにハイライトだけ有効化する
-;; (use-package tree-sitter
-;;   :config
-;;   (setq 'tree-sitter-load-path "~/.emacs.d/tree-sitter/"))
-;; (use-package tree-sitter-langs
-;;   :after tree-sitter
-;;   :init
-;;   (setq tree-sitter-langs-install-latest-grammar-lib nil)
-;;   (setq tree-sitter-langs-bin-dir "~/.emacs.d/tree-sitter-bin/")
-;;   :config
-;;   (tree-sitter-hl-add-alist 'markdown-mode 'markdown))
-;; (use-package tree-sitter-hl
-;;   :after tree-sitter
-;;   :config
-;;   (tree-sitter-hl-add-alist 'markdown-mode 'markdown))
+
