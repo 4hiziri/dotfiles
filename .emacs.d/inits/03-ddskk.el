@@ -9,23 +9,27 @@
   (skk-henkan-strict-okuri-precedence t)
   (skk-show-annotation t) ;; 単語の意味をアノテーションとして表示
   (skk-compare-jisyo-size-when-saving nil)
-  (setq skk-server-host "127.0.0.1")
-  (setq skk-server-portnum 1178)
-  (setq skk-extra-jisyo-file-list
+  (skk-server-host "127.0.0.1")
+  (skk-server-portnum 1178)
+  (skk-extra-jisyo-file-list
         ((expand-file-name "~/.config/skk/user.dict")))
-  (setq skk-tooltip-parameters
+  (skk-server-coding-system 'utf-8)
+  (skk-tooltip-parameters
         '((background-color . "#323445")))
 
   ;; ;; 半角で入力したい文字
-  ;; (setq skk-rom-kana-rule-list
-  ;;       (nconc skk-rom-kana-rule-list
-  ;;              '((";" nil nil)
-  ;;                (":" nil nil)
-  ;;                ("?" nil nil)
-  ;;                ("!" nil nil))))
+  (setq skk-rom-kana-rule-list
+        (nconc skk-rom-kana-rule-list
+               '((";" nil nil)
+                 (":" nil nil)
+                 ("?" nil nil)
+                 ("!" nil nil)
+                 ("'" nil nil)
+                 ("\"" nil nil)
+                 ("(" nil nil)
+                 (")" nil nil))))
   :config
-  (require 'context-skk)
-  )
+  (require 'context-skk))
 
 (use-package ddskk-postframe
   :after ddskk
