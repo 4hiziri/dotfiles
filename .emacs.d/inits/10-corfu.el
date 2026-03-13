@@ -12,7 +12,9 @@
   (corfu-auto t)
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 3)
-  (corfu-quit-at-boundary 'separator)
+  (corfu-scroll-margin 2)
+  (corfu-quit-no-match 'separator)
+  (corfu-quit-at-boundary nil)
   (corfu-quit-no-match t)
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
   (corfu-preselect 'prompt)

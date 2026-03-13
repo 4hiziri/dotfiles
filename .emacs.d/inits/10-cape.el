@@ -1,9 +1,11 @@
+;; :TODO 調べる
+
 (use-package cape
-  :hook ((prog-mode
-          text-mode
-          conf-mode
-          eglot-managed-mode
-          lsp-completion-mode) . my/set-super-capf)
+  ;; :hook ((prog-mode
+  ;;         text-mode
+  ;;         conf-mode
+  ;;         eglot-managed-mode
+  ;;         lsp-completion-mode) . my/set-super-capf)
   :custom
   (cape-dabbrev-check-other-buffers nil)
   :config
@@ -23,7 +25,10 @@
                          :exclusive 'no))))))
 
   ; (add-to-list 'completion-at-point-functions #'tempel-expand)
-  (add-to-list 'completion-at-point-functions #'cape-file t)
-  (add-to-list 'completion-at-point-functions #'cape-tex t)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev t)
-  (add-to-list 'completion-at-point-functions #'cape-keyword t))
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-tex)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
+  (add-to-list 'completion-at-point-functions #'cape-dict)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-symbol))

@@ -1,0 +1,11 @@
+[Unit]
+Description=yaskkserv2 - User SKK dictionary server
+After=network.target
+
+[Service]
+
+ExecStart=%h/.cargo/bin/yaskkserv2 --listen-address 127.0.0.1 --midashi-utf8 %h/.config/skk/SKK-JISYO.yaskkserv2 --google-cache-filename=/tmp/yaskkserv2.cache --no-daemonize
+Restart=always
+
+[Install]
+WantedBy=default.target
