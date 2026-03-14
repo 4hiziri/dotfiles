@@ -1,12 +1,27 @@
 ;;; recentf --- recentf conf
 ;;; Commentary:
-;; FIXME: void 821c
 ;;; Code:
+
+(use-package recentf
+  :ensure nil
+  :custom
+  (recentf-max-saved-items 50) ; 記録するファイルの数
+  (recentf-exclude '(".recentf", "^/.ssh:"))
+  (recentf-auto-cleanup 'never)
+  :init
+  (recentf-mode 1))
 
 ;;recentfile
 (use-package recentf-ext
-  :bind (("M-f" . recentf-open-files))
+  :bind
+  (("M-f" . recentf-open-files))
   :config
-  (setq recentf-max-menu-items 500))
+  (setopt recentf-max-menu-items 500))
+
+;; Persist history over Emacs restarts
+(use-package savehist
+  :ensure nil
+  :init
+  (savehist-mode))
 
 ;;; 70-recent-file.el ends here

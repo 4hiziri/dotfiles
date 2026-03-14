@@ -84,23 +84,23 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 # 補完
-#for zsh-completions
-if [ -e '/usr/local/share/zsh-completions' ]
-then
-    fpath=('/usr/local/share/zsh-completions' $fpath)
-fi
+autoload -Uz compinit
+## for zsh-completions
+fpath+='/usr/local/share/zsh-completions'
+fpath+="${HOME}/.zsh/.zfunc"
+compinit
 
-# 補完で小文字でも大文字にマッチさせる
+## 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# ../ の後は今いるディレクトリを補完しない
+## ../ の後は今いるディレクトリを補完しない
 zstyle ':completion:*' ignore-parents parent pwd ..
 
-# sudo の後ろでコマンド名を補完する
+## sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 		   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
-# ps コマンドのプロセス名補完
+## ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 if [ -n "$LS_COLORS" ]; then
@@ -145,6 +145,7 @@ alias cpf='cp -f'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias sudo='sudo ' # sudo の後のコマンドでエイリアスを有効にする
+alias cdu="cd .."
 
 # グローバルエイリアス
 alias -g L='| less'
@@ -243,7 +244,7 @@ fi
 ################################
 # pyenv zsh-python-prompt
 ################################
-autoload -Uz add-zsh-hook
+# autoload -Uz add-zsh-hook
 
 # function _update_pyenv() {
 #     RPROMPT="[$ZSH_PYTHON_PROMPT] "
@@ -281,14 +282,14 @@ then
 fi
 ### .local/bin ###
 ### pyenv ###
-# if [ -d "$HOME/.pyenv" ]
-# then
-#     # export PYTHONPATH="$PYTHONPATH:$HOME/.python_script"
-#     export PYENV_ROOT="$HOME/.pyenv"
-#     export PATH="$PYENV_ROOT/bin/:$PATH"
-#     eval "$(pyenv init -)"
-#     eval "$(pyenv virtualenv-init -)"
-# fi
+alias python=python3
+if [ -d "$HOME/.pyenv" ]
+then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin/:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
+fi
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
@@ -421,3 +422,7 @@ if [ -e "$HOME/.cargo/bin/exa" ]
 then
 	alias ls=exa
 fi
+
+### nvm ###
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

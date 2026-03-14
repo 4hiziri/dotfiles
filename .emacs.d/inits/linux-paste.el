@@ -1,8 +1,10 @@
 ;;; linux-paste --- emacs copy sync with clipboard
 ;;; Commentary:
-;;; Code:
+;;; Code
 
 (use-package xclip
+  :demand t
+  :if (eq system-type 'gnu/linux)
   :config
   (xclip-mode))
 

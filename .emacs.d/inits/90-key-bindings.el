@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;; C-h をBackspaceに割り当て
-(define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
+;; (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 ;;C-q を空けて，C-q C-qにする
 (global-unset-key (kbd "C-q"))
 (bind-key "C-q C-q" 'quoted-insert global-map)
