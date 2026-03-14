@@ -4,12 +4,7 @@
 
 ;; slime
 ;; FIXME: parens in description breaks slime's syntax checker
-
-(defun load-lisp-smartparens ()
-  (require 'smartparens-lisp)
-  (turn-on-smartparens-mode))
-
-(add-hook 'emacs-lisp-mode-hook 'load-lisp-smartparens)
+;; TODO: add hook to smartparens
 
 (use-package slime
   :defer t
@@ -77,13 +72,10 @@
 ;; C-c C-d h
 (use-package hyperspec
   :defer t
+  :ensure nil
   :init
   (setq common-lisp-hyperspec-root (concat "file://" (expand-file-name "/usr/share/doc/hyperspec/"))
 	common-lisp-hyperspec-symbol-table (expand-file-name "/usr/share/doc/hyperspec/Data/Map_Sym.txt")))
-
-(use-package w3m
-  :defer t
-  :init (setq browse-url-browser-function 'w3m-browse-url))
 
 ;; TODO: understand it and rewrite for w3m
 ;; (use-package hyperspec

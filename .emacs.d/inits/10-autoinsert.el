@@ -1,14 +1,15 @@
 ;;; 10-autoinsert.el --- config
 ;;; Commentary:
-;; obsolete
+;; tempelへ以降
 
 ;;; Code:
 
 (use-package autoinsert
-  :defer t  
+  :ensure nil
   :init
-  (setq  auto-insert-directory "~/.emacs.d/template/" )
-  (add-hook 'find-file-hooks 'auto-insert)
+  (setopt  auto-insert-directory "~/.emacs.d/template/" )
+  :hook
+  (find-file-hooks . auto-insert)
   :config
   (setq auto-insert-alist
 		(append '(("\\.tex" . "template.tex")

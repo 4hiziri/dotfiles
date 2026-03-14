@@ -2,10 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package python
-  :defer t
-  :mode ("\\.py\\'" . python-mode))
-
 (use-package smartrep)
 
 ;; need, sudo apt install python3-jedi black python3-autopep8 yapf3 python3-yapf python3-isort
@@ -17,27 +13,57 @@
 ;; C-c C-d displays doc under cursor. doc pop in a different buffer, can be closed with q.
 ;;
 ;; M-x elpy-format-code
-(use-package elpy
-  :after python
-  :defer t
+;; (use-package elpy
+;;   :after python
+;;   :defer t
+;;   :hook
+;;   (python-mode-hook . turn-on-smartparens-mode)
+;;   (inferior-python-mode-hook . turn-on-smartparens-mode)
+;;   (python-mode-hook . elgot-ensure)
+;;   :custom
+;;   (python-shell-interpreter "ipython3")
+;;   (python-shell-interpreter-args "--simple")
+;;   (python-indent-offset 4)
+;;   :config
+;;   (elpy-enable)
+;;   )
+
+(add-to-list 'major-mode-remap-defaults '(python-mode . python-ts-mode))
+
+;; need install `pip install python-lsp-server python-lsp-ruff`'
+;; need install `pipx install ruff'
+(use-package python
+  :ensure nil
+  :interpreter ("python" . python-ts-mode)
+  :hook
+  ((python-ts-mode . eglot-ensure)
+   (python-ts-mode . ruff-format-on-save-mode))
   :init
-  (add-hook 'python-mode-hook 'turn-on-smartparens-mode)
-  (add-hook 'inferior-python-mode-hook 'turn-on-smartparens-mode)
-  ;; (add-hook 'elpy-mode-hook 'flycheck-mode)
+  (add-to-list 'eglot-server-programs '(python-ts-mode "pylsp")))
 
+(use-package highlight-indent-guides
+  :demand t
+  :custom
+  (highlight-indent-guides-method 'column)
+  :init
+  (setq highlight-indent-guides-mode t))
+
+(use-package reformatter)
+(use-package ruff-format
+  :after reformatter
   :config
-  (elpy-enable)
-  (setq python-indent-offset 4)
-  ;; python shell
-  (setq python-shell-interpreter "ipython3")
-  (setq python-shell-interpreter-args "--simple")
-  )
+  (reformatter-define ruff-sort-imports
+    :program "ruff"
+    :args '("--fix" "--select" "I001")
+    :group 'python)
+  (add-hook 'python-ts-mode-hook #'ruff-sort-imports-on-save-mode))
 
-(use-package py-isort
-  :defer t)
-
-(use-package py-yapf
-  :defer t)
+(use-package flymake-ruff
+  :hook (eglot-managed-mode-hook . (lambda ()
+                                     (when (derived-mode-p 'python-mode 'python-ts-mode)
+                                       (flymake-ruff-load))))
+  :custom
+  (flymake-ruff--default-configs '("ruff.toml" ".ruff.toml")))
 
 ;; (use-package elpy
 ;;   :after python
@@ -68,9 +94,6 @@
 ;;   (pyvenv-activate venv-default)
 ;;   (setq elpy-rpc-python-command "python3")
 ;;   )
-
-;; (use-package company-jedi
-;;   :defer t)
 
 ;; jedi
 ;; (use-package jedi-core

@@ -34,3 +34,12 @@ url/
 wget*
 slime/
 straight/
+elpaca/
+request/*
+eshell/*
+async-bytecomp.log
+eln-cache/
+tree-sitter/
+amx-items
+history
+var/
