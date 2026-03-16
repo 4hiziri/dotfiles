@@ -5,7 +5,7 @@ cd "~/src"
 git clone "https://github.com/skk-dev/dict"
 cd dict
 for JISYO in $(ls -1 "SKK-JISYO.*"); do
-    cat "$JISYO" | nkf > "$JISYO.utf-8"
+    nkf -ic=e -oc=w8 -O $JISYO "$JISYO.utf-8"
 done
 cd "~/src"
 git clone "https://github.com/4hiziri/my-skk-dict"
