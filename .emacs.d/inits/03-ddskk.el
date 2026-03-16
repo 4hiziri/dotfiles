@@ -1,4 +1,11 @@
+(use-package ccc
+  :ensure (:repo "skk-dev/ddskk"
+                 :files ("ccc.el")
+                 :version (lambda (_) "1.43")))
+
 (use-package ddskk
+  :after ccc
+  :ensure (:version (lambda (_) "17.1"))
   :hook ((find-file-hooks . (lambda () (skk-latin-mode 1))))
   :custom
   (default-input-method "japanese-skk")
@@ -12,26 +19,38 @@
   (skk-server-host "127.0.0.1")
   (skk-server-portnum 1178)
   (skk-extra-jisyo-file-list
-        ((expand-file-name "~/.config/skk/user.dict")))
+   (list (expand-file-name "~/.config/skk/user.dict")))
   (skk-server-coding-system 'utf-8)
   (skk-tooltip-parameters
         '((background-color . "#323445")))
 
   ;; ;; 半角で入力したい文字
-  (setq skk-rom-kana-rule-list
-        (nconc skk-rom-kana-rule-list
-               '((";" nil nil)
-                 (":" nil nil)
-                 ("?" nil nil)
-                 ("!" nil nil)
-                 ("'" nil nil)
-                 ("\"" nil nil)
-                 ("(" nil nil)
-                 (")" nil nil))))
+  (skk-rom-kana-rule-list
+   (nconc '(("ca" nil "か")
+            ("ci" nil "か")
+            ("cu" nil "か")
+            ("ce" nil "か")
+            ("co" nil "か")
+            ("cya" nil "きゃ")
+            ("cyi" nil "きぃ")
+            ("cyu" nil "きゅ")
+            ("cye" nil "きぇ")
+            ("cyo" nil "きょ")
+            (";" nil nil)
+            (":" nil nil)
+            ("?" nil nil)
+            ("!" nil nil)
+            ("'" nil nil)
+            ("\"" nil nil)
+            ("(" nil nil)
+            (")" nil nil))))
   :config
   (require 'context-skk))
 
 (use-package ddskk-postframe
   :after ddskk
-  :init
+  :ensure (:host github
+                 :repo "conao3/ddskk-posframe.el"
+                 :main "ddskk-posframe.el")
+  :config
   (ddskk-postframe-mode 1))
