@@ -28,6 +28,9 @@
 ;;キーストローク
 (setq echo-keystrokes 0.1)
 
+;; help -> backspace
+(define-key key-translation-map [?\C-h] [?\C-?])
+
 ;;ffap
 (ffap-bindings)
 
@@ -68,7 +71,8 @@
 
 ;; alternative interface for M-x
 ;; キーバインドがあるコマンドなら教えてくれる、便利
-(use-package amx)
+(use-package amx
+  :demand t)
 
 (use-package volatile-highlights
   :demand t

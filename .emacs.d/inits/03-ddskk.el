@@ -47,10 +47,10 @@
   :config
   (require 'context-skk))
 
-(use-package ddskk-postframe
+(use-package ddskk-posframe
   :after ddskk
   :ensure (:host github
                  :repo "conao3/ddskk-posframe.el"
                  :main "ddskk-posframe.el")
   :config
-  (ddskk-postframe-mode 1))
+  (ddskk-posframe-mode 1))
