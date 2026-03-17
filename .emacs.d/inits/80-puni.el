@@ -1,7 +1,6 @@
 ;;; puni
 ;;; Commentary:
 ;; :TODO usage
-;; :TODO smartparens -> puni
 ;; :TODO めっちゃ誤爆するのでキーバインド変える
 ;;; Code:
 
