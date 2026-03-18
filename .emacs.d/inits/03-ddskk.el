@@ -27,10 +27,10 @@
   ;; ;; 半角で入力したい文字
   (skk-rom-kana-rule-list
    (nconc '(("ca" nil "か")
-            ("ci" nil "か")
-            ("cu" nil "か")
-            ("ce" nil "か")
-            ("co" nil "か")
+            ("ci" nil "き")
+            ("cu" nil "く")
+            ("ce" nil "け")
+            ("co" nil "こ")
             ("cya" nil "きゃ")
             ("cyi" nil "きぃ")
             ("cyu" nil "きゅ")
@@ -47,10 +47,10 @@
   :config
   (require 'context-skk))
 
-(use-package ddskk-posframe
-  :after ddskk
-  :ensure (:host github
-                 :repo "conao3/ddskk-posframe.el"
-                 :main "ddskk-posframe.el")
-  :config
-  (ddskk-posframe-mode 1))
+;; (use-package ddskk-posframe
+;;   :after ddskk
+;;   :ensure (:host github
+;;                  :repo "conao3/ddskk-posframe.el"
+;;                  :main "ddskk-posframe.el")
+;;   :config
+;;   (ddskk-posframe-mode 1))
