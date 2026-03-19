@@ -191,7 +191,7 @@
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/")
         (markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/")
-        (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")))
+        (dockerfile "https://github.com/4hiziri/tree-sitter-dockerfile-fix")))
 
 (defun my-treesit-install-language-grammar (lang-elem)
   (if (and (executable-find "git") (executable-find "tree-sitter") (executable-find "npm"))
@@ -250,6 +250,13 @@
       (progn
         (message "treesit: %s is not installed: %s" (car lang) (cdr tlap))
         (my-treesit-install-language-grammar lang)))))
+
+(install-ts-lib (assoc 'dockerfile treesit-language-source-alist))
+
+
+(defun my-install-ts-lib (p lang)
+  (interactive "P\nslib:")
+  (install-ts-lib (assoc (make-symbol lang) treesit-language-source-alist)))
 
 ;; (dolist (lang treesit-language-source-alist)
 ;;   (install-ts-lib lang))
