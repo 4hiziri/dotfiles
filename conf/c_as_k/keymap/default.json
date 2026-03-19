@@ -1,0 +1,9 @@
+{
+    "include": [ "default/default" ],
+    "define": {
+        "keymap": {
+            "C-n": "next-candidate",
+            "C-p": "previous-candidate"
+        }
+    }
+}
