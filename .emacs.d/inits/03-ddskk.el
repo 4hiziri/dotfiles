@@ -18,39 +18,33 @@
   (skk-compare-jisyo-size-when-saving nil)
   (skk-server-host "127.0.0.1")
   (skk-server-portnum 1178)
-  (skk-extra-jisyo-file-list
-   (list (expand-file-name "~/.config/skk/user.dict")))
-  (skk-server-coding-system 'utf-8)
+  (skk-jisyo "~/.config/skk/user.dict") ;; 個人辞書の設定
   (skk-tooltip-parameters
-        '((background-color . "#323445")))
-
-  ;; ;; 半角で入力したい文字
-  (skk-rom-kana-rule-list
-   (nconc '(("ca" nil "か")
-            ("ci" nil "き")
-            ("cu" nil "く")
-            ("ce" nil "け")
-            ("co" nil "こ")
-            ("cya" nil "きゃ")
-            ("cyi" nil "きぃ")
-            ("cyu" nil "きゅ")
-            ("cye" nil "きぇ")
-            ("cyo" nil "きょ")
-            (";" nil nil)
-            (":" nil nil)
-            ("?" nil nil)
-            ("!" nil nil)
-            ("'" nil nil)
-            ("\"" nil nil)
-            ("(" nil nil)
-            (")" nil nil))))
+   '((background-color . "#323445")))
   :config
-  (require 'context-skk))
+  (require 'context-skk)
+  (require 'skk-server)
+  ;; EUCハードコードされているので暫定対応
+  (skk-open-server)
+  (set-process-coding-system (get-process "skkservd") 'utf-8 'utf-8)
 
-;; (use-package ddskk-posframe
-;;   :after ddskk
-;;   :ensure (:host github
-;;                  :repo "conao3/ddskk-posframe.el"
-;;                  :main "ddskk-posframe.el")
-;;   :config
-;;   (ddskk-posframe-mode 1))
+  ;; 半角で入力したい文字など
+  (nconc skk-rom-kana-rule-list
+         '(("ca" nil ("カ" . "か"))
+           ("ci" nil ("キ" . "き"))
+           ("cu" nil ("ク" . "く"))
+           ("ce" nil ("ケ" . "け"))
+           ("co" nil ("コ" . "こ"))
+           ("cya" nil ("キャ" . "きゃ"))
+           ("cyi" nil ("キィ" . "きぃ"))
+           ("cyu" nil ("キュ" . "きゅ"))
+           ("cye" nil ("キェ" . "きぇ"))
+           ("cyo" nil ("キョ" . "きょ"))
+           (";" nil nil)
+           (":" nil nil)
+           ("?" nil nil)
+           ("!" nil nil)
+           ("'" nil nil)
+           ("\"" nil nil)
+           ("(" nil nil)
+           (")" nil nil))))
