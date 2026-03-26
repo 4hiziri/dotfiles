@@ -1,8 +1,8 @@
-### for emacs ###
-# [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
-
-### OS ###
+# OS毎の設定の読み込み
 [ -f $ZDOTDIR/.zshrc-`uname` ] && . $ZDOTDIR/.zshrc-`uname`
+
+# sheldon, package manager
+eval "$(sheldon source)"
 
 ### zplug ###
 export ZPLUG_HOME="$HOME/.zplug"
@@ -14,47 +14,49 @@ else
 fi
 
 # prompt
-zplug "4hiziri/zsh-python-prompt"
+# zplug "4hiziri/zsh-python-prompt"
+# elif [[ "$DISPLAY" != '' ]] && command -v xdotool > /dev/null 2>&1 &&  command -v wmctrl > /dev/null 2>&1; then
+
 
 # complemetion
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-history-substring-search"
+# zplug "zsh-users/zsh-completions"
 
 # syntax and color
-zplug "chrissicool/zsh-256color"
-zplug "Tarrasch/zsh-colors"
-zplug "zsh-users/zsh-syntax-highlighting", defer:3
-
-zplug "seebi/dircolors-solarized"
+# zplug "chrissicool/zsh-256color"
+# zplug "Tarrasch/zsh-colors"
+# zplug "zsh-users/zsh-syntax-highlighting", defer:3
+# zplug "seebi/dircolors-solarized"
 
 # theme
 # zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
 # zplug 'themes/kardan', from:oh-my-zsh
-zplug 'nojhan/liquidprompt'
+# zplug 'nojhan/liquidprompt'
+eval "$(starship init zsh)"
 # prompt setting
 export LP_PS1_POSTFIX="
 > "
 
 # tools
-zplug "marzocchi/zsh-notify"
+# zplug "marzocchi/zsh-notify"
 # zplug "oknowton/zsh-dwim"
-zplug "rupa/z"
-zplug "peco/peco"
+# zplug "rupa/z"
+# zplug "peco/peco"
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-	echo; zplug install
-    fi
-fi
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+# 	echo; zplug install
+#     fi
+# fi
 
 # color setting
-export TERM="xterm-256color"
+export TERM="xterm-direct256"
 
 # source each file and alias command
-zplug load
+# zplug load
 
 ### zsh ###
 export LANG=ja_JP.UTF-8
@@ -63,17 +65,40 @@ export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
 
-bindkey -e # emacs 風キーバインドにする
-
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-setopt share_history # 同時に起動したzshの間でヒストリを共有する
+# zsh option
+setopt always_last_prompt # 補完しても次のプロンプトにいかない
+setopt always_to_end
+setopt append_history
+setopt auto_cd # ディレクトリ名だけでcdする
+setopt auto_pushd # cd したら自動的にpushdする
+setopt correct
+setopt cprecedences
+setopt dvorak
+setopt emacs
+setopt extended_glob # 高機能なワイルドカード展開を使用する
+unsetopt flow_control
+stty -ixon
+setopt hash_executables_only
+setopt hist_find_nodups
 setopt hist_ignore_all_dups # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks # ヒストリに保存するときに余分なスペースを削除する
+setopt interactive_comments # '#' 以降をコメントとして扱う
+setopt kshoptionprint # setoptで全オプションを表示する
+setopt magic_equal_subst
+setopt no_beep # beep を無効にする
+setopt no_flow_control # フローコントロールを無効にする
+setopt print_eight_bit # 日本語ファイル名を表示可能にする
+setopt prompt_subst
+setopt pushd_ignore_dups # 重複したディレクトリを追加しない
+# setopt share_history # 同時に起動したzshの間でヒストリを共有する
+
+bindkey -e # emacs 風キーバインドにする
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -113,22 +138,6 @@ autoload -Uz add-zsh-hook
 zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
 
-# オプション
-setopt print_eight_bit # 日本語ファイル名を表示可能にする
-
-setopt no_beep # beep を無効にする
-
-setopt no_flow_control # フローコントロールを無効にする
-
-setopt interactive_comments # '#' 以降をコメントとして扱う
-
-setopt auto_cd # ディレクトリ名だけでcdする
-
-setopt auto_pushd # cd したら自動的にpushdする
-setopt pushd_ignore_dups # 重複したディレクトリを追加しない
-
-setopt extended_glob # 高機能なワイルドカード展開を使用する
-
 # キーバインド
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^R' history-incremental-pattern-search-backward
@@ -146,32 +155,29 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias sudo='sudo ' # sudo の後のコマンドでエイリアスを有効にする
 alias cdu="cd .."
-
+# gdb
+alias pwndbg='gdb -ex init-pwndbg'
+alias peda='gdb -ex init-peda'
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
-
-# zsh-256color
-# color view
-# for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line pattern)
 ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
 
 # zsh-notify
-# notify finish of command which spends 10 seconds
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 
-################################
 bindkey '^o' autosuggest-accept
 
-### editor ###
+# editor
 alias emacs='emacsclient -nw -a ""'
 alias ekill='emacsclient -e (kill-emacs)'
 export EDITOR='emacsclient -nw -a ""'
 export VISUAL='emacsclient -nw -a ""'
-### editor ###
-### golang ###
+
+# PATH setting
+## golang
 if [ -d "/usr/local/go/bin/" ]
 then
 	export PATH="/usr/local/go/bin/:$PATH"
@@ -181,8 +187,8 @@ if [ -d "$HOME/go/bin/" ]
 then
 	export PATH="$HOME/go/bin/:$PATH"
 fi
-### golang ###
-### rust ###
+
+## rust
 if [ -f "$HOME/.cargo/env" ]
 then
     source "$HOME/.cargo/env"
@@ -190,14 +196,14 @@ elif [ -e "$HOME/.cargo/" ]
 then
      export PATH="$PATH:$HOME/.cargo/bin/"
 fi
-### rust ###
-### haskell ###
+
+## haskell
 if [ -d "$HOME/.local/bin" ]
 then
     export PATH="$PATH:$HOME/.local/bin/"
 fi
-### haskell ###
-### global ###
+
+## global
 if which global > /dev/null
 then
     if [ -d "$HOME/.globalrc" ]
@@ -206,99 +212,20 @@ then
     fi
     export GTAGSLABEL 'ctags'
 fi
-### global ###
-### tex ###
-if [ -d "/usr/local/texlive/2019/bin/x86_64-linux" ]
-then
-    export PATH="/usr/local/texlive/2019/bin/x86_64-linux:$PATH"
-elif [ -d "/usr/local/texlive/2018/bin/x86_64-linux" ]
-then
-    export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-linux"
-elif [ -d "/usr/local/texlive/2017/bin/x86_64-linux" ]
-then
-    export PATH="$PATH:/usr/local/texlive/2017/bin/x86_64-linux"
-elif [ -d "/usr/local/texlive/2018/bin/x86_64-linux" ]
-then
-	 export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-linux"
-elif [ -d "/usr/local/texlive/2019/bin/x86_64-linux" ]
-then
-	 export PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
-fi
-### tex ###
-### z ###
-. "$ZPLUG_REPOS/rupa/z/z.sh"
-### z ###
-################################
-# powerlevel9k
-################################
-# POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S \uE868  %d.%m.%y}"
-# typeset -gAH vcs_states
-# vcs_states=(
-#     'clean' '122'
-#     'modified' 'yellow'
-#     'untracked' 'red'
-# )
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs pyenv vcs ram time)
 
-################################
-# pyenv zsh-python-prompt
-################################
-# autoload -Uz add-zsh-hook
-
-# function _update_pyenv() {
-#     RPROMPT="[$ZSH_PYTHON_PROMPT] "
-# }
-
-# add-zsh-hook precmd _update_pyenv
-
-setopt prompt_subst
-
-#solve duplicates
-typeset -U path cdpath fpath nmanpath
-
-### cask ###
-if [ -d "$HOME/.cask/" ]
-then
-    export PATH="$PATH:$HOME/.cask/bin/"
-    if [ -e '/usr/local/bin/emacs' ]
-    then
-	export EMACS='/usr/local/bin/emacs'
-    elif [ -e '/usr/bin/emacs' ]
-    then
-	export EMACS='/usr/bin/emacs'
-    fi
-fi
-### cask ###
-
-### local/lib ###
+## local/lib
 export PATH="$PATH:/usr/local/lib/"
-### local/lib ###
 
-### .local/bin ###
+## .local/bin
 if [ -d "$PATH:$HOME/.local/bin" ]
 then
     export PATH="$HOME/.local/bin/:$PATH"
 fi
-### .local/bin ###
-### pyenv ###
-alias python=python3
-if [ -d "$HOME/.pyenv" ]
-then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin/:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv init --path)"
-fi
 
-# pipenv
+## pipenv
 export PIPENV_VENV_IN_PROJECT=1
 
-# virtualenv setting
-# export PYENV_VIRTUALENV_DISABLE_PROMPT=0
-### pyenv ###
-
-# pip zsh completion start
+## pip zsh completion start
 function _pip_completion {
   local words cword
   read -Ac words
@@ -308,54 +235,21 @@ function _pip_completion {
 	     PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
-# pip zsh completion end
 
-### ruby ###
+## ruby
 if [ -d "$HOME/.rbenv/" ]
 then
    export PATH="$PATH:$HOME/.rbenv/bin/"
    eval "$(rbenv init -)"
 fi
-### ruby ###
 
-### roswell ###
+## roswell
 if [ -d "$HOME/.roswell/bin/" ]
 then
     export PATH="$PATH:$HOME/.roswell/bin/"
 fi
 
-#########################################
-# powerline
-########################################
-
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]
-then
-    export TERM='xterm-256color'
-    export PATH="$PATH:$HOME/.local/bin/"
-    powerline-daemon -q
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-fi
-
-########################################
-# peco
-########################################
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-	tac="tac"
-    else
-	tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-	eval $tac | \
-	peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
-
-### CUDA ###
+## CUDA
 if [ -e "/usr/local/cuda/" ]
 then
     export PATH="$PATH:/usr/local/cuda/bin/"
@@ -364,17 +258,53 @@ then
     export LD_LIBRARY_PATH=:"/usr/local/cuda/targets/x86_64-linux/lib"
 fi
 
-### gdb ###
-alias pwndbg='gdb -ex init-pwndbg'
-alias peda='gdb -ex init-peda'
+## fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-### command ###
+## nvm
+export NVM_DIR="/home/tkgsy/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+## john
+export PATH="$PATH:$HOME/src/JohnTheRipper/run/"
+alias john="$HOME/src/JohnTheRipper/run/john"
+
+## opencode
+export PATH=/home/tkgsy/.opencode/bin:$PATH
+
+## solve duplicates
+typeset -U path cdpath fpath nmanpath
+
+# modern command
+
+## modern cat
+if [ -e '/usr/bin/batcat' ]
+then
+	alias bat='batcat --paging=never'
+fi
+
+## modern ls
+if [ -e "$HOME/.cargo/bin/exa" ]
+then
+	alias ls=exa
+fi
+
+## zoxide, z command modern cd
+if type -a zoxide 2>&1 > /dev/null ; then
+    eval "$(zoxide init zsh)"
+fi
+
+# original command
+if ! type -a dictd 2>&1 > /dev/null ; then
+    sudo apt install -y dictd dict-freedict-jpn-eng dict-freedict-eng-jpn
+fi
+
 function ej() {
-    grep "$*" /usr/share/dict/dict -E -A 1 -wi --color=always | less -R -FX
+    dict -d fd-eng-jpn "$*"
 }
 
 function je() {
-    grep "$*" /usr/share/dict/dict -E -B 1 -wi --color=always | less -R -FX
+    dict -d fd-jpn-eng "$*"
 }
 
 function man() {
@@ -386,46 +316,3 @@ function man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-### nvm ###
-export NVM_DIR="/home/tkgsy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-###
-
-### Tramp ###
-case "$TERM" in
-	"dumb")
-        PS1="> "
-        ;;
-    xterm*|rxvt*|eterm*|screen*)
-        PS1="my fancy multi-line \n prompt > "
-        ;;
-    *)
-        PS1="> "
-        ;;
-esac
-### Tramp ###
-
-### john ###
-export PATH="$PATH:$HOME/src/JohnTheRipper/run/"
-alias john="$HOME/src/JohnTheRipper/run/john"
-
-### modern command ###
-if [ -e '/usr/bin/batcat' ]
-then
-	alias bat='batcat --paging=never'
-fi
-
-if [ -e "$HOME/.cargo/bin/exa" ]
-then
-	alias ls=exa
-fi
-
-### nvm ###
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# opencode
-export PATH=/home/tkgsy/.opencode/bin:$PATH
