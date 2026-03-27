@@ -4,61 +4,14 @@
 # sheldon, package manager
 eval "$(sheldon source)"
 
-### zplug ###
-export ZPLUG_HOME="$HOME/.zplug"
-if [ -d '/usr/share/zsh/scripts/zplug' ]
-then
-    source '/usr/share/zsh/scripts/zplug/init.zsh'
-else
-    source "$ZPLUG_HOME/init.zsh"
-fi
-
-# prompt
-# zplug "4hiziri/zsh-python-prompt"
-# elif [[ "$DISPLAY" != '' ]] && command -v xdotool > /dev/null 2>&1 &&  command -v wmctrl > /dev/null 2>&1; then
-
-
-# complemetion
-# zplug "zsh-users/zsh-autosuggestions"
-# zplug "zsh-users/zsh-history-substring-search"
-# zplug "zsh-users/zsh-completions"
-
-# syntax and color
-# zplug "chrissicool/zsh-256color"
-# zplug "Tarrasch/zsh-colors"
-# zplug "zsh-users/zsh-syntax-highlighting", defer:3
-# zplug "seebi/dircolors-solarized"
-
 # theme
-# zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
-# zplug 'themes/kardan', from:oh-my-zsh
-# zplug 'nojhan/liquidprompt'
 eval "$(starship init zsh)"
-# prompt setting
-export LP_PS1_POSTFIX="
-> "
-
-# tools
-# zplug "marzocchi/zsh-notify"
-# zplug "oknowton/zsh-dwim"
-# zplug "rupa/z"
-# zplug "peco/peco"
-
-# Install plugins if there are plugins that have not been installed
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-# 	echo; zplug install
-#     fi
-# fi
+# `starship explain` can show explaination of current state
 
 # color setting
 export TERM="xterm-direct256"
 
-# source each file and alias command
-# zplug load
-
-### zsh ###
+# LANG
 export LANG=ja_JP.UTF-8
 
 # 色を使用出来るようにする
@@ -137,10 +90,6 @@ autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-
-# キーバインド
-# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-bindkey '^R' history-incremental-pattern-search-backward
 
 # エイリアス
 alias grep='grep --color=auto'
@@ -278,21 +227,34 @@ typeset -U path cdpath fpath nmanpath
 # modern command
 
 ## modern cat
-if [ -e '/usr/bin/batcat' ]
-then
-	alias bat='batcat --paging=never'
+if [ -e "$HOME/.cargo/bin/bat" ]; then
+    alias bat='bat --paging=never --theme Dracula'
+    export MANPAGER="bat -plman"
+    alias bathelp='bat --plain --language=help'
+    help() {
+        "$@" --help 2>&1 | bathelp
+    }
+    alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+    alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 fi
 
 ## modern ls
-if [ -e "$HOME/.cargo/bin/exa" ]
-then
-	alias ls=exa
-fi
+[ -e "$HOME/.cargo/bin/eza" ] && alias ls=eza
 
 ## zoxide, z command modern cd
-if type -a zoxide 2>&1 > /dev/null ; then
-    eval "$(zoxide init zsh)"
+type -a zoxide 2>&1 > /dev/null && eval "$(zoxide init zsh)"
+
+## modern git diff
+if [ -e "$HOME/.cargo/bin/delta" ]; then
+    git config --global core.pager delta
+    git config --global interactive.diffFilter 'delta --color-only'
+    git config --global delta.navigate true
+    git config --global delta.dark true  # or `delta.light true`, or omit for auto-detection
+    git config --global merge.conflictStyle zdiff3
 fi
+
+## modern tree, broot
+source /home/tkgsy/.config/broot/launcher/bash/br
 
 # original command
 if ! type -a dictd 2>&1 > /dev/null ; then
