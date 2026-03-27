@@ -66,7 +66,7 @@ autoload -Uz compinit
 ## for zsh-completions
 fpath+='/usr/local/share/zsh-completions'
 fpath+="${HOME}/.zsh/.zfunc"
-compinit
+compinit # 重いので手動でやる
 
 ## 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -110,6 +110,7 @@ alias peda='gdb -ex init-peda'
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+alias python='python3'
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line pattern)
 ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
@@ -211,8 +212,28 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## nvm
-export NVM_DIR="/home/tkgsy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+if [ -d ${HOME}/.nvm ]; then
+  # Set NVM_DIR if not already set
+  export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+
+  # Lazy load NVM
+  nvm() {
+    unset -f nvm
+    source "${NVM_DIR}/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    nvm "$@"
+  }
+
+  # Add default Node version to PATH if it exists
+  if [ -f "${NVM_DIR}/alias/default" ]; then
+    DEFAULT_NODE_VERSION=$(cat "${NVM_DIR}/alias/default")
+    NODE_BIN_PATH="${NVM_DIR}/versions/node/v${DEFAULT_NODE_VERSION}/bin"
+    if [ -d "${NODE_BIN_PATH}" ]; then
+      export PATH="${NODE_BIN_PATH}:$PATH"
+      export NODE_PATH="${NVM_DIR}/versions/node/v${DEFAULT_NODE_VERSION}/lib/node_modules"
+    fi
+  fi
+fi
 
 ## john
 export PATH="$PATH:$HOME/src/JohnTheRipper/run/"
@@ -230,7 +251,7 @@ typeset -U path cdpath fpath nmanpath
 if [ -e "$HOME/.cargo/bin/bat" ]; then
     alias bat='bat --paging=never --theme Dracula'
     export MANPAGER="bat -plman"
-    alias bathelp='bat --plain --language=help'
+    alias bathelp='bat --plain --language=help --theme Dracula'
     help() {
         "$@" --help 2>&1 | bathelp
     }

@@ -52,3 +52,6 @@ apply  = ["PATH"]
 
 [plugins.zsh-dwim]
 github = "oknowton/zsh-dwim"
+
+[plugins.dracula-theme]
+github = "dracula/zsh-syntax-highlighting"
