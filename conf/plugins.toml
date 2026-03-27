@@ -49,3 +49,6 @@ fi
 github = "junegunn/fzf"
 dir    = "bin"
 apply  = ["PATH"]
+
+[plugins.zsh-dwim]
+github = "oknowton/zsh-dwim"

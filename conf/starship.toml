@@ -1,0 +1,45 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+format = '$all$battery$time$line_break$status$os$container$netns$shell$character'
+
+continuation_prompt = "[→→](46) "
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[×](bold red)'
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[[battery.display]]
+threshold = 50
+style = "yellow"
+
+[[battery.display]]
+threshold = 100
+style = "green"
+
+[cmd_duration]
+show_notifications = true
+
+[directory]
+format='\[[$path]($style)[$read_only]($read_only_style)\] '
+
+[git_metrics]
+format = "(([+$added]($added_style))(/[-$deleted]($deleted_style)) )"
+disabled = false
+
+[os]
+disabled = false
+
+[status]
+disabled = false
+
+[sudo]
+disabled = false
+
+[time]
+disabled = false
+format = "[@](red) [$time]($style) "

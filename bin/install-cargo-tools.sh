@@ -7,8 +7,23 @@ fi
 
 cargo install cargo-binstall
 cargo binstall uv
-cargo binstall exa
+cargo binstall eza # modern ls
 cargo install --git https://github.com/4hiziri/yaskkserv2
 cargo binstall sheldon
 cargo binstall starship
-cargo binstall zoxide
+cargo binstall zoxide # modern cd
+cargo binstall bat
+cargo binstall fd-find
+cargo binstall ripgrep
+cargo binstall git-delta # modern git diff
+cargo binstall du-dust # modern du
+cargo binstall broot # modern tree
+cargo binstall choose # modern cut or awk
+cargo binstall procs # modern ps
+cargo binstall gping # modern ping
+cargo binstall bottom # mordern top
+cargo binstall tlrc # modern man
+cargo binstall sd # modern sed
+cargo binstall xh # modern curl wget
+cargo binstall riffdiff # modern diff
+cargo binstall difftastic # modern diff2, difft
