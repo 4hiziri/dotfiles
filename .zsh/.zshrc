@@ -5,7 +5,8 @@
 eval "$(sheldon source)"
 
 # theme
-eval "$(starship init zsh)"
+# eval "~/.zsh/starship.sh"
+eval "$(eval starship init zsh)"
 # `starship explain` can show explaination of current state
 
 # color setting
@@ -250,17 +251,18 @@ typeset -U path cdpath fpath nmanpath
 ## modern cat
 if [ -e "$HOME/.cargo/bin/bat" ]; then
     alias bat='bat --paging=never --theme Dracula'
-    export MANPAGER="bat -plman"
+    export MANPAGER="sh -c 'col -bx 2>/dev/null| bat -l man -p'"
+    export MANROFFOPT="-c"
     alias bathelp='bat --plain --language=help --theme Dracula'
     help() {
         "$@" --help 2>&1 | bathelp
     }
-    alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-    alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+    alias -g -- -rh='-h 2>&1 | bat -l help -p'
+    alias -g -- --rhelp='--help 2>&1 | bat -l help -p'
 fi
 
 ## modern ls
-[ -e "$HOME/.cargo/bin/eza" ] && alias ls=eza
+# [ -e "$HOME/.cargo/bin/eza" ] && alias ls=eza
 
 ## zoxide, z command modern cd
 type -a zoxide 2>&1 > /dev/null && eval "$(zoxide init zsh)"
@@ -299,3 +301,5 @@ function man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+ansiweather
