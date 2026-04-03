@@ -14,6 +14,13 @@ shell = "zsh"
 
 [plugins]
 
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
+
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 
@@ -55,3 +62,28 @@ github = "oknowton/zsh-dwim"
 
 [plugins.dracula-theme]
 github = "dracula/zsh-syntax-highlighting"
+
+[plugins.zsh-activate-py-environment]
+github = "se-jaeger/zsh-activate-py-environment"
+
+[plugins.zsh-communism]
+github = "victoria-riley-barnett/Communism"
+
+[plugins.ansiweather]
+github = "fcambus/ansiweather"
+
+[plugins.colorize]
+github = "zpm-zsh/colorize"
+
+[plugins.zsh-command-not-found]
+github = "Freed-Wu/zsh-command-not-found"
+
+# [plugins.zsh-deja-vu]
+# github = "justyntemme/zsh-deja-vu"
+
+[plugins.enhancd]
+github = "babarot/enhancd"
+apply = ["defer"]
+
+[plugins.zsh-eza]
+github = "z-shell/zsh-eza"
