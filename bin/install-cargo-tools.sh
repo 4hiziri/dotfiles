@@ -12,9 +12,9 @@ cargo install --git https://github.com/4hiziri/yaskkserv2
 cargo binstall sheldon
 cargo binstall starship
 cargo binstall zoxide # modern cd
-cargo binstall bat
-cargo binstall fd-find
-cargo binstall ripgrep
+cargo binstall bat # modern cat
+cargo binstall fd-find # modern find
+cargo binstall ripgrep # modern grep
 cargo binstall git-delta # modern git diff
 cargo binstall du-dust # modern du
 cargo binstall broot # modern tree

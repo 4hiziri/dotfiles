@@ -63,9 +63,6 @@ github = "oknowton/zsh-dwim"
 [plugins.dracula-theme]
 github = "dracula/zsh-syntax-highlighting"
 
-[plugins.zsh-activate-py-environment]
-github = "se-jaeger/zsh-activate-py-environment"
-
 [plugins.zsh-communism]
 github = "victoria-riley-barnett/Communism"
 
@@ -87,3 +84,39 @@ apply = ["defer"]
 
 [plugins.zsh-eza]
 github = "z-shell/zsh-eza"
+
+[plugins.zsh-smartinput]
+github = "momo-lab/zsh-smartinput"
+
+[plugins.smile]
+github = "fundor333/smile"
+
+[plugins.zsh-systemd]
+github = "le0me55i/zsh-systemd"
+
+[plugins.tipz]
+github = "molovo/tipz"
+
+[plugins.ugit]
+github = "Bhupesh-V/ugit"
+
+[plugins.zsh-url-highlighter]
+github = "ascii-soup/zsh-url-highlighter"
+
+[plugins.zsh-uv-env]
+github = "matthiasha/zsh-uv-env"
+
+[plugins.web-search]
+github = "Anant-mishra1729/web-search"
+
+[plugins.zsh-you-should-use]
+github = "MichaelAquilina/zsh-you-should-use"
+
+[plugins.omz-ytdl-aliases]
+github = "katrinleinweber/oh-my-zsh-youtube-dl-aliases"
+
+[plugins.zpy]
+github = "AndydeCleyre/zpy"
+
+[plugins.zshcp]
+github = "0mykull/zshcp"
