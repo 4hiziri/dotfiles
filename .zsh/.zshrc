@@ -1,14 +1,6 @@
 # OS毎の設定の読み込み
 [ -f $ZDOTDIR/.zshrc-`uname` ] && . $ZDOTDIR/.zshrc-`uname`
 
-# sheldon, package manager
-eval "$(sheldon source)"
-
-# theme
-# eval "~/.zsh/starship.sh"
-eval "$(eval starship init zsh)"
-# `starship explain` can show explaination of current state
-
 # color setting
 export TERM="xterm-direct256"
 
@@ -307,5 +299,13 @@ function man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+# sheldon, package manager
+eval "$(sheldon source)"
+
+# theme
+# eval "~/.zsh/starship.sh"
+eval "$(eval starship init zsh)"
+# `starship explain` can show explaination of current state
 
 ansiweather
