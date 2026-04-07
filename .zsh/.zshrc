@@ -127,6 +127,12 @@ alias ekill='emacsclient -e (kill-emacs)'
 export EDITOR='emacsclient -nw -a ""'
 export VISUAL='emacsclient -nw -a ""'
 
+# custom commands
+function set_title() {
+  echo -en "\e]2;$@\a"
+}
+
+
 # PATH setting
 ## golang
 if [ -d "/usr/local/go/bin/" ]

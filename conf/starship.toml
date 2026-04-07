@@ -43,3 +43,9 @@ disabled = false
 [time]
 disabled = false
 format = "[@](red) [$time]($style) "
+
+[custom.git-user]
+#command = "echo test"
+command = "git config user.name"
+style = "yellow"
+detect_folders = ['.git']
