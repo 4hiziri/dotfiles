@@ -105,12 +105,6 @@ alias -g L='| less'
 alias -g G='| grep'
 alias python='python3'
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line pattern)
-ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
-
-# zsh-notify
-export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
-
 bindkey '^o' autosuggest-accept
 
 # editor
@@ -123,7 +117,6 @@ export VISUAL='emacsclient -nw -a ""'
 function set_title() {
   echo -en "\e]2;$@\a"
 }
-
 
 # PATH setting
 ## golang
@@ -302,6 +295,12 @@ function man() {
 
 # sheldon, package manager
 eval "$(sheldon source)"
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line pattern)
+ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
+
+# zsh-notify
+export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 
 # theme
 # eval "~/.zsh/starship.sh"
