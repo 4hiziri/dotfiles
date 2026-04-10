@@ -10,3 +10,4 @@ go install github.com/muesli/duf@latest # modern df
 go install github.com/mr-karan/doggo/cmd/doggo@latest # modern dig
 go install github.com/cheat/cheat/cmd/cheat@latest # cheatsheet tool
 go install github.com/rs/curlie@latest # modern curl wget
+go install github.com/gokcehan/lf@latest
