@@ -118,5 +118,59 @@ github = "katrinleinweber/oh-my-zsh-youtube-dl-aliases"
 [plugins.zpy]
 github = "AndydeCleyre/zpy"
 
-[plugins.zshcp]
-github = "0mykull/zshcp"
+[plugins.zsh-smart-insert]
+github = "lgdevlop/zsh-smart-insert"
+
+[plugins.zsh-shellcolor]
+github = "SaltedBlowfish/zsh-shellcolor"
+
+[plugins.zsh-syntax-highlightigng-dracula]
+github = "dracula/zsh-syntax-highlighting"
+
+[plugins.docker-aliases]
+github = "webyneter/docker-aliases"
+
+[plugins.evalcache]
+github = "mroth/evalcache"
+
+[plugins.figures]
+github = "zpm-zsh/figures"
+
+[plugins."fzf.zsh"]
+github = "scaryrawr/fzf.zsh"
+
+[plugins.zsh-hints]
+github = "joepvd/zsh-hints"
+
+[plugins.zsh-smartcache]
+github = "QuarticCat/zsh-smartcache"
+
+[plugins.yazi-zoxide-zsh]
+github = "fdw/yazi-zoxide-zsh"
+
+[plugins.boss-git-zsh-plugin]
+github = "bossjones/boss-git-zsh-plugin"
+
+[plugins.hacker-quotes]
+github = "oldratlee/hacker-quotes"
+
+[plugins.zsh-welcome-banner]
+github = "joshuadanpeterson/zsh-welcome-banner"
+
+[plugins.zsh-riddle-me]
+github = "vkolagotla/zsh-riddle-me"
+
+[plugins.zsh-random-quotes]
+github = "vkolagotla/zsh-random-quotes"
+
+[plugins.zsh-quotify]
+github = "dpretet/zsh-quotify"
+
+[plugins.quoter-zsh]
+github = "owenvoke/quoter-zsh"
+
+[plugins.matecito-zsh]
+github = "uvallasciani/matecito-zsh"
+
+[plugins.Linus-rants-ZSH]
+github = "bhayward93/Linus-rants-ZSH"

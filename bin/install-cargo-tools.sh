@@ -6,7 +6,8 @@ if ! type -a cargo > /dev/null ; then
 fi
 
 cargo install cargo-binstall
-yes | cargo binstall uv
+yes | cargo binstall uv # python manager
+yes | cargo binstall ruff # python linter
 yes | cargo binstall eza # modern ls
 cargo install --git https://github.com/4hiziri/yaskkserv2
 yes | cargo binstall sheldon
@@ -27,3 +28,6 @@ yes | cargo binstall sd # modern sed
 yes | cargo binstall xh # modern curl wget
 yes | cargo binstall riffdiff # modern diff
 yes | cargo binstall difftastic # modern diff2, difft
+yse | cargo binstall tre # modern tree
+yes | cargo binstall yazi-fm # file manager
+yes | cargo binstall duf # modern df

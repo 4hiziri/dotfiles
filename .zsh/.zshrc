@@ -293,14 +293,17 @@ function man() {
     command man "$@"
 }
 
+# zsh-shellcolor
+export DEFAULT_SHELLCOLOR="#00524f"
+
+# zsh-notify
+export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
+
 # sheldon, package manager
 eval "$(sheldon source)"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line pattern)
 ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
-
-# zsh-notify
-export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 
 # theme
 # eval "~/.zsh/starship.sh"
