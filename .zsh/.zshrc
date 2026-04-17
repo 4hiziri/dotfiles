@@ -310,4 +310,6 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
 eval "$(eval starship init zsh)"
 # `starship explain` can show explaination of current state
 
+zre_random_execute
+
 ansiweather
