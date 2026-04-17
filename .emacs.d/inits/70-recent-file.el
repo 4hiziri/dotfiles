@@ -19,9 +19,6 @@
   (setopt recentf-max-menu-items 500))
 
 ;; Persist history over Emacs restarts
-(use-package savehist
-  :ensure nil
-  :init
-  (savehist-mode))
+(savehist-mode 1)
 
 ;;; 70-recent-file.el ends here

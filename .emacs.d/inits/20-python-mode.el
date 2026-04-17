@@ -41,13 +41,6 @@
   :init
   (add-to-list 'eglot-server-programs '(python-ts-mode "pylsp")))
 
-(use-package highlight-indent-guides
-  :demand t
-  :custom
-  (highlight-indent-guides-method 'column)
-  :init
-  (setq highlight-indent-guides-mode t))
-
 (use-package reformatter)
 (use-package ruff-format
   :after reformatter

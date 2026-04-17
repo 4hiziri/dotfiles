@@ -18,9 +18,9 @@
 
 ;; バックアップとオートセーブファイルを~/.emacs.d/backups/へ集める
 (add-to-list 'backup-directory-alist
-			 (cons ".*" "~/.emacs.d/backups/"))
+             (cons ".*" "~/.emacs.d/backups/"))
 (setq auto-save-file-name-transforms
-	  `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
+      `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 ;;履歴拡張
 (setq history-length 3000)
@@ -39,6 +39,9 @@
       '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
 
 ;; misc packages
+(use-package uniquify
+  :ensure nil
+  :defer nil)
 (defvar uniquify-buffer-name-style 'post-forward-andle-brackets)
 (defvar uniquify-ignore-buffers-re "*[^*]+*")
 (defvar uniquify-buffer-name-style 'post-forward-angle-brackets)

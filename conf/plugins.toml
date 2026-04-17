@@ -19,6 +19,7 @@ github = "romkatv/zsh-defer"
 
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+zre_add_cand = "{{ hooks?.pre | nl }}{% for file in files %}zre_add_cand \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
 
 [plugins.zsh-autosuggestions]
@@ -62,9 +63,6 @@ github = "oknowton/zsh-dwim"
 
 [plugins.dracula-theme]
 github = "dracula/zsh-syntax-highlighting"
-
-[plugins.zsh-communism]
-github = "victoria-riley-barnett/Communism"
 
 [plugins.ansiweather]
 github = "fcambus/ansiweather"
@@ -136,7 +134,7 @@ github = "mroth/evalcache"
 [plugins.figures]
 github = "zpm-zsh/figures"
 
-[plugins."fzf.zsh"]
+[plugins.fzf-zsh]
 github = "scaryrawr/fzf.zsh"
 
 [plugins.zsh-hints]
@@ -151,26 +149,49 @@ github = "fdw/yazi-zoxide-zsh"
 [plugins.boss-git-zsh-plugin]
 github = "bossjones/boss-git-zsh-plugin"
 
+[plugins.zsh-random-execute]
+local = "~/misc/src/zsh-random-execute/"
+
 [plugins.hacker-quotes]
 github = "oldratlee/hacker-quotes"
+apply = ["zre_add_cand"]
 
 [plugins.zsh-welcome-banner]
 github = "joshuadanpeterson/zsh-welcome-banner"
-
-[plugins.zsh-riddle-me]
-github = "vkolagotla/zsh-riddle-me"
+apply = ["zre_add_cand"]
 
 [plugins.zsh-random-quotes]
 github = "vkolagotla/zsh-random-quotes"
+apply = ["zre_add_cand"]
 
 [plugins.zsh-quotify]
 github = "dpretet/zsh-quotify"
+apply = ["zre_add_cand"]
 
 [plugins.quoter-zsh]
 github = "owenvoke/quoter-zsh"
+apply = ["zre_add_cand"]
 
 [plugins.matecito-zsh]
 github = "uvallasciani/matecito-zsh"
+apply = ["zre_add_cand"]
 
 [plugins.Linus-rants-ZSH]
 github = "bhayward93/Linus-rants-ZSH"
+apply = ["zre_add_cand"]
+
+[plugins.zsh-communism]
+github = "victoria-riley-barnett/Communism"
+apply = ["zre_add_cand"]
+
+[plugins.omz-rand-quote]
+github = "4hiziri/omz-rand-quote"
+apply = ["zre_add_cand"]
+
+[plugins.bol]
+github = "ikhurramraza/bol"
+apply = ["zre_add_cand"]
+
+[plugins.zenquotes]
+github = "aminelch/zenquotes"
+apply = ["zre_add_cand"]
