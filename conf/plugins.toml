@@ -188,10 +188,6 @@ apply = ["zre_add_cand"]
 github = "4hiziri/omz-rand-quote"
 apply = ["zre_add_cand"]
 
-[plugins.bol]
-github = "ikhurramraza/bol"
-apply = ["zre_add_cand"]
-
 [plugins.zenquotes]
 github = "aminelch/zenquotes"
 apply = ["zre_add_cand"]
