@@ -69,7 +69,7 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 
 ## sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-		   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+           /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
 ## ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
@@ -122,12 +122,12 @@ function set_title() {
 ## golang
 if [ -d "/usr/local/go/bin/" ]
 then
-	export PATH="/usr/local/go/bin/:$PATH"
+    export PATH="/usr/local/go/bin/:$PATH"
 fi
 
 if [ -d "$HOME/go/bin/" ]
 then
-	export PATH="$HOME/go/bin/:$PATH"
+    export PATH="$HOME/go/bin/:$PATH"
 fi
 
 ## rust
@@ -150,7 +150,7 @@ if which global > /dev/null
 then
     if [ -d "$HOME/.globalrc" ]
     then
-	export GTAGSCONF "$HOME/.globalrc"
+    export GTAGSCONF "$HOME/.globalrc"
     fi
     export GTAGSLABEL 'ctags'
 fi
@@ -173,8 +173,8 @@ function _pip_completion {
   read -Ac words
   read -cn cword
   reply=( $( COMP_WORDS="$words[*]" \
-	     COMP_CWORD=$(( cword-1 )) \
-	     PIP_AUTO_COMPLETE=1 $words[1] ) )
+         COMP_CWORD=$(( cword-1 )) \
+         PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
 
@@ -311,5 +311,8 @@ eval "$(eval starship init zsh)"
 # `starship explain` can show explaination of current state
 
 zre_random_execute
+
+# freshfetch
+macchina # rsftch
 
 ansiweather
