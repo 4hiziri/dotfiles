@@ -31,3 +31,6 @@ yes | cargo binstall difftastic # modern diff2, difft
 yse | cargo binstall tre # modern tree
 yes | cargo binstall yazi-fm # file manager
 yes | cargo binstall duf # modern df
+cargo install --git https://github.com/K4rakara/freshfetch # show system info
+yes | cargo binstall macchina
+yes | cargo binstall rsftch
