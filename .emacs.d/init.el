@@ -101,6 +101,7 @@
 (save-place-mode 1)
 (which-function-mode 1)
 (global-whitespace-mode 1)
+(setopt whitespace-style (remq 'lines whitespace-style))
 (setopt whitespace-action '(auto-cleanup))
 
 (provide 'init)
