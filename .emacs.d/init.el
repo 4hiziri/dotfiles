@@ -85,7 +85,11 @@
 (init-loader-load "~/.emacs.d/inits/") ; :configに書くとqueueに二重登録されてロードが重複するので注意
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-(load custom-file)
+(load custom-file :no-error-if-file-is-missing)
+
+(setq-default bidi-display-reordering nil) ;; 右から左へ読む処理を無効化
+(setq-default require-final-newline t) ;; 末尾改行を強制
+(global-auto-revert-mode +1) ;; 変更をバッファに反映
 
 (defun conflict-check (set1 set2)
   (let ((same (intersection set1 set2)))
