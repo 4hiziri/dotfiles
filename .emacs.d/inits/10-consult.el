@@ -1,11 +1,10 @@
 (use-package consult
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :bind
-  ;; Helm のキーバインドに近い操作感にするための割り当て例
   ("C-x b" . consult-buffer)
   ("M-y"   . consult-yank-pop)     ; キルリングの履歴を出してくれる
   ("C-s"   . consult-line)         ; consultの賢いサーチ
-  ("C-c o" . consult-outline)
+  ("M-g o" . consult-outline)
   ("C-M-s" . nil)                  ; C-M-sをプレフィックスとして使うので外す
   ("C-M-s s" . isearch-forward)    ; これまでのisearch
   ("C-M-s C-s" . isearch-forward-regexp) ; regex
@@ -29,5 +28,4 @@
 
 (use-package consult-flymake
   :ensure nil
-  :after (consult flymake)
-  :bind (("C-c ! l" . consult-flymake)))
+  :after (consult flymake))

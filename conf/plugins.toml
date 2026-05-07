@@ -150,7 +150,7 @@ github = "fdw/yazi-zoxide-zsh"
 github = "bossjones/boss-git-zsh-plugin"
 
 [plugins.zsh-random-execute]
-local = "~/misc/src/zsh-random-execute/"
+github = "4hiziri/zsh-random-execute"
 
 [plugins.hacker-quotes]
 github = "oldratlee/hacker-quotes"
