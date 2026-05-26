@@ -120,36 +120,29 @@ function set_title() {
 
 # PATH setting
 ## golang
-if [ -d "/usr/local/go/bin/" ]
-then
+if [ -d "/usr/local/go/bin/" ]; then
     export PATH="/usr/local/go/bin/:$PATH"
 fi
 
-if [ -d "$HOME/go/bin/" ]
-then
+if [ -d "$HOME/go/bin/" ]; then
     export PATH="$HOME/go/bin/:$PATH"
 fi
 
 ## rust
-if [ -f "$HOME/.cargo/env" ]
-then
+if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
-elif [ -e "$HOME/.cargo/" ]
-then
+elif [ -e "$HOME/.cargo/" ]; then
      export PATH="$PATH:$HOME/.cargo/bin/"
 fi
 
 ## haskell
-if [ -d "$HOME/.local/bin" ]
-then
+if [ -d "$HOME/.local/bin" ]; then
     export PATH="$PATH:$HOME/.local/bin/"
 fi
 
 ## global
-if which global > /dev/null
-then
-    if [ -d "$HOME/.globalrc" ]
-    then
+if command -v global 2>&1 > /dev/null; then
+    if [ -d "$HOME/.globalrc" ]; then
     export GTAGSCONF "$HOME/.globalrc"
     fi
     export GTAGSLABEL 'ctags'
@@ -159,8 +152,7 @@ fi
 export PATH="$PATH:/usr/local/lib/"
 
 ## .local/bin
-if [ -d "$PATH:$HOME/.local/bin" ]
-then
+if [ -d "$PATH:$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin/:$PATH"
 fi
 
@@ -179,21 +171,18 @@ function _pip_completion {
 compctl -K _pip_completion pip
 
 ## ruby
-if [ -d "$HOME/.rbenv/" ]
-then
+if [ -d "$HOME/.rbenv/" ]; then
    export PATH="$PATH:$HOME/.rbenv/bin/"
    eval "$(rbenv init -)"
 fi
 
 ## roswell
-if [ -d "$HOME/.roswell/bin/" ]
-then
+if [ -d "$HOME/.roswell/bin/" ]; then
     export PATH="$PATH:$HOME/.roswell/bin/"
 fi
 
 ## CUDA
-if [ -e "/usr/local/cuda/" ]
-then
+if [ -e "/usr/local/cuda/" ]; then
     export PATH="$PATH:/usr/local/cuda/bin/"
     export LD_LIBRARY_PATH=:"/usr/local/cuda/lib64"
     export PATH="$PATH:/usr/local/cuda/targets/x86_64-linux/include"
@@ -232,7 +221,19 @@ export PATH="$PATH:$HOME/src/JohnTheRipper/run/"
 alias john="$HOME/src/JohnTheRipper/run/john"
 
 ## opencode
-export PATH=/home/tkgsy/.opencode/bin:$PATH
+export PATH="/home/tkgsy/.opencode/bin:$PATH"
+
+## aqua conf
+export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
+export AQUA_POLICY_CONFIG="$HOME/.config/aqua/aqua-policy.yaml"
+
+if command -v aqua 2>&1 > /dev/null; then
+    PATH="$PATH:$(aqua root-dir)/bin"
+fi
+
+## mise
+
+eval "$(mise activate zsh)"
 
 ## solve duplicates
 typeset -U path cdpath fpath nmanpath
@@ -240,7 +241,7 @@ typeset -U path cdpath fpath nmanpath
 # modern command
 
 ## modern cat
-if [ -e "$HOME/.cargo/bin/bat" ]; then
+if command -v bat 2>&1 > /dev/null ; then
     alias bat='bat --paging=never --theme Dracula'
     export MANPAGER="sh -c 'col -bx 2>/dev/null| bat -l man -p'"
     export MANROFFOPT="-c"
@@ -252,14 +253,11 @@ if [ -e "$HOME/.cargo/bin/bat" ]; then
     alias -g -- --rhelp='--help 2>&1 | bat -l help -p'
 fi
 
-## modern ls
-# [ -e "$HOME/.cargo/bin/eza" ] && alias ls=eza
-
 ## zoxide, z command modern cd
 type -a zoxide 2>&1 > /dev/null && eval "$(zoxide init zsh)"
 
 ## modern git diff
-if [ -e "$HOME/.cargo/bin/delta" ]; then
+if command -v delta 2>&1 > /dev/null ; then
     git config --global core.pager delta
     git config --global interactive.diffFilter 'delta --color-only'
     git config --global delta.navigate true
@@ -270,7 +268,7 @@ fi
 ## modern tree, broot
 source /home/tkgsy/.config/broot/launcher/bash/br
 
-# original command
+# dict command
 if ! type -a dictd 2>&1 > /dev/null ; then
     sudo apt install -y dictd dict-freedict-jpn-eng dict-freedict-eng-jpn
 fi
