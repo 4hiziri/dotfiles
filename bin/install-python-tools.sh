@@ -5,10 +5,7 @@ if ! type -a uv; then
     exit 1
 fi
 
-if ! type -a pipx; then
-    echo "pipx isn't installed"
-    exit 1
-fi
-
-pipx install git+https://github.com/mps-youtube/yewtube.git
-pipx install howdoi
+uv tool install glances
+uv tool install howdoi
+uv tool install yewtube
+uv tool install ruff
