@@ -1,1 +1,1 @@
-sudo apt install lolcat htop pipx
+sudo apt install lolcat htop streamlink aria2 yank ack git-secret docker.io docker-compose
